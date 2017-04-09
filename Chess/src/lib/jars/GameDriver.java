@@ -1,5 +1,6 @@
 package lib.jars;
 
+import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -13,8 +14,19 @@ public class GameDriver extends BasicGame {
 	public static Player p1;
 	public static Player p2;
 	
-	public GameDriver(String title){
-		super(title);
+	public GameDriver(){
+		super("Chess");
+	}
+	
+	public static void main(String[] args){
+		try{
+			AppGameContainer app = new AppGameContainer(new GameDriver());
+			app.setDisplayMode(800, 800, false);
+			app.start();
+		}
+		catch (SlickException e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override

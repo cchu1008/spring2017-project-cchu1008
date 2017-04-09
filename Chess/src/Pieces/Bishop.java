@@ -15,7 +15,6 @@ public class Bishop extends Piece{
 		List<Point> moves = new ArrayList<Point>();
 		
 		//Note: Add check for color of piece in destination
-		//Also add check for edge of board
 		
 		for(int i = this.location.getX(), j = this.location.getY(); i < 8 && j < 8; i++, j++){
 			if(this.location.getX() != i || this.location.getY() != j){
