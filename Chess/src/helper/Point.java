@@ -1,3 +1,4 @@
+package helper;
 
 public class Point {
 	private int x;

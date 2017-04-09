@@ -1,4 +1,8 @@
+package Pieces;
 import java.util.List;
+
+import helper.Point;
+
 import java.util.ArrayList;
 
 public class Pawn extends Piece{

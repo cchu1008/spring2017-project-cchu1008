@@ -1,5 +1,8 @@
+package Pieces;
 import java.util.ArrayList;
 import java.util.List;
+
+import helper.Point;
 
 public class Rook extends Piece{
 	public Rook(Point p, boolean white){

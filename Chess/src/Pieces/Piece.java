@@ -1,4 +1,7 @@
+package Pieces;
 import java.util.ArrayList;
+
+import helper.Point;
 
 public abstract class Piece {
 	public Point location;
