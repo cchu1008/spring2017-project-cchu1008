@@ -5,10 +5,11 @@ import java.util.List;
 import helper.Point;
 
 public class Rook extends Piece{
+	public Point start;
 	public Rook(Point p, boolean white){
-		this.location = p;
+		super(p, white);
+		this.start = p;
 		this.valid = validMoves();
-		this.isWhite = white;
 	}
 	
 	public ArrayList<Point> validMoves(){

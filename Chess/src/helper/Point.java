@@ -24,4 +24,8 @@ public class Point {
 	public int getY(){
 		return this.y;
 	}
+	
+	public boolean equals(Point p){
+		return (this.x == p.getX() && this.y == p.getY());
+	}
 }

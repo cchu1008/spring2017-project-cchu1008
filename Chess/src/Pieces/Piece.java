@@ -27,4 +27,7 @@ public abstract class Piece {
 	public boolean isValid(Point point){
 		return this.valid.contains(point);
 	}
+	public boolean onBoard(Point point){
+		return (point.getX() >= 0 && point.getX() < 8 && point.getY() >= 0 && point.getY() < 8);
+	}
 }

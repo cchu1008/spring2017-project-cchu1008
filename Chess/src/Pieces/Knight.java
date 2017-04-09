@@ -7,8 +7,7 @@ import java.util.ArrayList;
 
 public class Knight extends Piece{
 	public Knight(Point p, boolean white){
-		this.location = p;
-		this.isWhite = white;
+		super(p, white);
 		this.valid = validMoves();
 	}
 	
@@ -17,14 +16,25 @@ public class Knight extends Piece{
 		
 		//Note: Add checks for piece color in destination
 		//Also add checks for board edge
-		moves.add(new Point(this.location.getX() - 1, this.location.getY() + 2));
-		moves.add(new Point(this.location.getX() + 1, this.location.getY() + 2));
-		moves.add(new Point(this.location.getX() - 1, this.location.getY() - 2));
-		moves.add(new Point(this.location.getX() + 1, this.location.getY() - 2));
-		moves.add(new Point(this.location.getX() + 2, this.location.getY() + 1));
-		moves.add(new Point(this.location.getX() + 2, this.location.getY() - 1));
-		moves.add(new Point(this.location.getX() - 2, this.location.getY() + 1));
-		moves.add(new Point(this.location.getX() - 2, this.location.getY() - 1));
+		
+		for(int i = -1; i < 2; i++){
+			if(i == 0) continue;
+			if(onBoard(new Point(this.location.getX() + i, this.location.getY() + 2)))
+				moves.add(new Point(this.location.getX() + i, this.location.getY() + 2));
+			
+			if(onBoard(new Point(this.location.getX() + i, this.location.getY() - 2)))
+				moves.add(new Point(this.location.getX() + i, this.location.getY() - 2));
+		}
+		
+		for(int i = -2; i < 3; i++){
+			if(i == -2 || i == 2){
+				if(onBoard(new Point(this.location.getX() + i, this.location.getY() + 1)))
+					moves.add(new Point(this.location.getX() + i, this.location.getY() + 1));
+				
+				if(onBoard(new Point(this.location.getX() + i, this.location.getY() - 1)))
+					moves.add(new Point(this.location.getX() + i, this.location.getY() - 1));
+			}
+		}
 		
 		return (ArrayList<Point>)moves;
 	}

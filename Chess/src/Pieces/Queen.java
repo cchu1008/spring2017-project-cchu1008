@@ -7,25 +7,39 @@ import java.util.ArrayList;
 
 public class Queen extends Piece{
 	public Queen(Point p, boolean white){
-		this.location = p;
-		this.isWhite = white;
+		super(p, white);
 		this.valid = validMoves();
 	}
 	
 	public ArrayList<Point> validMoves(){
 		List<Point> moves = new ArrayList<Point>();
 		
-		for(int i = 0, j = 0; i < 8 && j < 8; i++, j++){
+		//Bishop moves
+		for(int i = this.location.getX(), j = this.location.getY(); i < 8 && j < 8; i++, j++){
 			if(this.location.getX() != i || this.location.getY() != j){
 				moves.add(new Point(i, j));
 			}
 		}
-		for(int i = 0, j = 7; i < 8 && j >= 0; i++, j--){
-			if((this.location.getX() != i || this.location.getY() != j) && !moves.contains(new Point(i, j))){
+		
+		for(int i = this.location.getX(), j = this.location.getY(); i >= 0 && j >= 0; i--, j--){
+			if(this.location.getX() != i || this.location.getY() != j){
 				moves.add(new Point(i, j));
 			}
 		}
 		
+		for(int i = this.location.getX(), j = this.location.getY(); i >= 0 && j < 8; i--, j++){
+			if(this.location.getX() != i || this.location.getY() != j){
+				moves.add(new Point(i, j));
+			}
+		}
+		
+		for(int i = this.location.getX(), j = this.location.getY(); i < 8 && j >= 0; i++, j--){
+			if(this.location.getX() != i || this.location.getY() != j){
+				moves.add(new Point(i, j));
+			}
+		}
+		
+		//Rook moves
 		for(int i = 0; i < 8; i++){
 			if(i != this.location.getX() && !moves.contains(new Point(i, this.location.getY()))){
 				moves.add(new Point(i, this.location.getY()));

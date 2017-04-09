@@ -7,8 +7,7 @@ import java.util.ArrayList;
 
 public class King extends Piece{
 	public King(Point p, boolean white){
-		this.location = p;
-		this.isWhite = white;
+		super(p, white);
 		this.valid = validMoves();
 	}
 	
@@ -17,14 +16,16 @@ public class King extends Piece{
 		//Note: Add check for color of piece in destination
 		//Also add check for board edge
 		
-		moves.add(new Point(this.location.getX() - 1, this.location.getY()));
-		moves.add(new Point(this.location.getX() + 1, this.location.getY()));
-		moves.add(new Point(this.location.getX(), this.location.getY() + 1));
-		moves.add(new Point(this.location.getX(), this.location.getY() - 1));
-		moves.add(new Point(this.location.getX() - 1, this.location.getY() + 1));
-		moves.add(new Point(this.location.getX() + 1, this.location.getY() + 1));
-		moves.add(new Point(this.location.getX() - 1, this.location.getY() - 1));
-		moves.add(new Point(this.location.getX() + 1, this.location.getY() - 1));
+		for(int i = -1; i < 2; i++){
+			if(onBoard(new Point(this.location.getX() + i, this.location.getY() - 1)))
+				moves.add(new Point(this.location.getX() + i, this.location.getY() - 1));
+
+			if(i != 0 && onBoard(new Point(this.location.getX() + i, this.location.getY())))
+				moves.add(new Point(this.location.getX() + i, this.location.getY() - 1));
+			
+			if(onBoard(new Point(this.location.getX() + i, this.location.getY() + 1)))
+				moves.add(new Point(this.location.getX() + i, this.location.getY() + 1));
+		}
 		
 		return (ArrayList<Point>)moves;
 	}

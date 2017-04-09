@@ -7,8 +7,7 @@ import java.util.ArrayList;
 
 public class Bishop extends Piece{
 	public Bishop(Point p, boolean white){
-		this.location = p;
-		this.isWhite = white;
+		super(p, white);
 		this.valid = validMoves();
 	}
 	
@@ -18,13 +17,26 @@ public class Bishop extends Piece{
 		//Note: Add check for color of piece in destination
 		//Also add check for edge of board
 		
-		for(int i = 0, j = 0; i < 8 && j < 8; i++, j++){
+		for(int i = this.location.getX(), j = this.location.getY(); i < 8 && j < 8; i++, j++){
 			if(this.location.getX() != i || this.location.getY() != j){
 				moves.add(new Point(i, j));
 			}
 		}
-		for(int i = 0, j = 7; i < 8 && j >= 0; i++, j--){
-			if((this.location.getX() != i || this.location.getY() != j) && !moves.contains(new Point(i, j))){
+		
+		for(int i = this.location.getX(), j = this.location.getY(); i >= 0 && j >= 0; i--, j--){
+			if(this.location.getX() != i || this.location.getY() != j){
+				moves.add(new Point(i, j));
+			}
+		}
+		
+		for(int i = this.location.getX(), j = this.location.getY(); i >= 0 && j < 8; i--, j++){
+			if(this.location.getX() != i || this.location.getY() != j){
+				moves.add(new Point(i, j));
+			}
+		}
+		
+		for(int i = this.location.getX(), j = this.location.getY(); i < 8 && j >= 0; i++, j--){
+			if(this.location.getX() != i || this.location.getY() != j){
 				moves.add(new Point(i, j));
 			}
 		}
