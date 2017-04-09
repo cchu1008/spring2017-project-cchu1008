@@ -6,8 +6,10 @@ import helper.Point;
 import java.util.ArrayList;
 
 public class King extends Piece{
+	public Point start;
 	public King(Point p, boolean white){
 		super(p, white);
+		this.start = p;
 		this.valid = validMoves();
 	}
 	
