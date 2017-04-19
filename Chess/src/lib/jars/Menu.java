@@ -7,12 +7,18 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import Pieces.*;
 
 public class Menu extends BasicGameState {
 	
 	public static final int ID = 0;
 	
-	private StateBasedGame game;
+	private GameDriver game;
+	private Piece[][] board;
+	private Player p1;
+	private Player p2;
+	
+	
 	
 	public Menu(){
 		
@@ -22,19 +28,22 @@ public class Menu extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		// TODO Auto-generated method stub
 		
-		this.game = game;
+		this.game = (GameDriver)game;
+		this.board = this.game.board;
+		this.p1 = this.game.p1;
+		this.p2 = this.game.p2;
 
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-		
+
+		g.setColor(Color.red);
+		g.drawString("This is State 0", 235, 50);
 		g.setColor(Color.white);
 		g.drawString("State Based Game Test", 205, 100);
 		g.drawString("Numbers 0-2 will switch between states.", 125, 200);
-		g.setColor(Color.red);
-		g.drawString("This is State 0", 235, 50);
 
 	}
 

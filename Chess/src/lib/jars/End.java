@@ -28,11 +28,11 @@ public class End extends BasicGameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
+		g.setColor(Color.red);
+		g.drawString("This is State 2", 238, 50);
 		g.setColor(Color.white);
 		g.drawString("State Based Game Test", 205, 100);
 		g.drawString("Numbers 0-2 will switch between states.", 125, 300);
-		g.setColor(Color.red);
-		g.drawString("This is State 2", 238, 50);
 
 	}
 

@@ -15,11 +15,10 @@ public class Play extends BasicGameState {
 	
 	public static final int ID = 1;
 
-	public static Piece[][] board = new Piece[8][8];
-	public static Player p1;
-	public static Player p2;
-	
-	private StateBasedGame game;
+	private GameDriver game;
+	private Piece[][] board;
+	private Player p1;
+	private Player p2;
 	
 	public Play(){
 		
@@ -29,7 +28,10 @@ public class Play extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		// TODO Auto-generated method stub
 		
-		this.game = game;
+		this.game = (GameDriver)game;
+		this.board = this.game.board;
+		this.p1 = this.game.p1;
+		this.p2 = this.game.p2;
 		
 
 		generateWhite();
@@ -38,17 +40,23 @@ public class Play extends BasicGameState {
 		//Get player name..?
 		p1 = new Player("Player One", true);
 		p2 = new Player("Player Two", false);
+		
+		this.game.update(board, p1, p2);
 
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
+		g.setColor(Color.red);
+		g.drawString("This is State 1", 238, 50);
 		g.setColor(Color.white);
 		g.drawString("State Based Game Test", 205, 100);
 		g.drawString("Numbers 0-2 will switch between states.", 125, 300);
-		g.setColor(Color.red);
-		g.drawString("This is State 1", 238, 50);
+		g.drawString("Player 1: ", GameDriver.X_SIZE/3, GameDriver.Y_SIZE * (2/3));
+		g.drawString(p1.getName(), GameDriver.X_SIZE/3 + 25, GameDriver.Y_SIZE * (2/3));
+		g.drawString("Player 2: ", GameDriver.X_SIZE/3 + 55, GameDriver.Y_SIZE * (2/3));
+		g.drawString(p2.getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE * (2/3));
 
 	}
 
