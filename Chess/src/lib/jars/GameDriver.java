@@ -17,8 +17,8 @@ public class GameDriver extends StateBasedGame {
 	public static final int Y_SIZE = 500;
 	
 	public Piece[][] board = new Piece[8][8];
-	public Player p1;
-	public Player p2;
+	public Player p1 = new Player("Player One", true);
+	public Player p2 = new Player("Player Two", false);
 	
 	public GameDriver(String name){
 		super(name);
