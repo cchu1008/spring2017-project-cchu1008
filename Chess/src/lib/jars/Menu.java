@@ -60,10 +60,13 @@ public class Menu extends BasicGameState {
 	}
 	
 	public void keyReleased(int key, char c){
-		if(key == Input.KEY_RIGHT){
+		if(key == Input.KEY_RIGHT || key == Input.KEY_1){
 			game.getState(Play.ID);
-			
 			game.enterState(Play.ID);
+		}
+		if(key == Input.KEY_2){
+			game.getState(End.ID);
+			game.enterState(End.ID);
 		}
 	}
 

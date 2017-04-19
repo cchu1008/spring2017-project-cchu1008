@@ -73,14 +73,12 @@ public class Play extends BasicGameState {
 	}
 	
 	public void keyReleased(int key, char c){
-		if(key == Input.KEY_RIGHT){
+		if(key == Input.KEY_RIGHT || key == Input.KEY_2){
 			game.getState(End.ID);
-			
 			game.enterState(End.ID);
 		}
-		if(key == Input.KEY_LEFT){
+		if(key == Input.KEY_LEFT || key == Input.KEY_0){
 			game.getState(Menu.ID);
-			
 			game.enterState(Menu.ID);
 		}
 	}
