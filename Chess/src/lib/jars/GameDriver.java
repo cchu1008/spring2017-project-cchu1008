@@ -52,6 +52,7 @@ public class GameDriver extends StateBasedGame {
 			if(!isEmpty(point)){
 				if(board[point.getX()][point.getY()].isWhite() == p.isWhite())
 					init.remove(i);
+				//Horizontal movement
 				if(point.getX() == p.location.getX()){
 					if(point.getY() > p.location.getY()){
 						while(init.get(++i).getY() > p.location.getY() && init.get(i).getX() == p.location.getX()){
@@ -64,6 +65,8 @@ public class GameDriver extends StateBasedGame {
 						}
 					}
 				}
+				
+				//Diagonal movement (x - pos == y - pos)
 				
 			}
 			
