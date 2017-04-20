@@ -20,6 +20,8 @@ public class Play extends BasicGameState {
 	private Player p1;
 	private Player p2;
 	
+	private int turn;
+	
 	public Play(){
 		
 	}
@@ -32,6 +34,7 @@ public class Play extends BasicGameState {
 		this.board = this.game.board;
 		this.p1 = this.game.p1;
 		this.p2 = this.game.p2;
+		this.turn = this.game.turn;
 		
 
 		generateWhite();

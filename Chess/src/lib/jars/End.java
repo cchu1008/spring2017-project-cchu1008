@@ -8,11 +8,16 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import Pieces.Piece;
+
 public class End extends BasicGameState {
 	
 	public static int ID = 2;
 	
-	private StateBasedGame game;
+	private GameDriver game;
+	private Piece[][] board;
+	private Player p1;
+	private Player p2;
 	
 	public End(){
 		
@@ -21,7 +26,10 @@ public class End extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		// TODO Auto-generated method stub
-		this.game = game;
+		this.game = (GameDriver)game;
+		this.board = this.game.board;
+		this.p1 = this.game.p1;
+		this.p2 = this.game.p2;
 
 	}
 

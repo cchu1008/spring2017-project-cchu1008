@@ -35,7 +35,7 @@ public class Knight extends Piece{
 					moves.add(new Point(this.location.getX() + i, this.location.getY() - 1));
 			}
 		}
-		
+		this.valid = (ArrayList<Point>)moves;
 		return (ArrayList<Point>)moves;
 	}
 }

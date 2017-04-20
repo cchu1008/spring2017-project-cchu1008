@@ -40,6 +40,7 @@ public class Bishop extends Piece{
 			}
 		}
 		
+		this.valid = (ArrayList<Point>)moves;
 		return (ArrayList<Point>)moves;
 	}
 }

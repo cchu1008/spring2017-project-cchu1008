@@ -19,7 +19,6 @@ public class Menu extends BasicGameState {
 	private Player p2;
 	
 	
-	
 	public Menu(){
 		
 	}

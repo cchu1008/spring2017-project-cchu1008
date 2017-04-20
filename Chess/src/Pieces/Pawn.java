@@ -30,6 +30,7 @@ public class Pawn extends Piece{
 		if(onBoard(new Point(this.location.getX() + 1, this.location.getY() + 1)))
 			moves.add(new Point(this.location.getX() + 1, this.location.getY() + 1));
 		
+		this.valid = (ArrayList<Point>)moves;
 		return (ArrayList<Point>) moves;
 	}
 }

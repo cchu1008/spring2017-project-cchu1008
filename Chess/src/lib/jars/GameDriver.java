@@ -4,8 +4,10 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
-import Pieces.*;
 
+import Pieces.*;
+import helper.*;
+import java.util.ArrayList;
 
 public class GameDriver extends StateBasedGame {
 	public static final String GAME = "Chess";
@@ -20,6 +22,8 @@ public class GameDriver extends StateBasedGame {
 	public Player p1 = new Player("Player One", true);
 	public Player p2 = new Player("Player Two", false);
 	
+	public int turn = 0;
+	
 	public GameDriver(String name){
 		super(name);
 		this.addState(new Menu());
@@ -31,6 +35,51 @@ public class GameDriver extends StateBasedGame {
 		this.board = b;
 		this.p1 = x;
 		this.p2 = y;
+	}
+	
+	public boolean isEmpty(Point p){
+		return (board[p.getX()][p.getY()] == null);
+	}
+	
+	public ArrayList<Point> getValid(Piece p){
+		ArrayList<Point> init = p.validMoves();
+		Point point;
+		if((turn == 0 && p.isWhite() != p1.getWhite()) || (turn == 1 && p.isWhite() != p2.getWhite()))
+			return null;
+		
+		for(int i = 0; i < init.size(); i++){
+			point = init.get(i);
+			if(!isEmpty(point)){
+				if(board[point.getX()][point.getY()].isWhite() == p.isWhite())
+					init.remove(i);
+				if(point.getX() == p.location.getX()){
+					if(point.getY() > p.location.getY()){
+						while(init.get(++i).getY() > p.location.getY() && init.get(i).getX() == p.location.getX()){
+							init.remove(i);
+						}
+					}
+					else{
+						while(init.get(++i).getY() < p.location.getY() && init.get(i).getX() == p.location.getX()){
+							init.remove(i);
+						}
+					}
+				}
+				
+			}
+			
+		}
+		
+		p.setValid(init);
+		return init;
+	}
+	
+	public void movePiece(Point start, Point end){
+		Piece p = board[start.getX()][start.getY()];
+		ArrayList<Point> moves = getValid(p);
+		if(p.onBoard(end) && moves.contains(end)){
+			p.move(end);
+			turn = (turn + 1)%2;
+		}
 	}
 	
 	public static void main(String[] args){

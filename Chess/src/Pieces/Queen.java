@@ -50,7 +50,7 @@ public class Queen extends Piece{
 				moves.add(new Point(this.location.getX(), j));
 			}
 		}
-		
+		this.valid = (ArrayList<Point>)moves;
 		return (ArrayList<Point>)moves;
 	}
 }
