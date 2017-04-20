@@ -65,9 +65,42 @@ public class GameDriver extends StateBasedGame {
 						}
 					}
 				}
+				if(point.getY() == p.location.getY()){
+					if(point.getX() > p.location.getX()){
+						while(init.get(++i).getX() > p.location.getX() && init.get(i).getY() == p.location.getY()){
+							init.remove(i);
+						}
+					}
+					else{
+						while(init.get(++i).getX() < p.location.getX() && init.get(i).getY() == p.location.getY()){
+							init.remove(i);
+						}
+					}
+				}
 				
 				//Diagonal movement (x - pos == y - pos)
-				
+				if(Math.abs(point.getX() - p.location.getX()) == Math.abs(point.getY() - p.location.getY())){
+					if(point.getX() - p.location.getX() < 0){
+						if(point.getY() - p.location.getY() > 0){
+							while(init.get(++i).getX() < p.location.getX() && init.get(i).getY() > p.location.getY())
+								init.remove(i);
+						}
+						else if(point.getY() - p.location.getY() < 0){
+							while(init.get(i).getX() < p.location.getX() && init.get(i).getY() < p.location.getY())
+								init.remove(i);
+						}
+					}
+					else if(point.getX() - p.location.getX() > 0){
+						if(point.getY() - p.location.getY() > 0){
+							while(init.get(++i).getX() > p.location.getX() && init.get(i).getY() > p.location.getY())
+								init.remove(i);
+						}
+						else if(point.getY() - p.location.getY() < 0){
+							while(init.get(i).getX() > p.location.getX() && init.get(i).getY() < p.location.getY())
+								init.remove(i);
+						}
+					}
+				}
 			}
 			
 		}
@@ -99,7 +132,6 @@ public class GameDriver extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
-		// TODO Auto-generated method stub
 		this.getState(MENU).init(container,  this);
 		this.enterState(MENU);
 
