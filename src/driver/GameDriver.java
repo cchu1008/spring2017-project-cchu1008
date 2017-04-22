@@ -1,4 +1,4 @@
-package lib.jars;
+package driver;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.state.StateBasedGame;

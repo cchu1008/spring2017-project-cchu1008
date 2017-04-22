@@ -1,4 +1,4 @@
-package lib.jars;
+package driver;
 
 public class Player {
 	public String name;
