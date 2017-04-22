@@ -1,56 +1,56 @@
-package Pieces;
+package piece;
 import java.util.List;
 
-import helper.Point;
+import helper.Position;
 
 import java.util.ArrayList;
 
 public class Queen extends Piece{
-	public Queen(Point p, boolean white){
+	public Queen(Position p, boolean white){
 		super(p, white);
 		this.valid = validMoves();
 	}
 	
-	public ArrayList<Point> validMoves(){
-		List<Point> moves = new ArrayList<Point>();
+	public ArrayList<Position> validMoves(){
+		List<Position> moves = new ArrayList<Position>();
 		
 		//Bishop moves
 		for(int i = this.location.getX(), j = this.location.getY(); i < 8 && j < 8; i++, j++){
 			if(this.location.getX() != i || this.location.getY() != j){
-				moves.add(new Point(i, j));
+				moves.add(new Position(i, j));
 			}
 		}
 		
 		for(int i = this.location.getX(), j = this.location.getY(); i >= 0 && j >= 0; i--, j--){
 			if(this.location.getX() != i || this.location.getY() != j){
-				moves.add(new Point(i, j));
+				moves.add(new Position(i, j));
 			}
 		}
 		
 		for(int i = this.location.getX(), j = this.location.getY(); i >= 0 && j < 8; i--, j++){
 			if(this.location.getX() != i || this.location.getY() != j){
-				moves.add(new Point(i, j));
+				moves.add(new Position(i, j));
 			}
 		}
 		
 		for(int i = this.location.getX(), j = this.location.getY(); i < 8 && j >= 0; i++, j--){
 			if(this.location.getX() != i || this.location.getY() != j){
-				moves.add(new Point(i, j));
+				moves.add(new Position(i, j));
 			}
 		}
 		
 		//Rook moves
 		for(int i = 0; i < 8; i++){
-			if(i != this.location.getX() && !moves.contains(new Point(i, this.location.getY()))){
-				moves.add(new Point(i, this.location.getY()));
+			if(i != this.location.getX() && !moves.contains(new Position(i, this.location.getY()))){
+				moves.add(new Position(i, this.location.getY()));
 			}
 		}
 		for(int j = 0; j < 8; j++){
-			if(j != this.location.getY() && !moves.contains(new Point(this.location.getX(), j))){
-				moves.add(new Point(this.location.getX(), j));
+			if(j != this.location.getY() && !moves.contains(new Position(this.location.getX(), j))){
+				moves.add(new Position(this.location.getX(), j));
 			}
 		}
-		this.valid = (ArrayList<Point>)moves;
-		return (ArrayList<Point>)moves;
+		this.valid = (ArrayList<Position>)moves;
+		return (ArrayList<Position>)moves;
 	}
 }

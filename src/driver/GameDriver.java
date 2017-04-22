@@ -5,8 +5,9 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 
-import Pieces.*;
+import piece.*;
 import helper.*;
+
 import java.util.ArrayList;
 
 public class GameDriver extends StateBasedGame {
@@ -19,8 +20,8 @@ public class GameDriver extends StateBasedGame {
 	public static final int Y_SIZE = 500;
 	
 	public Piece[][] board = new Piece[8][8];
-	public Player p1 = new Player("Player One", true);
-	public Player p2 = new Player("Player Two", false);
+	public Player p1 = new Player("Player One", true, this);
+	public Player p2 = new Player("Player Two", false, this);
 	
 	public int turn = 0;
 	
@@ -37,24 +38,24 @@ public class GameDriver extends StateBasedGame {
 		this.p2 = y;
 	}
 	
-	public boolean isEmpty(Point p){
+	public boolean isEmpty(Position p){
 		return (board[p.getX()][p.getY()] == null);
 	}
 	
-	public ArrayList<Point> getValid(Piece p){
-		ArrayList<Point> init = p.validMoves();
-		Point point;
+	public ArrayList<Position> getValid(Piece p){
+		ArrayList<Position> init = p.validMoves();
+		Position Position;
 		if((turn == 0 && p.isWhite() != p1.getWhite()) || (turn == 1 && p.isWhite() != p2.getWhite()))
 			return null;
 		
 		for(int i = 0; i < init.size(); i++){
-			point = init.get(i);
-			if(!isEmpty(point)){
-				if(board[point.getX()][point.getY()].isWhite() == p.isWhite())
+			Position = init.get(i);
+			if(!isEmpty(Position)){
+				if(board[Position.getX()][Position.getY()].isWhite() == p.isWhite())
 					init.remove(i);
 				//Horizontal movement
-				if(point.getX() == p.location.getX()){
-					if(point.getY() > p.location.getY()){
+				if(Position.getX() == p.location.getX()){
+					if(Position.getY() > p.location.getY()){
 						while(init.get(++i).getY() > p.location.getY() && init.get(i).getX() == p.location.getX()){
 							init.remove(i);
 						}
@@ -65,8 +66,8 @@ public class GameDriver extends StateBasedGame {
 						}
 					}
 				}
-				if(point.getY() == p.location.getY()){
-					if(point.getX() > p.location.getX()){
+				if(Position.getY() == p.location.getY()){
+					if(Position.getX() > p.location.getX()){
 						while(init.get(++i).getX() > p.location.getX() && init.get(i).getY() == p.location.getY()){
 							init.remove(i);
 						}
@@ -79,23 +80,23 @@ public class GameDriver extends StateBasedGame {
 				}
 				
 				//Diagonal movement (x - pos == y - pos)
-				if(Math.abs(point.getX() - p.location.getX()) == Math.abs(point.getY() - p.location.getY())){
-					if(point.getX() - p.location.getX() < 0){
-						if(point.getY() - p.location.getY() > 0){
+				if(Math.abs(Position.getX() - p.location.getX()) == Math.abs(Position.getY() - p.location.getY())){
+					if(Position.getX() - p.location.getX() < 0){
+						if(Position.getY() - p.location.getY() > 0){
 							while(init.get(++i).getX() < p.location.getX() && init.get(i).getY() > p.location.getY())
 								init.remove(i);
 						}
-						else if(point.getY() - p.location.getY() < 0){
+						else if(Position.getY() - p.location.getY() < 0){
 							while(init.get(i).getX() < p.location.getX() && init.get(i).getY() < p.location.getY())
 								init.remove(i);
 						}
 					}
-					else if(point.getX() - p.location.getX() > 0){
-						if(point.getY() - p.location.getY() > 0){
+					else if(Position.getX() - p.location.getX() > 0){
+						if(Position.getY() - p.location.getY() > 0){
 							while(init.get(++i).getX() > p.location.getX() && init.get(i).getY() > p.location.getY())
 								init.remove(i);
 						}
-						else if(point.getY() - p.location.getY() < 0){
+						else if(Position.getY() - p.location.getY() < 0){
 							while(init.get(i).getX() > p.location.getX() && init.get(i).getY() < p.location.getY())
 								init.remove(i);
 						}
@@ -109,9 +110,9 @@ public class GameDriver extends StateBasedGame {
 		return init;
 	}
 	
-	public void movePiece(Point start, Point end){
+	public void movePiece(Position start, Position end){
 		Piece p = board[start.getX()][start.getY()];
-		ArrayList<Point> moves = getValid(p);
+		ArrayList<Position> moves = getValid(p);
 		if(p.onBoard(end) && moves.contains(end)){
 			p.move(end);
 			turn = (turn + 1)%2;

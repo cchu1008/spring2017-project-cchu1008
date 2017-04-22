@@ -1,12 +1,17 @@
 package driver;
 
+import org.newdawn.slick.state.StateBasedGame;
+
+
 public class Player {
 	public String name;
 	public boolean white;
+	public GameDriver game;
 	
-	public Player(String name, boolean white){
+	public Player(String name, boolean white, StateBasedGame game){
 		this.name = name;
 		this.white = white;
+		this.game = (GameDriver) game;
 	}
 	
 	public void setName(String name){
@@ -24,6 +29,5 @@ public class Player {
 	public boolean getWhite(){
 		return this.white;
 	}
-	
 	
 }
