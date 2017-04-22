@@ -6,5 +6,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="spring2017-project-cchu1008/src/lib/native"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="src/lib/jars/lwjgl.jar"/>
+	<classpathentry kind="lib" path="src/lib/jars/slick.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
