@@ -37,7 +37,7 @@ public class Setup extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		g.setColor(Color.red);
-		g.drawString("This is the Setup State", 220, 50);
+		g.drawString("This is the Setup State", 203, 50);
 		g.setColor(Color.white);
 		g.drawString("State Based Game Test", 205, 100);
 		g.drawString("Numbers 0-3 will switch between states.", 125, 200);

@@ -27,7 +27,7 @@ public class Pawn extends Piece{
 			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1))){
 				if(i == 0 && this.board[this.getLocation().getX()][this.getLocation().getY() + 1] == null)
 					moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 1));
-				else if(this.board[this.getLocation().getX() + i][this.getLocation().getY() + 1].isWhite() != this.isWhite())
+				else if(this.board[this.getLocation().getX() + i][this.getLocation().getY() + 1] != null && this.board[this.getLocation().getX() + i][this.getLocation().getY() + 1].isWhite() != this.isWhite())
 					moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1));
 			}
 		}

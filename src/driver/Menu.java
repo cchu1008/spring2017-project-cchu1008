@@ -41,10 +41,10 @@ public class Menu extends BasicGameState {
 		g.setBackground(Color.lightGray);
 		
 		g.setColor(Color.red);
-		g.drawString("This is the Menu State", 220, 50);
+		g.drawString("This is the Menu State", 203, 50);
 		g.setColor(Color.white);
 		g.drawString("State Based Game Test", 205, 100);
-		g.drawString("Numbers 0-2 will switch between states.", 125, 200);
+		g.drawString("Numbers 0-3 will switch between states.", 125, 200);
 
 	}
 

@@ -23,14 +23,14 @@ public class Rook extends Piece{
 		for(int i = this.getLocation().getX() + 1; i < 8 && (this.board[i][this.getLocation().getY()] == null || this.board[i][this.getLocation().getY()].isWhite() != this.isWhite()); i++){
 			moves.add(new Position(i, this.getLocation().getY()));
 		}
-		for(int i = this.getLocation().getX() - 1; i >= 0 && (this.board[i][this.getLocation().getY()] == null || this.board[i][this.getLocation().getY()].isWhite() != this.isWhite()); i++){
+		for(int i = this.getLocation().getX() - 1; i >= 0 && (this.board[i][this.getLocation().getY()] == null || this.board[i][this.getLocation().getY()].isWhite() != this.isWhite()); i--){
 			moves.add(new Position(i, this.getLocation().getY()));
 		}
 		
 		for(int i = this.getLocation().getY() + 1; i < 8 && (this.board[this.getLocation().getX()][i] == null || this.board[this.getLocation().getX()][i].isWhite() != this.isWhite()); i++){
 			moves.add(new Position(this.getLocation().getX(), i));
 		}
-		for(int i = this.getLocation().getY() - 1; i >= 0 && (this.board[this.getLocation().getX()][i] == null || this.board[this.getLocation().getX()][i].isWhite() != this.isWhite()); i++){
+		for(int i = this.getLocation().getY() - 1; i >= 0 && (this.board[this.getLocation().getX()][i] == null || this.board[this.getLocation().getX()][i].isWhite() != this.isWhite()); i--){
 			moves.add(new Position(this.getLocation().getX(), i));
 		}
 		

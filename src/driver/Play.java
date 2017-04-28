@@ -51,10 +51,10 @@ public class Play extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub		
 		g.setColor(Color.red);
-		g.drawString("This is the Play State", 220, 50);
+		g.drawString("This is the Play State", 203, 50);
 		g.setColor(Color.white);
 		g.drawString("State Based Game Test", 205, 100);
-		g.drawString("Numbers 0-2 will switch between states.", 125, 200);
+		g.drawString("Numbers 0-3 will switch between states.", 125, 200);
 		g.drawString("Player 1: ", GameDriver.X_SIZE/3, GameDriver.Y_SIZE/3);
 		g.drawString(this.game.p1.getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/3);
 		g.drawString("Player 2: ", GameDriver.X_SIZE/3, GameDriver.Y_SIZE/2);
