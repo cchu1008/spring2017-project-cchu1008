@@ -9,19 +9,21 @@ public abstract class Piece {
 	private ArrayList<Position> valid;
 	private boolean white;
 	private Image myImage;
+	public Piece[][] board;
 	
-	public Piece(Position p, boolean white, Image image){
+	public Piece(Position p, boolean white, Image image, Piece[][] board){
 		this.location = p;
 		this.white = white;
 		this.myImage = image;
+		this.board = board;
 	}
 	
 	public Piece(){
 		this.location = new Position(0, 0);
 	}
 	
-	public void move(Position Position){
-		if(isValid(Position)) this.location = Position;
+	public void move(Position p){
+		if(isValid(p)) this.location = p;
 	}
 	public ArrayList<Position> validMoves(){
 		return new ArrayList<Position>();
@@ -38,8 +40,8 @@ public abstract class Piece {
 	public Position getLocation(){
 		return this.location;
 	}
-	public boolean onBoard(Position Position){
-		return (Position.getX() >= 0 && Position.getX() < 8 && Position.getY() >= 0 && Position.getY() < 8);
+	public boolean onBoard(Position p){
+		return (p.getX() >= 0 && p.getX() < 8 && p.getY() >= 0 && p.getY() < 8);
 	}
 	public boolean isWhite(){
 		return this.white;
