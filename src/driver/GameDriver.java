@@ -56,50 +56,50 @@ public class GameDriver extends StateBasedGame {
 				if(board[Position.getX()][Position.getY()].isWhite() == p.isWhite())
 					init.remove(i);
 				//Horizontal movement
-				if(Position.getX() == p.location.getX()){
-					if(Position.getY() > p.location.getY()){
-						while(init.get(++i).getY() > p.location.getY() && init.get(i).getX() == p.location.getX()){
+				if(Position.getX() == p.getLocation().getX()){
+					if(Position.getY() > p.getLocation().getY()){
+						while(init.get(++i).getY() > p.getLocation().getY() && init.get(i).getX() == p.getLocation().getX()){
 							init.remove(i);
 						}
 					}
 					else{
-						while(init.get(++i).getY() < p.location.getY() && init.get(i).getX() == p.location.getX()){
+						while(init.get(++i).getY() < p.getLocation().getY() && init.get(i).getX() == p.getLocation().getX()){
 							init.remove(i);
 						}
 					}
 				}
-				if(Position.getY() == p.location.getY()){
-					if(Position.getX() > p.location.getX()){
-						while(init.get(++i).getX() > p.location.getX() && init.get(i).getY() == p.location.getY()){
+				if(Position.getY() == p.getLocation().getY()){
+					if(Position.getX() > p.getLocation().getX()){
+						while(init.get(++i).getX() > p.getLocation().getX() && init.get(i).getY() == p.getLocation().getY()){
 							init.remove(i);
 						}
 					}
 					else{
-						while(init.get(++i).getX() < p.location.getX() && init.get(i).getY() == p.location.getY()){
+						while(init.get(++i).getX() < p.getLocation().getX() && init.get(i).getY() == p.getLocation().getY()){
 							init.remove(i);
 						}
 					}
 				}
 				
 				//Diagonal movement (x - pos == y - pos)
-				if(Math.abs(Position.getX() - p.location.getX()) == Math.abs(Position.getY() - p.location.getY())){
-					if(Position.getX() - p.location.getX() < 0){
-						if(Position.getY() - p.location.getY() > 0){
-							while(init.get(++i).getX() < p.location.getX() && init.get(i).getY() > p.location.getY())
+				if(Math.abs(Position.getX() - p.getLocation().getX()) == Math.abs(Position.getY() - p.getLocation().getY())){
+					if(Position.getX() - p.getLocation().getX() < 0){
+						if(Position.getY() - p.getLocation().getY() > 0){
+							while(init.get(++i).getX() < p.getLocation().getX() && init.get(i).getY() > p.getLocation().getY())
 								init.remove(i);
 						}
-						else if(Position.getY() - p.location.getY() < 0){
-							while(init.get(i).getX() < p.location.getX() && init.get(i).getY() < p.location.getY())
+						else if(Position.getY() - p.getLocation().getY() < 0){
+							while(init.get(i).getX() < p.getLocation().getX() && init.get(i).getY() < p.getLocation().getY())
 								init.remove(i);
 						}
 					}
-					else if(Position.getX() - p.location.getX() > 0){
-						if(Position.getY() - p.location.getY() > 0){
-							while(init.get(++i).getX() > p.location.getX() && init.get(i).getY() > p.location.getY())
+					else if(Position.getX() - p.getLocation().getX() > 0){
+						if(Position.getY() - p.getLocation().getY() > 0){
+							while(init.get(++i).getX() > p.getLocation().getX() && init.get(i).getY() > p.getLocation().getY())
 								init.remove(i);
 						}
-						else if(Position.getY() - p.location.getY() < 0){
-							while(init.get(i).getX() > p.location.getX() && init.get(i).getY() < p.location.getY())
+						else if(Position.getY() - p.getLocation().getY() < 0){
+							while(init.get(i).getX() > p.getLocation().getX() && init.get(i).getY() < p.getLocation().getY())
 								init.remove(i);
 						}
 					}

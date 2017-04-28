@@ -10,7 +10,7 @@ public class Pawn extends Piece{
 	public Pawn(Position p, boolean white, Image image){
 		super(p, white, image);
 		this.start = p;
-		this.valid = validMoves();
+		this.setValid(validMoves());
 	}
 	
 	public ArrayList<Position> validMoves(){
@@ -19,18 +19,18 @@ public class Pawn extends Piece{
 		//Also add checks for end of board
 		//Also add options for diagonal movement if enemy is diagonal
 		
-		if(this.start.equals(this.location)){
-			moves.add(new Position(this.location.getX(), this.location.getY() + 2));
+		if(this.start.equals(this.getLocation())){
+			moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 2));
 		}
 		
-		if(onBoard(new Position(this.location.getX(), this.location.getY() + 1)))
-			moves.add(new Position(this.location.getX(), this.location.getY() + 1));
-		if(onBoard(new Position(this.location.getX() - 1, this.location.getY() + 1)))
-			moves.add(new Position(this.location.getX() - 1, this.location.getY() + 1));
-		if(onBoard(new Position(this.location.getX() + 1, this.location.getY() + 1)))
-			moves.add(new Position(this.location.getX() + 1, this.location.getY() + 1));
+		if(onBoard(new Position(this.getLocation().getX(), this.getLocation().getY() + 1)))
+			moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 1));
+		if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)))
+			moves.add(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1));
+		if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)))
+			moves.add(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1));
 		
-		this.valid = (ArrayList<Position>)moves;
+		this.setValid((ArrayList<Position>)moves);
 		return (ArrayList<Position>) moves;
 	}
 }

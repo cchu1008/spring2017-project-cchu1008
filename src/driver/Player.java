@@ -2,6 +2,9 @@ package driver;
 
 import org.newdawn.slick.state.StateBasedGame;
 
+import piece.*;
+import helper.*;
+
 
 public abstract class Player {
 	public String name;
@@ -28,6 +31,15 @@ public abstract class Player {
 	
 	public boolean getWhite(){
 		return this.white;
+	}
+	
+	public Piece pickPiece(Position p){
+		return this.game.board[p.getX()][p.getY()];
+	}
+	
+	public Position pickDestination(Position p){
+		return p;
+		//Incomplete: Unsure of how to implement.
 	}
 	
 }
