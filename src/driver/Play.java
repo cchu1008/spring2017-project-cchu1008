@@ -41,8 +41,8 @@ public class Play extends BasicGameState {
 		generateBlack();
 		
 		//Get player name..?
-		p1 = new Player("Player Seven", true, this.game);
-		p2 = new Player("Player Eight", false, this.game);
+		p1 = new HumanPlayer("Player Seven", true, this.game);
+		p2 = new HumanPlayer("Player Eight", false, this.game);
 		
 		this.game.update(board, p1, p2);
 
