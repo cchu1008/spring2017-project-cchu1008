@@ -38,7 +38,8 @@ public class Menu extends BasicGameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-
+		g.setBackground(Color.lightGray);
+		
 		g.setColor(Color.red);
 		g.drawString("This is the Menu State", 220, 50);
 		g.setColor(Color.white);

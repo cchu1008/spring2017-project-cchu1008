@@ -12,7 +12,6 @@ public abstract class Piece {
 	
 	public Piece(Position p, boolean white, Image image){
 		this.location = p;
-		this.valid = validMoves();
 		this.white = white;
 		this.myImage = image;
 	}

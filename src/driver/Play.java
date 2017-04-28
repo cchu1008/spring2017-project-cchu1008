@@ -6,6 +6,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
 
 import helper.*;
@@ -50,7 +51,7 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub		
 		g.setColor(Color.red);
 		g.drawString("This is the Play State", 220, 50);
 		g.setColor(Color.white);
@@ -60,6 +61,8 @@ public class Play extends BasicGameState {
 		g.drawString(this.game.p1.getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/3);
 		g.drawString("Player 2: ", GameDriver.X_SIZE/3, GameDriver.Y_SIZE/2);
 		g.drawString(this.game.p2.getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/2);
+		
+		board[4][0].getImage().draw(10, 10);
 
 	}
 
@@ -92,25 +95,31 @@ public class Play extends BasicGameState {
 	
 	
 	public void generateWhite() throws SlickException{
-		board[0][0] = new Rook(new Position(0, 0), true, new Image(1, 1));
-		board[7][0] = new Rook(new Position(7, 0), true, new Image(1, 1));
-		board[1][0] = new Knight(new Position(1, 0), true, new Image(1, 1));
-		board[6][0] = new Knight(new Position(6, 0), true, new Image(1, 1));
-		board[2][0] = new Bishop(new Position(2, 0), true, new Image(1, 1));
-		board[5][0] = new Bishop(new Position(5, 0), true, new Image(1, 1));
-		board[3][0] = new Queen(new Position(3, 0), true, new Image(1, 1));
-		board[4][0] = new King(new Position(4, 0), true, new Image(1, 1));
+		for(int i = 0; i < 8; i++){
+			board[i][1] = new Pawn(new Position(i, 1), true, new Image("resources/whitePawn.png"));
+		}
+		board[0][0] = new Rook(new Position(0, 0), true, new Image("resources/whiteRook.png"));
+		board[7][0] = new Rook(new Position(7, 0), true, new Image("resources/whiteRook.png"));
+		board[1][0] = new Knight(new Position(1, 0), true, new Image("resources/whiteKnight.png"));
+		board[6][0] = new Knight(new Position(6, 0), true, new Image("resources/whiteKnight.png"));
+		board[2][0] = new Bishop(new Position(2, 0), true, new Image("resources/whiteBishop.png"));
+		board[5][0] = new Bishop(new Position(5, 0), true, new Image("resources/whiteBishop.png"));
+		board[3][0] = new Queen(new Position(3, 0), true, new Image("resources/whiteQueen.png"));
+		board[4][0] = new King(new Position(4, 0), true, new Image("resources/whiteKing.png"));
 	}
 	
 	public void generateBlack() throws SlickException{
-		board[0][7] = new Rook(new Position(0, 7), false, new Image(1, 1));
-		board[7][7] = new Rook(new Position(7, 7), false, new Image(1, 1));
-		board[1][7] = new Knight(new Position(1, 7), false, new Image(1, 1));
-		board[6][7] = new Knight(new Position(6, 7), false, new Image(1, 1));
-		board[2][7] = new Bishop(new Position(2, 7), false, new Image(1, 1));
-		board[5][7] = new Bishop(new Position(5, 7), false, new Image(1, 1));
-		board[3][7] = new Queen(new Position(3, 7), false, new Image(1, 1));
-		board[4][7] = new King(new Position(4, 7), false, new Image(1, 1));
+		for(int i = 0; i < 8; i++){
+			board[i][6] = new Pawn(new Position(i, 6), false, new Image("resources/blackPawn.png"));
+		}
+		board[0][7] = new Rook(new Position(0, 7), false, new Image("resources/blackRook.png"));
+		board[7][7] = new Rook(new Position(7, 7), false, new Image("resources/blackRook.png"));
+		board[1][7] = new Knight(new Position(1, 7), false, new Image("resources/blackKnight.png"));
+		board[6][7] = new Knight(new Position(6, 7), false, new Image("resources/blackKnight.png"));
+		board[2][7] = new Bishop(new Position(2, 7), false, new Image("resources/blackBishop.png"));
+		board[5][7] = new Bishop(new Position(5, 7), false, new Image("resources/blackBishop.png"));
+		board[3][7] = new Queen(new Position(3, 7), false, new Image("resources/blackQueen.png"));
+		board[4][7] = new King(new Position(4, 7), false, new Image("resources/blackKing.png"));
 		
 	}
 
