@@ -2,16 +2,19 @@ package piece;
 import java.util.ArrayList;
 
 import helper.*;
+import org.newdawn.slick.Image;
 
 public abstract class Piece {
 	public Position location;
 	public ArrayList<Position> valid;
 	boolean white;
+	Image myImage;
 	
-	public Piece(Position p, boolean white){
+	public Piece(Position p, boolean white, Image image){
 		this.location = p;
 		this.valid = validMoves();
 		this.white = white;
+		this.myImage = image;
 	}
 	
 	public Piece(){

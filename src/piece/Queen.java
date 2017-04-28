@@ -4,10 +4,10 @@ import java.util.List;
 import helper.Position;
 
 import java.util.ArrayList;
-
+import org.newdawn.slick.Image;
 public class Queen extends Piece{
-	public Queen(Position p, boolean white){
-		super(p, white);
+	public Queen(Position p, boolean white, Image image){
+		super(p, white, image);
 		this.valid = validMoves();
 	}
 	

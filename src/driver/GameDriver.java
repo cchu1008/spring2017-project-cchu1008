@@ -13,15 +13,16 @@ import java.util.ArrayList;
 public class GameDriver extends StateBasedGame {
 	public static final String GAME = "Chess";
 	public static final int MENU = 0;
-	public static final int PLAY = 1;
-	public static final int END = 2;
+	public static final int SETUP = 1;
+	public static final int PLAY = 2;
+	public static final int END = 3;
 	public static final int FPS = 70;
 	public static final int X_SIZE = 600;
 	public static final int Y_SIZE = 500;
 	
 	public Piece[][] board = new Piece[8][8];
-	public Player p1 = new Player("Player One", true, this);
-	public Player p2 = new Player("Player Two", false, this);
+	public Player p1 = new HumanPlayer("Player One", true, this);
+	public Player p2 = new HumanPlayer("Player Two", false, this);
 	
 	public int turn = 0;
 	
@@ -30,6 +31,7 @@ public class GameDriver extends StateBasedGame {
 		this.addState(new Menu());
 		this.addState(new Play());
 		this.addState(new End());
+		this.addState(new Setup());
 	}
 	
 	public void update(Piece[][] b, Player x, Player y){

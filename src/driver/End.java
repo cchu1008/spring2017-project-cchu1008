@@ -12,7 +12,7 @@ import piece.*;
 
 public class End extends BasicGameState {
 	
-	public static int ID = 2;
+	public static final int ID = 3;
 	
 	private GameDriver game;
 	private Piece[][] board;
@@ -57,13 +57,17 @@ public class End extends BasicGameState {
 	}
 	
 	public void keyReleased(int key, char c){
-		if(key == Input.KEY_LEFT || key == Input.KEY_1){
+		if(key == Input.KEY_LEFT || key == Input.KEY_2){
 			game.getState(Play.ID);
 			game.enterState(Play.ID);
 		}
 		if(key == Input.KEY_0){
 			game.getState(Menu.ID);
 			game.enterState(Menu.ID);
+		}
+		if(key == Input.KEY_1){
+			game.getState(Setup.ID);
+			game.enterState(Setup.ID);
 		}
 	}
 

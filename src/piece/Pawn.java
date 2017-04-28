@@ -4,11 +4,11 @@ import java.util.List;
 import helper.Position;
 
 import java.util.ArrayList;
-
+import org.newdawn.slick.Image;
 public class Pawn extends Piece{
 	public Position start;
-	public Pawn(Position p, boolean white){
-		super(p, white);
+	public Pawn(Position p, boolean white, Image image){
+		super(p, white, image);
 		this.start = p;
 		this.valid = validMoves();
 	}

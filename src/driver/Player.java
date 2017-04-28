@@ -3,7 +3,7 @@ package driver;
 import org.newdawn.slick.state.StateBasedGame;
 
 
-public class Player {
+public abstract class Player {
 	public String name;
 	public boolean white;
 	public GameDriver game;

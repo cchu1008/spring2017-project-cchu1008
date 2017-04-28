@@ -3,11 +3,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import helper.Position;
-
+import org.newdawn.slick.Image;
 public class Rook extends Piece{
 	public Position start;
-	public Rook(Position p, boolean white){
-		super(p, white);
+	public Rook(Position p, boolean white, Image image){
+		super(p, white, image);
 		this.start = p;
 		this.valid = validMoves();
 	}

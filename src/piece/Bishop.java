@@ -4,10 +4,10 @@ import java.util.List;
 import helper.Position;
 
 import java.util.ArrayList;
-
+import org.newdawn.slick.Image;
 public class Bishop extends Piece{
-	public Bishop(Position p, boolean white){
-		super(p, white);
+	public Bishop(Position p, boolean white, Image image){
+		super(p, white, image);
 		this.valid = validMoves();
 	}
 	
