@@ -1,8 +1,10 @@
 package driver;
 
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -38,6 +40,10 @@ public class Menu extends BasicGameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
+		Image dark = new Image("resources/darkTile.jpg");
+		Image light = new Image("resources/lightTile.jpg");
+		Image playButton = new Image("resources/playButton.png");
+		
 		g.setBackground(Color.lightGray);
 		
 		g.setColor(Color.red);
@@ -45,13 +51,21 @@ public class Menu extends BasicGameState {
 		g.setColor(Color.white);
 		g.drawString("State Based Game Test", 205, 100);
 		g.drawString("Numbers 0-3 will switch between states.", 125, 200);
+		
+		dark.draw(100, 100, 0.1f);
+		light.draw(100, 200, 0.1f);
+		
+		playButton.draw(100, 300, 0.1f);
 
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
 		// TODO Auto-generated method stub
-
+		int posX = Mouse.getX();
+		int posY = Mouse.getY();
+		
+		
 	}
 
 	@Override
