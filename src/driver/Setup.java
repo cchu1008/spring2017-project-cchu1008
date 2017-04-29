@@ -7,6 +7,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.Image;
 
 import piece.*;
 
@@ -19,6 +20,10 @@ public class Setup extends BasicGameState {
 	private Player p1;
 	private Player p2;
 	
+	Image face;
+	int faceX = 300;
+	int faceY = 300;
+	
 	public Setup(){
 		
 	}
@@ -30,24 +35,33 @@ public class Setup extends BasicGameState {
 		this.board = this.game.board;
 		this.p1 = this.game.p1;
 		this.p2 = this.game.p2;
-
+		
+		face = new Image("resources/blackRook.png");
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		g.setColor(Color.red);
-		g.drawString("This is the Setup State", 203, 50);
+		g.drawString("This is the Setup State", GameDriver.X_SIZE*0.360f, GameDriver.Y_SIZE/8);
 		g.setColor(Color.white);
-		g.drawString("State Based Game Test", 205, 100);
-		g.drawString("Numbers 0-3 will switch between states.", 125, 200);
+		g.drawString("State Based Game Test", GameDriver.X_SIZE*0.365f, GameDriver.Y_SIZE/6);
+		g.drawString("Numbers 0-3 will switch between states.", GameDriver.X_SIZE*0.255f, GameDriver.Y_SIZE/4);
 
+		
+		face.draw(faceX, faceY, 0.3f);
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
 		// TODO Auto-generated method stub
-
+		Input input = container.getInput();
+		if(input.isKeyDown(Input.KEY_UP)){
+			faceY -= 2;
+		}
+		if(input.isKeyDown(Input.KEY_DOWN)){
+			faceY += 2;
+		}
 	}
 
 	@Override

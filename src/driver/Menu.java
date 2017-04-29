@@ -47,15 +47,15 @@ public class Menu extends BasicGameState {
 		g.setBackground(Color.lightGray);
 		
 		g.setColor(Color.red);
-		g.drawString("This is the Menu State", 203, 50);
+		g.drawString("This is the Menu State", GameDriver.X_SIZE*0.360f, GameDriver.Y_SIZE/8);
 		g.setColor(Color.white);
-		g.drawString("State Based Game Test", 205, 100);
-		g.drawString("Numbers 0-3 will switch between states.", 125, 200);
+		g.drawString("State Based Game Test", GameDriver.X_SIZE*0.365f, GameDriver.Y_SIZE/6);
+		g.drawString("Numbers 0-3 will switch between states.", GameDriver.X_SIZE*0.255f, GameDriver.Y_SIZE/4);
 		
-		dark.draw(100, 100, 0.1f);
-		light.draw(100, 200, 0.1f);
+		dark.draw(GameDriver.X_SIZE*0.1f, GameDriver.Y_SIZE*0.1f, 0.1f);
+		light.draw(GameDriver.X_SIZE*0.1f, GameDriver.Y_SIZE*0.2f, 0.1f);
 		
-		playButton.draw(100, 300, 0.1f);
+		playButton.draw(GameDriver.X_SIZE*0.15f, GameDriver.Y_SIZE*0.5f, 0.1f);
 
 	}
 
@@ -65,7 +65,11 @@ public class Menu extends BasicGameState {
 		int posX = Mouse.getX();
 		int posY = Mouse.getY();
 		
-		
+		if(posX > (GameDriver.X_SIZE*0.15f + 42) && posX < ((GameDriver.X_SIZE*0.15f + 42) + 376) && posY < (GameDriver.Y_SIZE*0.5f - 12) && posY > ((GameDriver.Y_SIZE*0.5f - 12) - 95)){
+			if(Mouse.isButtonDown(0)){
+				game.enterState(Setup.ID);
+			}
+		}
 	}
 
 	@Override

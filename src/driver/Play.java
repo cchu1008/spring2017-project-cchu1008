@@ -51,15 +51,17 @@ public class Play extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub		
 		g.setColor(Color.red);
-		g.drawString("This is the Play State", 203, 50);
+		g.drawString("This is the Play State", GameDriver.X_SIZE*0.360f, GameDriver.Y_SIZE/8);
 		g.setColor(Color.white);
-		g.drawString("State Based Game Test", 205, 100);
-		g.drawString("Numbers 0-3 will switch between states.", 125, 200);
+		g.drawString("State Based Game Test", GameDriver.X_SIZE*0.365f, GameDriver.Y_SIZE/6);
+		g.drawString("Numbers 0-3 will switch between states.", GameDriver.X_SIZE*0.255f, GameDriver.Y_SIZE/4);
+
 		g.drawString("Player 1: ", GameDriver.X_SIZE/3, GameDriver.Y_SIZE/3);
 		g.drawString(this.game.p1.getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/3);
 		g.drawString("Player 2: ", GameDriver.X_SIZE/3, GameDriver.Y_SIZE/2);
 		g.drawString(this.game.p2.getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/2);
 		
+		drawBoard();
 		board[4][0].getImage().draw(10, 10, 0.4f);
 
 	}
@@ -89,6 +91,17 @@ public class Play extends BasicGameState {
 			game.getState(Menu.ID);
 			game.enterState(Menu.ID);
 		}
+	}
+	
+	public void drawBoard() throws SlickException{
+		Image hBorder = new Image("resources/border.jpg");
+		
+		for(int i = 1; i < 13; i++){
+			hBorder.draw(50 * i, 50, 0.06f);
+		}
+		
+		
+		
 	}
 	
 	

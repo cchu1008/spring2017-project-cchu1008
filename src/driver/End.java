@@ -37,10 +37,11 @@ public class End extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		g.setColor(Color.red);
-		g.drawString("This is the End State", 203, 50);
+		g.drawString("This is the End State", GameDriver.X_SIZE*0.360f, GameDriver.Y_SIZE/8);
 		g.setColor(Color.white);
-		g.drawString("State Based Game Test", 205, 100);
-		g.drawString("Numbers 0-3 will switch between states.", 125, 200);
+		g.drawString("State Based Game Test", GameDriver.X_SIZE*0.365f, GameDriver.Y_SIZE/6);
+		g.drawString("Numbers 0-3 will switch between states.", GameDriver.X_SIZE*0.255f, GameDriver.Y_SIZE/4);
+
 
 	}
 
