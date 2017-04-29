@@ -4,8 +4,10 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 
 import helper.*;
@@ -21,6 +23,9 @@ public class Play extends BasicGameState {
 	private Player p2;
 	
 	private int turn;
+	
+	private Button tiles[][] = new Button[8][8];
+	private ButtonListener bListen = new ButtonListener();
 	
 	public Play(){
 		
@@ -38,6 +43,7 @@ public class Play extends BasicGameState {
 
 		generateWhite();
 		generateBlack();
+		generateTiles(container);
 		
 		//Get player name..?
 		p1 = new HumanPlayer("Player Seven", true, this.game);
@@ -61,7 +67,7 @@ public class Play extends BasicGameState {
 		g.drawString("Player 2: ", GameDriver.X_SIZE/3, GameDriver.Y_SIZE/2);
 		g.drawString(this.game.p2.getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/2);
 		
-		drawBoard();
+		drawBoard(container, g);
 		board[4][0].getImage().draw(10, 10, 0.4f);
 
 	}
@@ -70,6 +76,7 @@ public class Play extends BasicGameState {
 	public void update(GameContainer container, StateBasedGame game, int i) throws SlickException {
 		// TODO Auto-generated method stub
 		this.board = this.game.board;
+		
 	}
 
 	@Override
@@ -93,15 +100,40 @@ public class Play extends BasicGameState {
 		}
 	}
 	
-	public void drawBoard() throws SlickException{
+	public void drawBoard(GameContainer container, Graphics g) throws SlickException{
 		Image hBorder = new Image("resources/border.jpg");
+		Image vBorder = new Image("resources/borderVerticle.jpg");
 		
 		for(int i = 1; i < 13; i++){
-			hBorder.draw(50 * i, 50, 0.06f);
+			hBorder.draw(50 * i, 15, 0.055f);
+			hBorder.draw(50 * i, 603, 0.055f);
 		}
 		
+		for(int i = 0; i < 12; i++){
+			vBorder.draw(50, 15 + (50 * i), 0.055f);
+			vBorder.draw(638, 15 + (50 * i), 0.055f);
+		}
 		
-		
+		drawTiles(container, g);
+	}
+	
+	public void generateTiles(GameContainer container) throws SlickException{
+		for(int j = 0; j < 8; j += 2){
+			for(int i = 0; i < 8; i += 2){
+				this.tiles[i][j] = new Button(i, j, container, new Image("resources/darkTile.jpg"), 65 + (143 * (i/2)), 30 + (143 * (j/2)), 72, 72, bListen);
+				this.tiles[i + 1][j] = new Button(i + 1, j, container, new Image("resources/lightTile.jpg"), 137 + (143 * (i/2)), 30 + (143 * (j/2)), 72, 72, bListen);
+				this.tiles[i][j + 1] = new Button(i, j + 1, container, new Image("resources/lightTile.jpg"), 65 + (143 * (i/2)), 102 + (143 * (j/2)), 72, 72, bListen);
+				this.tiles[i + 1][j + 1] = new Button(i + 1, j + 1, container, new Image("resources/darkTile.jpg"), 137 + (143 * (i/2)), 102 + (143 * (j/2)), 72, 72, bListen);
+			}
+		}
+	}
+	
+	public void drawTiles(GameContainer container, Graphics g) throws SlickException{
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				this.tiles[i][j].render(container, g);
+			}
+		}
 	}
 	
 	
