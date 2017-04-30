@@ -17,8 +17,7 @@ public class Setup extends BasicGameState {
 	
 	private GameDriver game;
 	private Piece[][] board;
-	private Player p1;
-	private Player p2;
+	private Player[] players = new Player[2];
 	
 	Image face;
 	int faceX = 300;
@@ -33,8 +32,7 @@ public class Setup extends BasicGameState {
 		// TODO Auto-generated method stub
 		this.game = (GameDriver)game;
 		this.board = this.game.board;
-		this.p1 = this.game.p1;
-		this.p2 = this.game.p2;
+		this.players = this.game.players;
 		
 		face = new Image("resources/blackRook.png");
 	}

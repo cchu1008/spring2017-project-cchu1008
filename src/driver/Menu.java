@@ -18,8 +18,7 @@ public class Menu extends BasicGameState {
 	
 	private GameDriver game;
 	private Piece[][] board;
-	private Player p1;
-	private Player p2;
+	private Player[] players = new Player[2];
 	
 	
 	public Menu(){
@@ -32,9 +31,7 @@ public class Menu extends BasicGameState {
 		
 		this.game = (GameDriver)game;
 		this.board = this.game.board;
-		this.p1 = this.game.p1;
-		this.p2 = this.game.p2;
-
+		this.players = this.game.players;
 	}
 
 	@Override

@@ -3,42 +3,45 @@ import java.util.List;
 import java.util.ArrayList;
 import helper.Position;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.state.StateBasedGame;
 
 public class Bishop extends Piece{
-	public Bishop(Position p, boolean white, Image image, Piece[][] board){
-		super(p, white, image, board);
+	
+	public Bishop(Position p, boolean white, Image image, StateBasedGame game){
+		super(p, white, image, game);
 		this.setValid(validMoves());
+		this.setName("Bishop");
 	}
 	
 	public ArrayList<Position> validMoves(){
 		List<Position> moves = new ArrayList<Position>();
+		int i = 1;
 		
 		//Note: Add check for color of piece in destination
 		
-		for(int i = this.getLocation().getX(), j = this.getLocation().getY(); i < 8 && j < 8 && (this.board[i][j] == null || this.board[i][j].isWhite() != this.isWhite()); i++, j++){
-			if(this.getLocation().getX() != i || this.getLocation().getY() != j){
-				moves.add(new Position(i, j));
-			}
+		//Up and Right
+		while(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() - i)) && ((this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - i] == null) || (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - i].isWhite() != this.isWhite()))){
+			moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() - i));
+			i++;
 		}
-		
-		for(int i = this.getLocation().getX(), j = this.getLocation().getY(); i >= 0 && j >= 0 && (this.board[i][j] == null || this.board[i][j].isWhite() != this.isWhite()); i--, j--){
-			if(this.getLocation().getX() != i || this.getLocation().getY() != j){
-				moves.add(new Position(i, j));
-			}
+		i = 1;
+		//Up and Left
+		while(onBoard(new Position(this.getLocation().getX() - i, this.getLocation().getY() - i)) && ((this.game.board[this.getLocation().getX() - i][this.getLocation().getY() - i] == null) || (this.game.board[this.getLocation().getX() - i][this.getLocation().getY() - i].isWhite() != this.isWhite()))){
+			moves.add(new Position(this.getLocation().getX() - i, this.getLocation().getY() - i));
+			i++;
 		}
-		
-		for(int i = this.getLocation().getX(), j = this.getLocation().getY(); i >= 0 && j < 8 && (this.board[i][j] == null || this.board[i][j].isWhite() != this.isWhite()); i--, j++){
-			if(this.getLocation().getX() != i || this.getLocation().getY() != j){
-				moves.add(new Position(i, j));
-			}
+		i = 1;
+		//Down and Right
+		while(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() + i)) && ((this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + i] == null) || (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + i].isWhite() != this.isWhite()))){
+			moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() + i));
+			i++;
 		}
-		
-		for(int i = this.getLocation().getX(), j = this.getLocation().getY(); i < 8 && j >= 0 && (this.board[i][j] == null || this.board[i][j].isWhite() != this.isWhite()); i++, j--){
-			if(this.getLocation().getX() != i || this.getLocation().getY() != j){
-				moves.add(new Position(i, j));
-			}
+		i = 1;
+		//Down and Left
+		while(onBoard(new Position(this.getLocation().getX() - i, this.getLocation().getY() + i)) && ((this.game.board[this.getLocation().getX() - i][this.getLocation().getY() + i] == null) || (this.game.board[this.getLocation().getX() - i][this.getLocation().getY() + i].isWhite() != this.isWhite()))){
+			moves.add(new Position(this.getLocation().getX() - i, this.getLocation().getY() + i));
+			i++;
 		}
-		
 		this.setValid((ArrayList<Position>)moves);
 		return (ArrayList<Position>)moves;
 	}

@@ -9,6 +9,6 @@ public class ButtonListener implements ComponentListener{
 	}
 	
 	public void componentActivated(AbstractComponent source){
-		System.out.println("Source: " + source);
+		System.out.println("Source: (" + ((Button)source).getRow() + ", " + ((Button)source).getCol() + ")");
 	}
 }

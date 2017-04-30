@@ -3,19 +3,23 @@ import java.util.ArrayList;
 
 import helper.*;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.state.StateBasedGame;
+
+import driver.GameDriver;
 
 public abstract class Piece {
 	private Position location;
 	private ArrayList<Position> valid;
 	private boolean white;
 	private Image myImage;
-	public Piece[][] board;
+	private String name;
+	public GameDriver game;
 	
-	public Piece(Position p, boolean white, Image image, Piece[][] board){
+	public Piece(Position p, boolean white, Image image, StateBasedGame game){
 		this.location = p;
 		this.white = white;
 		this.myImage = image;
-		this.board = board;
+		this.game = (GameDriver)game;
 	}
 	
 	public Piece(){
@@ -28,8 +32,15 @@ public abstract class Piece {
 	public ArrayList<Position> validMoves(){
 		return new ArrayList<Position>();
 	}
-	public boolean isValid(Position Position){
-		return this.valid.contains(Position);
+	public boolean isValid(Position point){
+		boolean valid = false;
+		for(Position p : this.valid){
+			if(p.equals(point)){
+				valid = true;
+				break;
+			}
+		}
+		return valid;
 	}
 	public void setValid(ArrayList<Position> valid){
 		this.valid = valid;
@@ -48,5 +59,16 @@ public abstract class Piece {
 	}
 	public Image getImage(){
 		return this.myImage;
+	}
+	public void printValid(){
+		for(Position p: this.valid){
+			System.out.println("Valid: (" + p.getX() + ", " + p.getY() + ")");
+		}
+	}
+	public String getName(){
+		return this.name;
+	}
+	public void setName(String s){
+		this.name = s;
 	}
 }

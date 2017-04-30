@@ -16,8 +16,7 @@ public class End extends BasicGameState {
 	
 	private GameDriver game;
 	private Piece[][] board;
-	private Player p1;
-	private Player p2;
+	private Player[] players = new Player[2];
 	
 	public End(){
 		
@@ -28,8 +27,7 @@ public class End extends BasicGameState {
 		// TODO Auto-generated method stub
 		this.game = (GameDriver)game;
 		this.board = this.game.board;
-		this.p1 = this.game.p1;
-		this.p2 = this.game.p2;
+		this.players = this.game.players;
 
 	}
 
