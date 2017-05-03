@@ -1,4 +1,4 @@
-package driver;
+package main.driver;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -8,7 +8,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import piece.*;
+import main.piece.*;
 
 public class End extends BasicGameState {
 	

@@ -1,11 +1,11 @@
-package piece;
+package main.piece;
 import java.util.ArrayList;
 
-import helper.*;
+import main.helper.*;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 
-import driver.GameDriver;
+import main.driver.GameDriver;
 
 public abstract class Piece {
 	private Position location;

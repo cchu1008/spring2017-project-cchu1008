@@ -1,8 +1,8 @@
-package piece;
+package main.piece;
 import java.util.ArrayList;
 import java.util.List;
 
-import helper.Position;
+import main.helper.Position;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 public class Rook extends Piece{

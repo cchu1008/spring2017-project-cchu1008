@@ -1,7 +1,7 @@
-package piece;
+package main.piece;
 import java.util.List;
 
-import helper.Position;
+import main.helper.Position;
 
 import java.util.ArrayList;
 import org.newdawn.slick.Image;

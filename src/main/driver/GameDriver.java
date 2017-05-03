@@ -1,12 +1,12 @@
-package driver;
+package main.driver;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 
-import piece.*;
-import helper.*;
+import main.piece.*;
+import main.helper.*;
 
 public class GameDriver extends StateBasedGame {
 	public static final String GAME = "Chess";

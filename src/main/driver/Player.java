@@ -1,9 +1,9 @@
-package driver;
+package main.driver;
 
 import org.newdawn.slick.state.StateBasedGame;
 
-import helper.*;
-import piece.*;
+import main.helper.*;
+import main.piece.*;
 
 public abstract class Player {
 	public String name;

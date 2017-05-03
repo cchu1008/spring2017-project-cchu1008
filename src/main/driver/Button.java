@@ -1,10 +1,10 @@
-package driver;
+package main.driver;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.MouseOverArea;
 
-import helper.Position;
+import main.helper.Position;
 
 public class Button extends MouseOverArea{
 	private int row;

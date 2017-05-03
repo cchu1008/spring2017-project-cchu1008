@@ -1,7 +1,7 @@
-package piece;
+package main.piece;
 import java.util.List;
 import java.util.ArrayList;
-import helper.Position;
+import main.helper.Position;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.state.StateBasedGame;
 

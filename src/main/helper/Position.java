@@ -1,6 +1,6 @@
-package helper;
+package main.helper;
 
-public class Position {
+public class Position extends Object{
 	private int x;
 	private int y;
 	
@@ -35,7 +35,9 @@ public class Position {
 		return this.y;
 	}
 	
-	public boolean equals(Position p){
-		return (this.x == p.getX() && this.y == p.getY());
+	@Override
+	public boolean equals(Object p){
+		Position point = (Position)p;
+		return (this.x == point.getX() && this.y == point.getY());
 	}
 }

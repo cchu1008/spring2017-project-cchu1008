@@ -1,4 +1,4 @@
-package driver;
+package main.driver;
 
 import org.newdawn.slick.state.StateBasedGame;
 

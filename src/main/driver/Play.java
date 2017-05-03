@@ -1,4 +1,4 @@
-package driver;
+package main.driver;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -10,8 +10,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 
-import helper.*;
-import piece.*;
+import main.helper.*;
+import main.piece.*;
 import org.newdawn.slick.Image;
 public class Play extends BasicGameState {
 	
