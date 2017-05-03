@@ -9,7 +9,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.Image;
 
-import piece.*;
+import main.piece.*;
 
 public class Setup extends BasicGameState {
 	
