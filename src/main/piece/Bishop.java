@@ -26,7 +26,7 @@ public class Bishop extends Piece{
 		while(onBoard(new Position(thisX + i, thisY - i))){
 			if((GameDriver.board[thisX + i][thisY - i] == null) || (GameDriver.board[thisX + i][thisY - i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX + i, thisY - i));
-			if((GameDriver.board[thisX + i][thisY - i] != null))
+			if(GameDriver.board[thisX + i][thisY - i] != null)
 				break;
 			i++;
 		}
@@ -35,7 +35,7 @@ public class Bishop extends Piece{
 		while(onBoard(new Position(thisX - i, thisY - i)) && ((GameDriver.board[thisX - i][thisY - i] == null) || (GameDriver.board[thisX - i][thisY - i].isWhite() != this.isWhite()))){
 			if((GameDriver.board[thisX - i][thisY - i] == null) || (GameDriver.board[thisX - i][thisY - i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX - i, thisY - i));
-			if((GameDriver.board[thisX - i][thisY - i] != null))
+			if(GameDriver.board[thisX - i][thisY - i] != null)
 				break;
 			i++;
 		}
@@ -44,7 +44,7 @@ public class Bishop extends Piece{
 		while(onBoard(new Position(thisX + i, thisY + i)) && ((GameDriver.board[thisX + i][thisY + i] == null) || (GameDriver.board[thisX + i][thisY + i].isWhite() != this.isWhite()))){
 			if((GameDriver.board[thisX + i][thisY + i] == null) || (GameDriver.board[thisX + i][thisY + i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX + i, thisY + i));
-			if((GameDriver.board[thisX + i][thisY + i] != null))
+			if(GameDriver.board[thisX + i][thisY + i] != null)
 				break;
 			i++;
 		}
@@ -53,7 +53,7 @@ public class Bishop extends Piece{
 		while(onBoard(new Position(thisX - i, thisY + i)) && ((GameDriver.board[thisX - i][thisY + i] == null) || (GameDriver.board[thisX - i][thisY + i].isWhite() != this.isWhite()))){
 			if((GameDriver.board[thisX - i][thisY + i] == null) || (GameDriver.board[thisX - i][thisY + i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX - i, thisY + i));
-			if((GameDriver.board[thisX - i][thisY + i] != null))
+			if(GameDriver.board[thisX - i][thisY + i] != null)
 				break;
 			i++;
 		}

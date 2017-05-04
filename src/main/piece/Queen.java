@@ -28,7 +28,7 @@ public class Queen extends Piece{
 		while(onBoard(new Position(thisX + i, thisY - i))){
 			if((GameDriver.board[thisX + i][thisY - i] == null) || (GameDriver.board[thisX + i][thisY - i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX + i, thisY - i));
-			if((GameDriver.board[thisX + i][thisY - i] != null))
+			if(GameDriver.board[thisX + i][thisY - i] != null)
 				break;
 			i++;
 		}
@@ -37,7 +37,7 @@ public class Queen extends Piece{
 		while(onBoard(new Position(thisX - i, thisY - i)) && ((GameDriver.board[thisX - i][thisY - i] == null) || (GameDriver.board[thisX - i][thisY - i].isWhite() != this.isWhite()))){
 			if((GameDriver.board[thisX - i][thisY - i] == null) || (GameDriver.board[thisX - i][thisY - i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX - i, thisY - i));
-			if((GameDriver.board[thisX - i][thisY - i] != null))
+			if(GameDriver.board[thisX - i][thisY - i] != null)
 				break;
 			i++;
 		}
@@ -46,7 +46,7 @@ public class Queen extends Piece{
 		while(onBoard(new Position(thisX + i, thisY + i)) && ((GameDriver.board[thisX + i][thisY + i] == null) || (GameDriver.board[thisX + i][thisY + i].isWhite() != this.isWhite()))){
 			if((GameDriver.board[thisX + i][thisY + i] == null) || (GameDriver.board[thisX + i][thisY + i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX + i, thisY + i));
-			if((GameDriver.board[thisX + i][thisY + i] != null))
+			if(GameDriver.board[thisX + i][thisY + i] != null)
 				break;
 			i++;
 		}
@@ -55,7 +55,7 @@ public class Queen extends Piece{
 		while(onBoard(new Position(thisX - i, thisY + i)) && ((GameDriver.board[thisX - i][thisY + i] == null) || (GameDriver.board[thisX - i][thisY + i].isWhite() != this.isWhite()))){
 			if((GameDriver.board[thisX - i][thisY + i] == null) || (GameDriver.board[thisX - i][thisY + i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX - i, thisY + i));
-			if((GameDriver.board[thisX - i][thisY + i] != null))
+			if(GameDriver.board[thisX - i][thisY + i] != null)
 				break;
 			i++;
 		}
@@ -67,7 +67,7 @@ public class Queen extends Piece{
 		while(onBoard(new Position(thisX + i, thisY))){
 			if((GameDriver.board[thisX + i][thisY] == null) || (GameDriver.board[thisX + i][thisY].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX + i, thisY));
-			if((GameDriver.board[thisX + i][thisY] != null))
+			if(GameDriver.board[thisX + i][thisY] != null)
 				break;
 			i++;
 		}
@@ -76,7 +76,7 @@ public class Queen extends Piece{
 		while(onBoard(new Position(thisX, thisY - i)) && ((GameDriver.board[thisX][thisY - i] == null) || (GameDriver.board[thisX][thisY - i].isWhite() != this.isWhite()))){
 			if((GameDriver.board[thisX][thisY - i] == null) || (GameDriver.board[thisX][thisY - i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX, thisY - i));
-			if((GameDriver.board[thisX][thisY - i] != null))
+			if(GameDriver.board[thisX][thisY - i] != null)
 				break;
 			i++;
 		}
@@ -85,7 +85,7 @@ public class Queen extends Piece{
 		while(onBoard(new Position(thisX, thisY + i)) && ((GameDriver.board[thisX][thisY + i] == null) || (GameDriver.board[thisX][thisY + i].isWhite() != this.isWhite()))){
 			if((GameDriver.board[thisX][thisY + i] == null) || (GameDriver.board[thisX][thisY + i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX, thisY + i));
-			if((GameDriver.board[thisX][thisY + i] != null))
+			if(GameDriver.board[thisX][thisY + i] != null)
 				break;
 			i++;
 		}
@@ -94,7 +94,7 @@ public class Queen extends Piece{
 		while(onBoard(new Position(thisX - i, thisY)) && ((GameDriver.board[thisX - i][thisY] == null) || (GameDriver.board[thisX - i][thisY].isWhite() != this.isWhite()))){
 			if((GameDriver.board[thisX - i][thisY] == null) || (GameDriver.board[thisX - i][thisY].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX - i, thisY));
-			if((GameDriver.board[thisX - i][thisY] != null))
+			if(GameDriver.board[thisX - i][thisY] != null)
 				break;
 			i++;
 		}

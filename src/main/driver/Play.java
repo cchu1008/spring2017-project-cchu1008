@@ -58,7 +58,7 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int in) throws SlickException {
-		
+		GameDriver.updateValid();
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public class Play extends BasicGameState {
 	public void drawPieces(GameContainer container, Graphics g) throws SlickException{
 		for(int i = 0; i < 8; i++){
 			for(int j = 0; j < 8; j++){
-				if(!this.game.isEmpty(new Position(i,j)))
+				if(!GameDriver.isEmpty(new Position(i,j)))
 					GameDriver.board[i][j].getImage().draw(tiles[i][j].getX() + 13, tiles[i][j].getY() + 5, 0.3f);
 			}
 		}

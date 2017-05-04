@@ -27,15 +27,15 @@ public class Pawn extends Piece{
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 2));
 			
 			//Straight ahead
-			if(onBoard(new Position(this.getLocation().getX(), this.getLocation().getY() + 1)) && this.game.isEmpty(new Position(this.getLocation().getX(), this.getLocation().getY() + 1)))
+			if(onBoard(new Position(this.getLocation().getX(), this.getLocation().getY() + 1)) && GameDriver.isEmpty(new Position(this.getLocation().getX(), this.getLocation().getY() + 1)))
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 1));
 			
 			//Diagonal to the Right
-			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (GameDriver.board[this.getLocation().getX() + 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
+			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (!GameDriver.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (GameDriver.board[this.getLocation().getX() + 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
 				moves.add(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1));
 			
 			//Diagonal to the Left
-			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (GameDriver.board[this.getLocation().getX() - 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
+			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (!GameDriver.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (GameDriver.board[this.getLocation().getX() - 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
 				moves.add(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1));
 		}
 		else{
@@ -43,15 +43,15 @@ public class Pawn extends Piece{
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() - 2));
 			
 			//Straight ahead
-			if(onBoard(new Position(this.getLocation().getX(), this.getLocation().getY() - 1)) && this.game.isEmpty(new Position(this.getLocation().getX(), this.getLocation().getY() - 1)))
+			if(onBoard(new Position(this.getLocation().getX(), this.getLocation().getY() - 1)) && GameDriver.isEmpty(new Position(this.getLocation().getX(), this.getLocation().getY() - 1)))
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() - 1));
 			
 			//Diagonal to the Right
-			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (GameDriver.board[this.getLocation().getX() + 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
+			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (!GameDriver.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (GameDriver.board[this.getLocation().getX() + 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
 				moves.add(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1));
 			
 			//Diagonal to the Left
-			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (GameDriver.board[this.getLocation().getX() - 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
+			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (!GameDriver.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (GameDriver.board[this.getLocation().getX() - 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
 				moves.add(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1));
 		}
 		

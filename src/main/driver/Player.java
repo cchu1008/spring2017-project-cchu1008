@@ -45,11 +45,11 @@ public abstract class Player {
 		else if(!this.begin.equals(new Position(-1, -1)) && this.end.equals(new Position(-1, -1))){
 			if(this.piece.isValid(p)){
 				this.end = p;
-				this.game.move(this.begin, this.end);
+				GameDriver.move(this.begin, this.end);
 				System.out.println(normal);
 				resetPosition();
 			}
-			else if(!this.game.isEmpty(p) && GameDriver.board[p.getX()][p.getY()].isWhite() == this.isWhite()){
+			else if(!GameDriver.isEmpty(p) && GameDriver.board[p.getX()][p.getY()].isWhite() == this.isWhite()){
 				this.begin = p;
 				this.piece = GameDriver.board[p.getX()][p.getY()];
 				this.piece.printValid();

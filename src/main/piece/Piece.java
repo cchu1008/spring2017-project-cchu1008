@@ -48,7 +48,7 @@ public abstract class Piece {
 	public void setValid(List<Position> valid){
 		this.valid = (ArrayList<Position>)valid;
 	}
-	public ArrayList<Position> getValid(){
+	public List<Position> getValid(){
 		return this.valid;
 	}
 	public Position getLocation(){
@@ -58,7 +58,7 @@ public abstract class Piece {
 		this.location = p;
 	}
 	public boolean onBoard(Position p){
-		return (p.getX() >= 0 && p.getX() < 8 && p.getY() >= 0 && p.getY() < 8);
+		return p.getX() >= 0 && p.getX() < 8 && p.getY() >= 0 && p.getY() < 8;
 	}
 	public boolean isWhite(){
 		return this.white;

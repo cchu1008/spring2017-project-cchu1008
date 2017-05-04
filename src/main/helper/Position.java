@@ -44,7 +44,7 @@ public class Position extends Object{
 			return false;
 		
 		Position point = (Position)p;
-		return (this.x == point.getX() && this.y == point.getY());
+		return this.x == point.getX() && this.y == point.getY();
 	}
 	
 	@Override

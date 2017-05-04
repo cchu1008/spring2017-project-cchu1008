@@ -32,7 +32,7 @@ public class GameDriver extends StateBasedGame {
 		this.addState(new Setup());
 	}
 	
-	public void move(Position start, Position end){
+	public static void move(Position start, Position end){
 		Piece p = GameDriver.board[start.getX()][start.getY()];
 		GameDriver.board[start.getX()][start.getY()] = null;
 		GameDriver.board[end.getX()][end.getY()] = p;
@@ -47,11 +47,11 @@ public class GameDriver extends StateBasedGame {
 		this.players[1] = y;
 	}
 	
-	public boolean isEmpty(Position p){
-		return (GameDriver.board[p.getX()][p.getY()] == null);
+	public static boolean isEmpty(Position p){
+		return GameDriver.board[p.getX()][p.getY()] == null;
 	}
 	
-	public void printBoard(){
+	public static void printBoard(){
 		for(int i = 0; i < 8; i++){
 			System.out.print("| ");
 			for(int j = 0; j < 8; j++){
@@ -64,7 +64,7 @@ public class GameDriver extends StateBasedGame {
 		}
 	}
 	
-	public void updateValid(){
+	public static void updateValid(){
 		for(int i = 0; i < 8; i++){
 			for(int j = 0; j < 8; j++){
 				if(!isEmpty(new Position(j, i))){
