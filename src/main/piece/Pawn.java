@@ -19,7 +19,7 @@ public class Pawn extends Piece{
 	
 	@Override
 	public List<Position> validMoves(){
-		List<Position> moves = new ArrayList<Position>();
+		List<Position> moves = new ArrayList<>();
 		
 		if(this.isWhite()){
 			//First Move

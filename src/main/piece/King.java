@@ -19,7 +19,7 @@ public class King extends Piece{
 	
 	@Override
 	public List<Position> validMoves(){
-		List<Position> moves = new ArrayList<Position>();
+		List<Position> moves = new ArrayList<>();
 		//Note: Add check for color of piece in destination
 		//Also add check for GameDriver.board edge
 		

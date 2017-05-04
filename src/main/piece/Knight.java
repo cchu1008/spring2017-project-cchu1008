@@ -17,7 +17,7 @@ public class Knight extends Piece{
 	
 	@Override
 	public List<Position> validMoves(){
-		List<Position> moves = new ArrayList<Position>();
+		List<Position> moves = new ArrayList<>();
 		Position p;
 		
 		for(int i = -1; i < 2; i++){
