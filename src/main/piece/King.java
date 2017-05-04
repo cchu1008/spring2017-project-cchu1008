@@ -16,7 +16,13 @@ public class King extends Piece{
 		this.setName(" King ");
 	}
 	
-	public ArrayList<Position> validMoves(){
+	public void move(Position p){
+		this.setLocation(p);
+		this.setValid(validMoves());
+	}
+	
+	@Override
+	public List<Position> validMoves(){
 		List<Position> moves = new ArrayList<Position>();
 		//Note: Add check for color of piece in destination
 		//Also add check for this.game.board edge
@@ -38,6 +44,6 @@ public class King extends Piece{
 		
 		this.setValid((ArrayList<Position>)moves);
 		
-		return (ArrayList<Position>)moves;
+		return moves;
 	}
 }

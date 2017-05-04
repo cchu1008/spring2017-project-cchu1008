@@ -16,56 +16,50 @@ public class Pawn extends Piece{
 		this.setName(" Pawn ");
 	}
 	
-	public ArrayList<Position> validMoves(){
+	public void move(Position p){
+		this.setLocation(p);
+		this.setValid(validMoves());
+	}
+	
+	@Override
+	public List<Position> validMoves(){
 		List<Position> moves = new ArrayList<Position>();
 		
 		if(this.isWhite()){
 			//First Move
-			if(this.start.equals(this.getLocation()) && (this.game.board[this.start.getX()][this.start.getY() + 1] == null) && (this.game.board[this.start.getX()][this.start.getY() + 2] == null)){
+			if(this.start.equals(this.getLocation()) && (this.game.board[this.start.getX()][this.start.getY() + 1] == null) && (this.game.board[this.start.getX()][this.start.getY() + 2] == null))
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 2));
-			}
 			
 			//Straight ahead
-			if(onBoard(new Position(this.getLocation().getX(), this.getLocation().getY() + 1))){
-				if(this.game.board[this.getLocation().getX()][this.getLocation().getY() + 1] == null)
-					moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 1));
-			}
+			if(onBoard(new Position(this.getLocation().getX(), this.getLocation().getY() + 1)) && this.game.isEmpty(new Position(this.getLocation().getX(), this.getLocation().getY() + 1)))
+				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 1));
 			
 			//Diagonal to the Right
-			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1))){
-				if((this.game.board[this.getLocation().getX() + 1][this.getLocation().getY() + 1] != null) && (this.game.board[this.getLocation().getX() + 1][this.getLocation().getY() + 1].isWhite() != this.isWhite()))
-					moves.add(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1));
-			}
+			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (this.game.board[this.getLocation().getX() + 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
+				moves.add(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1));
 			
 			//Diagonal to the Left
-			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1))){
-				if((this.game.board[this.getLocation().getX() - 1][this.getLocation().getY() + 1] != null) && (this.game.board[this.getLocation().getX() - 1][this.getLocation().getY() + 1].isWhite() != this.isWhite()))
-					moves.add(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1));
-			}
+			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (this.game.board[this.getLocation().getX() - 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
+				moves.add(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1));
 		}
 		else{
-			//First Move
-			if(this.start.equals(this.getLocation()) && (this.game.board[this.start.getX()][this.start.getY() - 1] == null) && (this.game.board[this.start.getX()][this.start.getY() - 2] == null)){
+			if(this.start.equals(this.getLocation()) && (this.game.board[this.start.getX()][this.start.getY() - 1] == null) && (this.game.board[this.start.getX()][this.start.getY() - 2] == null))
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() - 2));
-			}
+			
 			//Straight ahead
-			if(onBoard(new Position(this.getLocation().getX(), this.getLocation().getY() - 1))){
-				if(this.game.board[this.getLocation().getX()][this.getLocation().getY() - 1] == null)
-					moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() - 1));
-			}
+			if(onBoard(new Position(this.getLocation().getX(), this.getLocation().getY() - 1)) && this.game.isEmpty(new Position(this.getLocation().getX(), this.getLocation().getY() - 1)))
+				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() - 1));
+			
 			//Diagonal to the Right
-			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1))){
-				if((this.game.board[this.getLocation().getX() + 1][this.getLocation().getY() - 1] != null) && (this.game.board[this.getLocation().getX() + 1][this.getLocation().getY() - 1].isWhite() != this.isWhite()))
-					moves.add(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1));
-			}
+			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (this.game.board[this.getLocation().getX() + 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
+				moves.add(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1));
+			
 			//Diagonal to the Left
-			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1))){
-				if((this.game.board[this.getLocation().getX() - 1][this.getLocation().getY() - 1] != null) && (this.game.board[this.getLocation().getX() - 1][this.getLocation().getY() - 1].isWhite() != this.isWhite()))
-					moves.add(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1));
-			}
+			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (this.game.board[this.getLocation().getX() - 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
+				moves.add(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1));
 		}
 		
 		this.setValid((ArrayList<Position>)moves);
-		return (ArrayList<Position>) moves;
+		return moves;
 	}
 }

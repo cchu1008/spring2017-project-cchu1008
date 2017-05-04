@@ -4,7 +4,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.MouseOverArea;
 
-import main.helper.Position;
+import main.helper.*;
 
 public class Button extends MouseOverArea{
 	private int row;

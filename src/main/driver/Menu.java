@@ -22,12 +22,11 @@ public class Menu extends BasicGameState {
 	
 	
 	public Menu(){
-		
+		//Not sure why we need this.
 	}
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		// TODO Auto-generated method stub
 		
 		this.game = (GameDriver)game;
 		this.board = this.game.board;
@@ -36,10 +35,9 @@ public class Menu extends BasicGameState {
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
-		Image dark = new Image("resources/darkTile.jpg");
-		Image light = new Image("resources/lightTile.jpg");
-		Image playButton = new Image("resources/playButton.png");
+		Image dark = new Image("main/resources/darkTile.jpg");
+		Image light = new Image("main/resources/lightTile.jpg");
+		Image playButton = new Image("main/resources/playButton.png");
 		
 		g.setBackground(Color.lightGray);
 		
@@ -58,20 +56,15 @@ public class Menu extends BasicGameState {
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
-		// TODO Auto-generated method stub
 		int posX = Mouse.getX();
 		int posY = Mouse.getY();
 		
-		if(posX > (GameDriver.X_SIZE*0.15f + 42) && posX < ((GameDriver.X_SIZE*0.15f + 42) + 376) && posY < (GameDriver.Y_SIZE*0.5f - 12) && posY > ((GameDriver.Y_SIZE*0.5f - 12) - 95)){
-			if(Mouse.isButtonDown(0)){
-				game.enterState(Setup.ID);
-			}
-		}
+		if(Mouse.isButtonDown(0) && posX > (GameDriver.X_SIZE*0.15f + 42) && posX < ((GameDriver.X_SIZE*0.15f + 42) + 376) && posY < (GameDriver.Y_SIZE*0.5f - 12) && posY > ((GameDriver.Y_SIZE*0.5f - 12) - 95))
+			game.enterState(Setup.ID);
 	}
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
 		return Menu.ID;
 	}
 	

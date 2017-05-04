@@ -13,36 +13,54 @@ public class Bishop extends Piece{
 		this.setName("Bishop");
 	}
 	
-	public ArrayList<Position> validMoves(){
+	public void move(Position p){
+		this.setLocation(p);
+		validMoves();
+	}
+	
+	@Override
+	public List<Position> validMoves(){
 		List<Position> moves = new ArrayList<Position>();
 		int i = 1;
 		
 		//Note: Add check for color of piece in destination
 		
 		//Up and Right
-		while(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() - i)) && ((this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - i] == null) || (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - i].isWhite() != this.isWhite()))){
-			moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() - i));
+		while(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() - i))){
+			if((this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - i] == null) || (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - i].isWhite() != this.isWhite()))
+				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() - i));
+			if((this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - i] != null))
+				break;
 			i++;
 		}
 		i = 1;
 		//Up and Left
 		while(onBoard(new Position(this.getLocation().getX() - i, this.getLocation().getY() - i)) && ((this.game.board[this.getLocation().getX() - i][this.getLocation().getY() - i] == null) || (this.game.board[this.getLocation().getX() - i][this.getLocation().getY() - i].isWhite() != this.isWhite()))){
-			moves.add(new Position(this.getLocation().getX() - i, this.getLocation().getY() - i));
+			if((this.game.board[this.getLocation().getX() - i][this.getLocation().getY() - i] == null) || (this.game.board[this.getLocation().getX() - i][this.getLocation().getY() - i].isWhite() != this.isWhite()))
+				moves.add(new Position(this.getLocation().getX() - i, this.getLocation().getY() - i));
+			if((this.game.board[this.getLocation().getX() - i][this.getLocation().getY() - i] != null))
+				break;
 			i++;
 		}
 		i = 1;
 		//Down and Right
 		while(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() + i)) && ((this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + i] == null) || (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + i].isWhite() != this.isWhite()))){
-			moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() + i));
+			if((this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + i] == null) || (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + i].isWhite() != this.isWhite()))
+				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() + i));
+			if((this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + i] != null))
+				break;
 			i++;
 		}
 		i = 1;
 		//Down and Left
 		while(onBoard(new Position(this.getLocation().getX() - i, this.getLocation().getY() + i)) && ((this.game.board[this.getLocation().getX() - i][this.getLocation().getY() + i] == null) || (this.game.board[this.getLocation().getX() - i][this.getLocation().getY() + i].isWhite() != this.isWhite()))){
-			moves.add(new Position(this.getLocation().getX() - i, this.getLocation().getY() + i));
+			if((this.game.board[this.getLocation().getX() - i][this.getLocation().getY() + i] == null) || (this.game.board[this.getLocation().getX() - i][this.getLocation().getY() + i].isWhite() != this.isWhite()))
+				moves.add(new Position(this.getLocation().getX() - i, this.getLocation().getY() + i));
+			if((this.game.board[this.getLocation().getX() - i][this.getLocation().getY() + i] != null))
+				break;
 			i++;
 		}
 		this.setValid((ArrayList<Position>)moves);
-		return (ArrayList<Position>)moves;
+		return moves;
 	}
 }

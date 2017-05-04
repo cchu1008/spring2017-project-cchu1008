@@ -5,6 +5,8 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 
+import java.util.ArrayList;
+
 import main.piece.*;
 import main.helper.*;
 
@@ -55,7 +57,7 @@ public class GameDriver extends StateBasedGame {
 			System.out.print("| ");
 			for(int j = 0; j < 8; j++){
 				if(!isEmpty(new Position(j, i))){
-					board[j][i].setValid(board[j][i].validMoves());
+					board[j][i].setValid((ArrayList<Position>)board[j][i].validMoves());
 					System.out.print(board[j][i].getName()  + " | ");
 				}
 				else System.out.print(" OOOO  | ");

@@ -1,5 +1,6 @@
 package main.piece;
 import java.util.ArrayList;
+import java.util.List;
 
 import main.helper.*;
 import org.newdawn.slick.Image;
@@ -22,34 +23,35 @@ public abstract class Piece {
 		this.game = (GameDriver)game;
 	}
 	
-	public Piece(){
-		this.location = new Position(0, 0);
-	}
-	
 	public void move(Position p){
-		if(isValid(p)) this.location = p;
+		this.setLocation(p);
+		validMoves();
 	}
-	public ArrayList<Position> validMoves(){
-		return new ArrayList<Position>();
+	public List<Position> validMoves(){
+		this.valid = new ArrayList<Position>();
+		return this.valid;
 	}
 	public boolean isValid(Position point){
-		boolean valid = false;
+		boolean v = false;
 		for(Position p : this.valid){
 			if(p.equals(point)){
-				valid = true;
+				v = true;
 				break;
 			}
 		}
-		return valid;
+		return v;
 	}
-	public void setValid(ArrayList<Position> valid){
-		this.valid = valid;
+	public void setValid(List<Position> valid){
+		this.valid = (ArrayList<Position>)valid;
 	}
 	public ArrayList<Position> getValid(){
 		return this.valid;
 	}
 	public Position getLocation(){
 		return this.location;
+	}
+	public void setLocation(Position p){
+		this.location = p;
 	}
 	public boolean onBoard(Position p){
 		return (p.getX() >= 0 && p.getX() < 8 && p.getY() >= 0 && p.getY() < 8);

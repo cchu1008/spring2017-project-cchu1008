@@ -37,6 +37,10 @@ public class Position extends Object{
 	
 	@Override
 	public boolean equals(Object p){
+		if(p == null) return false;
+		
+		if(this.getClass() != p.getClass()) return false;
+		
 		Position point = (Position)p;
 		return (this.x == point.getX() && this.y == point.getY());
 	}

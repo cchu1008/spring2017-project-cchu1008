@@ -14,27 +14,32 @@ public class Knight extends Piece{
 		this.setName("Knight");
 	}
 	
-	public ArrayList<Position> validMoves(){
+	public void move(Position p){
+		this.setLocation(p);
+		this.setValid(validMoves());
+	}
+	
+	@Override
+	public List<Position> validMoves(){
 		List<Position> moves = new ArrayList<Position>();
-		
-		//Note: Add checks for piece color in destination
-		//Also add checks for this.game.board edge
+		Position p;
 		
 		for(int i = -1; i < 2; i++){
-			if(i == 0) continue;
-			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 2)) && (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + 2] == null || this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + 2].isWhite() != this.isWhite()))
-				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 2));
-			
-			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 2)) && (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - 2] == null || this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - 2].isWhite() != this.isWhite()))
-				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 2));
-			
-			if(onBoard(new Position(this.getLocation().getX() + 2, this.getLocation().getY() + i)) && (this.game.board[this.getLocation().getX() + 2][this.getLocation().getY() + i] == null || this.game.board[this.getLocation().getX() + 2][this.getLocation().getY() + i].isWhite() != this.isWhite()))
-				moves.add(new Position(this.getLocation().getX() + 2, this.getLocation().getY() + i));
-			
-			if(onBoard(new Position(this.getLocation().getX() - 2, this.getLocation().getY() + i)) && (this.game.board[this.getLocation().getX() - 2][this.getLocation().getY() + i] == null || this.game.board[this.getLocation().getX() - 2][this.getLocation().getY() + i].isWhite() != this.isWhite()))
-				moves.add(new Position(this.getLocation().getX() - 2, this.getLocation().getY() + i));
+			if(i == 0) i++;
+			p = new Position(this.getLocation().getX() + i, this.getLocation().getY() + 2);
+			if(onBoard(p) && (this.game.isEmpty(p) || this.game.board[p.getX()][p.getY()].isWhite() != this.isWhite()))
+				moves.add(p);
+			p = new Position(this.getLocation().getX() + i, this.getLocation().getY() - 2);
+			if(onBoard(p) && (this.game.isEmpty(p) || this.game.board[p.getX()][p.getY()].isWhite() != this.isWhite()))
+				moves.add(p);
+			p = new Position(this.getLocation().getX() + 2, this.getLocation().getY() + i);
+			if(onBoard(p) && (this.game.isEmpty(p) || this.game.board[p.getX()][p.getY()].isWhite() != this.isWhite()))
+				moves.add(p);
+			p = new Position(this.getLocation().getX() - 2, this.getLocation().getY() + i);
+			if(onBoard(p) && (this.game.isEmpty(p) || this.game.board[p.getX()][p.getY()].isWhite() != this.isWhite()))
+				moves.add(p);
 		}
 		this.setValid((ArrayList<Position>)moves);
-		return (ArrayList<Position>)moves;
+		return moves;
 	}
 }

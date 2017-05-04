@@ -19,12 +19,11 @@ public class End extends BasicGameState {
 	private Player[] players = new Player[2];
 	
 	public End(){
-		
+		//Not sure why we need this.
 	}
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		// TODO Auto-generated method stub
 		this.game = (GameDriver)game;
 		this.board = this.game.board;
 		this.players = this.game.players;
@@ -33,7 +32,6 @@ public class End extends BasicGameState {
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
 		g.setColor(Color.red);
 		g.drawString("This is the End State", GameDriver.X_SIZE*0.360f, GameDriver.Y_SIZE/8);
 		g.setColor(Color.white);
@@ -51,7 +49,6 @@ public class End extends BasicGameState {
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
 		return End.ID;
 	}
 	

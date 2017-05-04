@@ -24,22 +24,20 @@ public class Setup extends BasicGameState {
 	int faceY = 300;
 	
 	public Setup(){
-		
+		//Not sure why we need this.
 	}
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		// TODO Auto-generated method stub
 		this.game = (GameDriver)game;
 		this.board = this.game.board;
 		this.players = this.game.players;
 		
-		face = new Image("resources/blackRook.png");
+		face = new Image("main/resources/blackRook.png");
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
 		g.setColor(Color.red);
 		g.drawString("This is the Setup State", GameDriver.X_SIZE*0.360f, GameDriver.Y_SIZE/8);
 		g.setColor(Color.white);
@@ -52,7 +50,6 @@ public class Setup extends BasicGameState {
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
-		// TODO Auto-generated method stub
 		Input input = container.getInput();
 		if(input.isKeyDown(Input.KEY_UP)){
 			faceY -= 2;
@@ -64,7 +61,6 @@ public class Setup extends BasicGameState {
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
 		return Setup.ID;
 	}
 	
