@@ -35,9 +35,9 @@ public class GameDriver extends StateBasedGame {
 	public static void move(Position start, Position end){
 		Piece p = GameDriver.board[start.getX()][start.getY()];
 		GameDriver.board[start.getX()][start.getY()] = null;
-		GameDriver.board[end.getX()][end.getY()] = p;
 		p.move(end);
-		GameDriver.turn = (GameDriver.turn + 1)%2;
+		GameDriver.board[end.getX()][end.getY()] = p;
+		GameDriver.turn = 1 - GameDriver.turn;
 		updateValid();
 		printBoard();
 	}

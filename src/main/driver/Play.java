@@ -58,7 +58,7 @@ public class Play extends BasicGameState {
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int in) throws SlickException {
-		GameDriver.updateValid();
+		//GameDriver.updateValid();
 	}
 
 	@Override
