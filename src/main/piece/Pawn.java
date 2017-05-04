@@ -1,6 +1,7 @@
 package main.piece;
 import java.util.List;
 
+import main.driver.GameDriver;
 import main.helper.Position;
 
 import java.util.ArrayList;
@@ -16,18 +17,13 @@ public class Pawn extends Piece{
 		this.setName(" Pawn ");
 	}
 	
-	public void move(Position p){
-		this.setLocation(p);
-		this.setValid(validMoves());
-	}
-	
 	@Override
 	public List<Position> validMoves(){
 		List<Position> moves = new ArrayList<Position>();
 		
 		if(this.isWhite()){
 			//First Move
-			if(this.start.equals(this.getLocation()) && (this.game.board[this.start.getX()][this.start.getY() + 1] == null) && (this.game.board[this.start.getX()][this.start.getY() + 2] == null))
+			if(this.start.equals(this.getLocation()) && (GameDriver.board[this.start.getX()][this.start.getY() + 1] == null) && (GameDriver.board[this.start.getX()][this.start.getY() + 2] == null))
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 2));
 			
 			//Straight ahead
@@ -35,15 +31,15 @@ public class Pawn extends Piece{
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 1));
 			
 			//Diagonal to the Right
-			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (this.game.board[this.getLocation().getX() + 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
+			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1)) && (GameDriver.board[this.getLocation().getX() + 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
 				moves.add(new Position(this.getLocation().getX() + 1, this.getLocation().getY() + 1));
 			
 			//Diagonal to the Left
-			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (this.game.board[this.getLocation().getX() - 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
+			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1)) && (GameDriver.board[this.getLocation().getX() - 1][this.getLocation().getY() + 1].isWhite() != this.isWhite())))
 				moves.add(new Position(this.getLocation().getX() - 1, this.getLocation().getY() + 1));
 		}
 		else{
-			if(this.start.equals(this.getLocation()) && (this.game.board[this.start.getX()][this.start.getY() - 1] == null) && (this.game.board[this.start.getX()][this.start.getY() - 2] == null))
+			if(this.start.equals(this.getLocation()) && (GameDriver.board[this.start.getX()][this.start.getY() - 1] == null) && (GameDriver.board[this.start.getX()][this.start.getY() - 2] == null))
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() - 2));
 			
 			//Straight ahead
@@ -51,15 +47,15 @@ public class Pawn extends Piece{
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() - 1));
 			
 			//Diagonal to the Right
-			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (this.game.board[this.getLocation().getX() + 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
+			if(onBoard(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1)) && (GameDriver.board[this.getLocation().getX() + 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
 				moves.add(new Position(this.getLocation().getX() + 1, this.getLocation().getY() - 1));
 			
 			//Diagonal to the Left
-			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (this.game.board[this.getLocation().getX() - 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
+			if(onBoard(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (!this.game.isEmpty(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1)) && (GameDriver.board[this.getLocation().getX() - 1][this.getLocation().getY() - 1].isWhite() != this.isWhite())))
 				moves.add(new Position(this.getLocation().getX() - 1, this.getLocation().getY() - 1));
 		}
 		
-		this.setValid((ArrayList<Position>)moves);
+		this.setValid(moves);
 		return moves;
 	}
 }

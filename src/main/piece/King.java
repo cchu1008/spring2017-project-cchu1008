@@ -1,6 +1,7 @@
 package main.piece;
 import java.util.List;
 
+import main.driver.GameDriver;
 import main.helper.Position;
 
 import java.util.ArrayList;
@@ -16,33 +17,28 @@ public class King extends Piece{
 		this.setName(" King ");
 	}
 	
-	public void move(Position p){
-		this.setLocation(p);
-		this.setValid(validMoves());
-	}
-	
 	@Override
 	public List<Position> validMoves(){
 		List<Position> moves = new ArrayList<Position>();
 		//Note: Add check for color of piece in destination
-		//Also add check for this.game.board edge
+		//Also add check for GameDriver.board edge
 		
 		for(int i = -1; i < 2; i++){
 			//top row
-			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1)) && (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + 1] == null || this.game.board[this.getLocation().getX() + i][this.getLocation().getY() + 1].isWhite() != this.isWhite())){
+			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1)) && (GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() + 1] == null || GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() + 1].isWhite() != this.isWhite())){
 				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1));
 			}
 			//middle minus current
-			if(i != 0 && onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY())) && (this.game.board[this.getLocation().getX() + i][this.getLocation().getY()] == null || this.game.board[this.getLocation().getX() + i][this.getLocation().getY()].isWhite() != this.isWhite())){
+			if(i != 0 && onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY())) && (GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY()] == null || GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY()].isWhite() != this.isWhite())){
 				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY()));
 			}
 			//lower
-			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 1)) && (this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - 1] == null || this.game.board[this.getLocation().getX() + i][this.getLocation().getY() - 1].isWhite() != this.isWhite())){
+			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 1)) && (GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() - 1] == null || GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() - 1].isWhite() != this.isWhite())){
 				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 1));
 			}
 		}
 		
-		this.setValid((ArrayList<Position>)moves);
+		this.setValid(moves);
 		
 		return moves;
 	}

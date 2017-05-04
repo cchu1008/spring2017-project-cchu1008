@@ -10,14 +10,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import main.piece.*;
 
 public class Menu extends BasicGameState {
 	
 	public static final int ID = 0;
 	
 	private GameDriver game;
-	private Piece[][] board;
 	private Player[] players = new Player[2];
 	
 	
@@ -29,7 +27,6 @@ public class Menu extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		
 		this.game = (GameDriver)game;
-		this.board = this.game.board;
 		this.players = this.game.players;
 	}
 

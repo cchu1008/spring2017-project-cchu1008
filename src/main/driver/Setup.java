@@ -9,14 +9,12 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.Image;
 
-import main.piece.*;
 
 public class Setup extends BasicGameState {
 	
 	public static final int ID = 1;
 	
 	private GameDriver game;
-	private Piece[][] board;
 	private Player[] players = new Player[2];
 	
 	Image face;
@@ -30,10 +28,14 @@ public class Setup extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = (GameDriver)game;
-		this.board = this.game.board;
 		this.players = this.game.players;
 		
 		face = new Image("main/resources/blackRook.png");
+		
+		this.players[0] = new HumanPlayer("Player Seven", true, this.game);
+		this.players[1] = new HumanPlayer("Player Eight", false, this.game);
+		
+		this.game.update(this.players[0], this.players[1]);
 	}
 
 	@Override

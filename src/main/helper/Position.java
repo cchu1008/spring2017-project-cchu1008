@@ -37,11 +37,21 @@ public class Position extends Object{
 	
 	@Override
 	public boolean equals(Object p){
-		if(p == null) return false;
+		if(p == null)
+			return false;
 		
-		if(this.getClass() != p.getClass()) return false;
+		if(this.getClass() != p.getClass())
+			return false;
 		
 		Position point = (Position)p;
 		return (this.x == point.getX() && this.y == point.getY());
+	}
+	
+	@Override
+	public int hashCode(){
+		int hash = 1;
+		hash = hash * 17 + this.x;
+		hash = hash * 31 + this.y;
+		return hash;
 	}
 }

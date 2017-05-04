@@ -25,12 +25,16 @@ public abstract class Piece {
 	
 	public void move(Position p){
 		this.setLocation(p);
-		validMoves();
+		//validMoves();
 	}
+	
+	public abstract List<Position> validMoves();
+/**
 	public List<Position> validMoves(){
 		this.valid = new ArrayList<Position>();
 		return this.valid;
 	}
+	**/
 	public boolean isValid(Position point){
 		boolean v = false;
 		for(Position p : this.valid){
@@ -63,6 +67,7 @@ public abstract class Piece {
 		return this.myImage;
 	}
 	public void printValid(){
+		validMoves();
 		for(Position p: this.valid){
 			System.out.println("Valid: (" + p.getX() + ", " + p.getY() + ")");
 		}
