@@ -5,9 +5,10 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
+import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.Image;
 
 
 public class Setup extends BasicGameState {
@@ -15,10 +16,7 @@ public class Setup extends BasicGameState {
 	public static final int ID = 1;
 	
 	private GameDriver game;
-	
-	Image face;
-	int faceX = 300;
-	int faceY = 300;
+	private TextField playerName;
 	
 	public Setup(){
 		//Not sure why we need this.
@@ -28,10 +26,9 @@ public class Setup extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = (GameDriver)game;
 		
-		face = new Image("main/resources/blackRook.png");
-		
 		GameDriver.players[0] = new HumanPlayer("Player White", true, this.game);
 		GameDriver.players[1] = new HumanPlayer("Player Black", false, this.game);
+		this.playerName = new TextField(container, new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true), GameDriver.X_SIZE/4, GameDriver.Y_SIZE/3, 300, 50);
 		
 	}
 
@@ -42,19 +39,16 @@ public class Setup extends BasicGameState {
 		g.setColor(Color.white);
 		g.drawString("State Based Game Test", GameDriver.X_SIZE*0.365f, GameDriver.Y_SIZE/6);
 		g.drawString("Numbers 0-3 will switch between states.", GameDriver.X_SIZE*0.255f, GameDriver.Y_SIZE/4);
-
 		
-		face.draw(faceX, faceY, 0.3f);
+		this.playerName.render(container, g);
 	}
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
+		// TODO Use "getText()" to get the value in the textField.
 		Input input = container.getInput();
 		if(input.isKeyDown(Input.KEY_UP)){
-			faceY -= 2;
-		}
-		if(input.isKeyDown(Input.KEY_DOWN)){
-			faceY += 2;
+			
 		}
 	}
 

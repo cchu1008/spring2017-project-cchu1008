@@ -19,7 +19,6 @@ public class Play extends BasicGameState {
 	private Player[] players = new Player[2];
 	
 	private Button[][] tiles = new Button[8][8];
-	//private ButtonListener bListen[][] = new ButtonListener[8][8];
 	
 	public Play(){
 		//Not sure why we need this
@@ -111,14 +110,6 @@ public class Play extends BasicGameState {
 				this.tiles[i + 1][j + 1].setMouseOverImage(new Image("main/resources/darkTileHighlighted.jpg"));
 			}
 		}
-		
-		/**
-		for(int i = 0; i < 8; i++){
-			for(int j = 0; j < 8; j++){
-				//this.bListen[i][j] = new ButtonListener();
-				//this.tiles[i][j].addListener(this.bListen[i][j]);
-			}
-		}**/
 	}
 	
 	public void drawTiles(GameContainer container, Graphics g) throws SlickException{

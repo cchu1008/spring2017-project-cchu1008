@@ -2,7 +2,6 @@ package main.driver;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.MouseOverArea;
 
 import main.helper.*;
