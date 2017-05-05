@@ -14,6 +14,7 @@ public class End extends BasicGameState {
 	public static final int ID = 3;
 	
 	private GameDriver game;
+	private Player winner;
 	
 	public End(){
 		//Not sure why we need this.
@@ -22,16 +23,18 @@ public class End extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = (GameDriver)game;
-
+		this.winner = GameDriver.players[GameDriver.turn];
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		g.setColor(Color.red);
 		g.drawString("This is the End State", GameDriver.X_SIZE*0.360f, GameDriver.Y_SIZE/8);
+		g.drawString("This is the winner: " + this.winner.getName(), GameDriver.X_SIZE*0.3f, GameDriver.Y_SIZE/3);
 		g.setColor(Color.white);
 		g.drawString("State Based Game Test", GameDriver.X_SIZE*0.365f, GameDriver.Y_SIZE/6);
 		g.drawString("Numbers 0-3 will switch between states.", GameDriver.X_SIZE*0.255f, GameDriver.Y_SIZE/4);
+		
 
 
 	}
@@ -39,7 +42,7 @@ public class End extends BasicGameState {
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

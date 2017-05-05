@@ -30,8 +30,8 @@ public class Setup extends BasicGameState {
 		
 		face = new Image("main/resources/blackRook.png");
 		
-		GameDriver.players[0] = new HumanPlayer("Player Seven", true, this.game);
-		GameDriver.players[1] = new HumanPlayer("Player Eight", false, this.game);
+		GameDriver.players[0] = new HumanPlayer("Player White", true, this.game);
+		GameDriver.players[1] = new HumanPlayer("Player Black", false, this.game);
 		
 	}
 

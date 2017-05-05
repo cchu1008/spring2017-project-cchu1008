@@ -32,10 +32,15 @@ public class GameDriver extends StateBasedGame {
 		this.addState(new Setup());
 	}
 	
-	public static void move(Position start, Position end){
+	public void move(Position start, Position end) throws SlickException{
 		Piece p = GameDriver.board[start.getX()][start.getY()];
 		GameDriver.board[start.getX()][start.getY()] = null;
 		p.move(end);
+		if(!GameDriver.isEmpty(end) && GameDriver.board[end.getX()][end.getY()].getName().equals(" King ")){
+			GameDriver.board[end.getX()][end.getY()] = p;
+			this.getState(END).init(getContainer(), this);
+			this.enterState(END);
+		}
 		GameDriver.board[end.getX()][end.getY()] = p;
 		GameDriver.turn = 1 - GameDriver.turn;
 		updateValid();

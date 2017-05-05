@@ -1,5 +1,6 @@
 package main.driver;
 
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import main.helper.*;
@@ -45,7 +46,12 @@ public abstract class Player {
 		else if(!this.begin.equals(new Position(-1, -1)) && this.end.equals(new Position(-1, -1))){
 			if(this.piece.isValid(p)){
 				this.end.setPos(p);
-				GameDriver.move(this.begin, this.end);
+				try{
+				this.game.move(this.begin, this.end);
+				}
+				catch(SlickException e){
+					System.err.println(e);
+				}
 				System.out.println(normal);
 				resetPosition();
 			}
