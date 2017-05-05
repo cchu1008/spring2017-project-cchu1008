@@ -20,7 +20,7 @@ public class Button extends MouseOverArea{
 	
 	@Override
 	public void mouseReleased(int button, int mx, int my){
-		if(mx >= this.getX() && mx < (this.getX() + this.getWidth()) && my >= this.getY() && my < (this.getY() + this.getHeight())){
+		if(isMouseOver()){
 			super.mouseReleased(button, mx, my);
 			players[GameDriver.turn].pickTile(new Position(this.row, this.col));
 			System.out.println("Button clicked at (" + this.row + ", " + this.col + ")");

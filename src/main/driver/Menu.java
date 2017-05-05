@@ -16,7 +16,6 @@ public class Menu extends BasicGameState {
 	public static final int ID = 0;
 	
 	private GameDriver game;
-	private Player[] players = new Player[2];
 	
 	
 	public Menu(){
@@ -27,7 +26,6 @@ public class Menu extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		
 		this.game = (GameDriver)game;
-		this.players = this.game.players;
 	}
 
 	@Override

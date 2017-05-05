@@ -29,7 +29,7 @@ public class Play extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		
 		this.game = (GameDriver)game;
-		this.players = this.game.players;
+		this.players = GameDriver.players;
 		
 		generateTiles(container);
 
@@ -48,9 +48,9 @@ public class Play extends BasicGameState {
 		g.drawString("Numbers 0-3 will switch between states.", GameDriver.X_SIZE*0.255f, GameDriver.Y_SIZE/4);
 
 		g.drawString("Player 1: ", GameDriver.X_SIZE/3, GameDriver.Y_SIZE/3);
-		g.drawString(this.game.players[0].getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/3);
+		g.drawString(GameDriver.players[0].getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/3);
 		g.drawString("Player 2: ", GameDriver.X_SIZE/3, GameDriver.Y_SIZE/2);
-		g.drawString(this.game.players[1].getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/2);
+		g.drawString(GameDriver.players[1].getName(), GameDriver.X_SIZE/3 + 100, GameDriver.Y_SIZE/2);
 		
 		drawBoard(container, g);
 		drawPieces(container, g);
@@ -102,9 +102,13 @@ public class Play extends BasicGameState {
 		for(int j = 0; j < 8; j += 2){
 			for(int i = 0; i < 8; i += 2){
 				this.tiles[i][j] = new Button(i, j, players, container, new Image("main/resources/darkTile.jpg"), 65 + (143 * (i/2)), 30 + (143 * (j/2)), 72, 72);
+				this.tiles[i][j].setMouseOverImage(new Image("main/resources/darkTileHighlighted.jpg"));
 				this.tiles[i + 1][j] = new Button(i + 1, j, players, container, new Image("main/resources/lightTile.jpg"), 137 + (143 * (i/2)), 30 + (143 * (j/2)), 72, 72);
+				this.tiles[i + 1][j].setMouseOverImage(new Image("main/resources/lightTileHighlighted.jpg"));
 				this.tiles[i][j + 1] = new Button(i, j + 1, players, container, new Image("main/resources/lightTile.jpg"), 65 + (143 * (i/2)), 102 + (143 * (j/2)), 72, 72);
+				this.tiles[i][j + 1].setMouseOverImage(new Image("main/resources/lightTileHighlighted.jpg"));
 				this.tiles[i + 1][j + 1] = new Button(i + 1, j + 1, players, container, new Image("main/resources/darkTile.jpg"), 137 + (143 * (i/2)), 102 + (143 * (j/2)), 72, 72);
+				this.tiles[i + 1][j + 1].setMouseOverImage(new Image("main/resources/darkTileHighlighted.jpg"));
 			}
 		}
 		

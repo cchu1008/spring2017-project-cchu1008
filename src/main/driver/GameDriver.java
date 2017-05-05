@@ -20,7 +20,7 @@ public class GameDriver extends StateBasedGame {
 	public static final int Y_SIZE = 650;
 	
 	public static Piece[][] board = new Piece[8][8];
-	public Player[] players = new Player[2];
+	public static Player[] players = new Player[2];
 	
 	public static int turn = 0;
 	
@@ -40,11 +40,6 @@ public class GameDriver extends StateBasedGame {
 		GameDriver.turn = 1 - GameDriver.turn;
 		updateValid();
 		printBoard();
-	}
-	
-	public void update(Player x, Player y){
-		this.players[0] = x;
-		this.players[1] = y;
 	}
 	
 	public static boolean isEmpty(Position p){

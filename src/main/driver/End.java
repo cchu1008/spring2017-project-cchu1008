@@ -14,7 +14,6 @@ public class End extends BasicGameState {
 	public static final int ID = 3;
 	
 	private GameDriver game;
-	private Player[] players = new Player[2];
 	
 	public End(){
 		//Not sure why we need this.
@@ -23,7 +22,6 @@ public class End extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = (GameDriver)game;
-		this.players = this.game.players;
 
 	}
 

@@ -15,7 +15,6 @@ public class Setup extends BasicGameState {
 	public static final int ID = 1;
 	
 	private GameDriver game;
-	private Player[] players = new Player[2];
 	
 	Image face;
 	int faceX = 300;
@@ -28,14 +27,12 @@ public class Setup extends BasicGameState {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		this.game = (GameDriver)game;
-		this.players = this.game.players;
 		
 		face = new Image("main/resources/blackRook.png");
 		
-		this.players[0] = new HumanPlayer("Player Seven", true, this.game);
-		this.players[1] = new HumanPlayer("Player Eight", false, this.game);
+		GameDriver.players[0] = new HumanPlayer("Player Seven", true, this.game);
+		GameDriver.players[1] = new HumanPlayer("Player Eight", false, this.game);
 		
-		this.game.update(this.players[0], this.players[1]);
 	}
 
 	@Override
