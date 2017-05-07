@@ -15,7 +15,7 @@ public class GameDriver extends StateBasedGame {
   public static final int SETUP = 1;
   public static final int PLAY = 2;
   public static final int END = 3;
-  public static final int FPS = 160;
+  public static final int FPS = 300;
   public static final int X_SIZE = 700;
   public static final int Y_SIZE = 650;
   
@@ -46,11 +46,13 @@ public class GameDriver extends StateBasedGame {
     Piece p = GameDriver.board[start.getX()][start.getY()];
     GameDriver.board[start.getX()][start.getY()] = null;
     p.move(end);
-    String name = GameDriver.board[end.getX()][end.getY()].getName();
-    if (!GameDriver.isEmpty(end) && name.equals(" King ")) {
-      GameDriver.board[end.getX()][end.getY()] = p;
-      this.getState(END).init(getContainer(), this);
-      this.enterState(END);
+    if (!GameDriver.isEmpty(end)){
+      String name = GameDriver.board[end.getX()][end.getY()].getName();
+      if(name.equals(" King ")) {
+        GameDriver.board[end.getX()][end.getY()] = p;
+        this.getState(END).init(getContainer(), this);
+        this.enterState(END);
+      }
     }
     GameDriver.board[end.getX()][end.getY()] = p;
     GameDriver.turn = 1 - GameDriver.turn;
