@@ -9,6 +9,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public abstract class NextStateButton extends MouseOverArea {
     public int id;
     public StateBasedGame game;
+    public boolean on = true;
+    
     /** Button Function.
      * 
      * @param row : row
@@ -25,12 +27,15 @@ public abstract class NextStateButton extends MouseOverArea {
       super(container, image, x, y, width, height);
       this.id = id;
       this.game = game;
+      this.setAcceptingInput(this.on);
     }
     
     @Override
     public void mouseReleased(int button, int mx, int my) {
       if (isMouseOver()) {
         super.mouseReleased(button, mx, my);
+        this.on = false;
+        this.setAcceptingInput(this.on);
       }
     }
 

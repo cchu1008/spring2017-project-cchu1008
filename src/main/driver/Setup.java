@@ -19,7 +19,7 @@ public class Setup extends BasicGameState {
   private GameDriver game;
   private static TextField nameOne;
   private static TextField nameTwo;
-  private NextStateButton cont;
+  private NextStateButton next;
   
   public Setup(){
     //Not sure why we need this.
@@ -86,7 +86,7 @@ public class Setup extends BasicGameState {
   }
   
   public void humanVComp(GameContainer container, Graphics g) throws SlickException {
-    this.cont = new ComputerButton(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, Play.ID, game);
+    this.next = new ComputerButton(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, Play.ID, game);
     g.setColor(Color.red);
     g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8);
     g.setColor(Color.white);
@@ -98,11 +98,11 @@ public class Setup extends BasicGameState {
     g.drawString("Player Two: CPU", GameDriver.X_SIZE / 10, GameDriver.Y_SIZE / 2);
     
     Setup.nameOne.render(container, g);
-    this.cont.render(container, g);
+    this.next.render(container, g);
   }
   
   public void humanVHuman(GameContainer container, Graphics g) throws SlickException {
-    this.cont = new HumanButton(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, Play.ID, game);
+    this.next = new HumanButton(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, Play.ID, game);
     g.setColor(Color.red);
     g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8);
     g.setColor(Color.white);
@@ -115,7 +115,7 @@ public class Setup extends BasicGameState {
     
     Setup.nameOne.render(container, g);
     Setup.nameTwo.render(container, g);
-    this.cont.render(container, g);
+    this.next.render(container, g);
   }
   
   public static void makeHumanVCompPlayers(StateBasedGame game){

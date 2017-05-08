@@ -1,9 +1,13 @@
 package main.driver;
 
 import main.helper.Position;
+import main.piece.Pawn;
 import main.piece.Piece;
+import main.piece.Queen;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -54,10 +58,26 @@ public class GameDriver extends StateBasedGame {
         this.enterState(END);
       }
     }
-    GameDriver.board[end.getX()][end.getY()] = p;
-    GameDriver.turn = 1 - GameDriver.turn;
-    updateValid();
-    printBoard();
+    if (p.getName().equals(" Pawn ")){
+      if(((Pawn)p).start.getY() == 1 && (end.getY() == 7)){
+        GameDriver.board[end.getX()][end.getY()] = new Queen(end, true, new Image("main/resources/whiteQueen.png"), this);
+      }
+      else if(((Pawn)p).start.getY() == 6 && (end.getY() == 0)){
+        GameDriver.board[end.getX()][end.getY()] = new Queen(end, false, new Image("main/resources/blackQueen.png"), this);
+      }
+      else{
+        GameDriver.board[end.getX()][end.getY()] = p;
+      }
+      GameDriver.turn = 1 - GameDriver.turn;
+      updateValid();
+      printBoard();
+    }
+    else{
+      GameDriver.board[end.getX()][end.getY()] = p;
+      GameDriver.turn = 1 - GameDriver.turn;
+      updateValid();
+      printBoard();
+    }
   }
   
   public static boolean isEmpty(Position p) {

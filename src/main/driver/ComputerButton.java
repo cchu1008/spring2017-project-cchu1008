@@ -27,6 +27,7 @@ public class ComputerButton extends NextStateButton {
       if (isMouseOver()) {
         super.mouseReleased(button, mx, my);
         Setup.makeHumanVCompPlayers(this.game);
+        this.setAcceptingInput(false);
         this.game.enterState(this.id);
       }
     }

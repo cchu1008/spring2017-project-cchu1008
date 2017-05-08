@@ -2,7 +2,6 @@ package main.driver;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.StateBasedGame;
 
 
@@ -28,6 +27,7 @@ public class HumanButton extends NextStateButton {
       if (isMouseOver()) {
         super.mouseReleased(button, mx, my);
         Setup.makeHumanVHumanPlayers(this.game);
+        this.setAcceptingInput(false);
         this.game.enterState(this.id);
       }
     }

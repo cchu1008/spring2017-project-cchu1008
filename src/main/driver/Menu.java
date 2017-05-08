@@ -1,6 +1,5 @@
 package main.driver;
 
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -58,15 +57,7 @@ public class Menu extends BasicGameState {
 
   @Override
   public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
-    int posX = Mouse.getX();
-    int posY = Mouse.getY();
-    
-    if (Mouse.isButtonDown(0) && posX > (GameDriver.X_SIZE * 0.15f + 42) 
-        && posX < ((GameDriver.X_SIZE * 0.15f + 42) + 376) 
-        && posY < (GameDriver.Y_SIZE * 0.5f - 12) 
-        && posY > ((GameDriver.Y_SIZE * 0.5f - 12) - 95)) {
-      game.enterState(Setup.ID);
-    }
+
   }
 
   @Override

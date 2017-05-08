@@ -14,6 +14,7 @@ public class PlayButton extends NextStateButton {
     if (isMouseOver()) {
       super.mouseReleased(button, mx, my);
       this.game.enterState(Setup.ID);
+      this.setAcceptingInput(false);
     }
   }
 }
