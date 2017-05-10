@@ -3,6 +3,14 @@
   <groupId>spring2017-project-cchu1008</groupId>
   <artifactId>spring2017-project-cchu1008</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <name>cchu1008.Chess</name>
+  <properties>
+    <sonar.language>java</sonar.language>
+    <sonar.projectKey>cchu1008.Chess</sonar.projectKey>
+  </properties>
+  <organization>
+    <name>305</name>
+  </organization>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
