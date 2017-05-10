@@ -33,8 +33,8 @@ public class Setup extends BasicGameState {
     this.game = (GameDriver)game;
     this.next = new Button(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new PlayNextStateListener(Play.ID, this.game));
     
-    GameDriver.players[0] = new HumanPlayer("Player One", true, game);
-    GameDriver.players[1] = new HumanPlayer("Player Two", false, game);
+    GameDriver.players[0] = new HumanPlayer("Player One", true, game, container);
+    GameDriver.players[1] = new HumanPlayer("Player Two", false, game, container);
     
     Setup.nameOne = new TextField(container, 
         new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true), 
@@ -120,9 +120,9 @@ public class Setup extends BasicGameState {
     this.next.render(container, g);
   }
   
-  public static void makeHumanVCompPlayers(StateBasedGame game){
+  public static void makeHumanVCompPlayers(StateBasedGame game, GameContainer container){
     GameDriver.players[0].setName(Setup.nameOne.getText());
-    GameDriver.players[1] = new ComputerPlayer(game);
+    GameDriver.players[1] = new ComputerPlayer(game, container);
   }
   
   public static void makeHumanVHumanPlayers(StateBasedGame game){

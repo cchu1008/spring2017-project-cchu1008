@@ -44,9 +44,11 @@ public class GameDriver extends StateBasedGame {
    * 
    * @param start : Start position
    * @param end : End position
+   * @param game TODO
+   * @param container TODO
    * @throws SlickException : Throws slick exception
    */
-  public void move(Position start, Position end) throws SlickException {
+  public static void move(Position start, Position end, StateBasedGame game, GameContainer container) throws SlickException {
     Piece p = board[start.getX()][start.getY()];
     board[start.getX()][start.getY()] = null;
     p.move(end);
@@ -54,16 +56,15 @@ public class GameDriver extends StateBasedGame {
       String name = board[end.getX()][end.getY()].getName();
       if(name.equals(" King ")) {
         board[end.getX()][end.getY()] = p;
-        this.getState(END).init(getContainer(), this);
-        this.enterState(END);
+        ((GameDriver)game).createState(container, End.ID);
       }
     }
     if (p.getName().equals(" Pawn ")){
       if(((Pawn)p).start.getY() == 1 && (end.getY() == 7)){
-        board[end.getX()][end.getY()] = new Queen(end, true, new Image("main/resources/whiteQueen.png"), this);
+        board[end.getX()][end.getY()] = new Queen(end, true, new Image("main/resources/whiteQueen.png"), game);
       }
       else if(((Pawn)p).start.getY() == 6 && (end.getY() == 0)){
-        board[end.getX()][end.getY()] = new Queen(end, false, new Image("main/resources/blackQueen.png"), this);
+        board[end.getX()][end.getY()] = new Queen(end, false, new Image("main/resources/blackQueen.png"), game);
       }
       else{
         board[end.getX()][end.getY()] = p;
@@ -136,13 +137,13 @@ public class GameDriver extends StateBasedGame {
     this.enterState(MENU);
   }
   
-  public void goToPlay(GameContainer container){
+  public void createState(GameContainer container, int id){
     try {
-      this.getState(Play.ID).init(container, this);
+      this.getState(id).init(container, this);
     } catch (SlickException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
+    this.enterState(id);
   }
 
 }

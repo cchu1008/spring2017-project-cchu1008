@@ -2,6 +2,8 @@ package main.driver;
 
 import main.helper.Position;
 import main.piece.Piece;
+
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -13,17 +15,20 @@ public abstract class Player {
   private Position begin = new Position(-1, -1);
   private Position end = new Position(-1, -1);
   private Piece piece;
+  private GameContainer container;
   
   /** Player constructor.
    * 
    * @param name : name
    * @param white : boolean whether white or not
    * @param game : game
+   * @param container TODO
    */
-  public Player(String name, boolean white, StateBasedGame game) {
+  public Player(String name, boolean white, StateBasedGame game, GameContainer container) {
     this.name = name;
     this.white = white;
     this.game = (GameDriver) game;
+    this.container = container;
   }
   
   public void setWhite(boolean white) {
@@ -63,7 +68,7 @@ public abstract class Player {
       if (this.piece.isValid(p)) {
         this.end.setPos(p);
         try {
-          this.game.move(this.begin, this.end);
+          GameDriver.move(this.begin, this.end, this.game, this.container);
         } catch (SlickException e) {
           System.err.println(e);
         }
