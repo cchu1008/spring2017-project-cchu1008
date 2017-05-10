@@ -3,7 +3,7 @@ package main.helper;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class NextStateButtonListener extends ButtonListener {
+public abstract class NextStateButtonListener extends ButtonListener {
   public boolean on = true;
   public int id;
   public StateBasedGame game;

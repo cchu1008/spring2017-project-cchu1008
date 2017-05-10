@@ -12,7 +12,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import main.helper.Button;
-import main.helper.NextStateButtonListener;
+import main.helper.PlayNextStateListener;
 
 
 public class Setup extends BasicGameState {
@@ -31,6 +31,7 @@ public class Setup extends BasicGameState {
   @Override
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     this.game = (GameDriver)game;
+    this.next = new Button(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new PlayNextStateListener(Play.ID, this.game));
     
     GameDriver.players[0] = new HumanPlayer("Player One", true, game);
     GameDriver.players[1] = new HumanPlayer("Player Two", false, game);
@@ -81,7 +82,6 @@ public class Setup extends BasicGameState {
   }
   
   public void chooseRender(GameContainer container, Graphics g, boolean computer) throws SlickException {
-    this.next = new Button(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new NextStateButtonListener(Play.ID, this.game));
     if(computer){
       humanVComp(container, g);
     }

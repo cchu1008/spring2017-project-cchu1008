@@ -4,7 +4,6 @@ import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.state.StateBasedGame;
 
 import main.driver.Menu;
-import main.driver.Setup;
 
 public class ComputerNextStateListener extends NextStateButtonListener {
 
@@ -15,7 +14,6 @@ public class ComputerNextStateListener extends NextStateButtonListener {
   @Override
   public void componentActivated(AbstractComponent source) {
     super.componentActivated(source);
-    Setup.makeHumanVCompPlayers(this.game);
     Menu.type = true;
   }
 

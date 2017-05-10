@@ -6,9 +6,11 @@ import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
 
 public class Button extends MouseOverArea {
+  public GameContainer container;
   
   public Button(GameContainer container, Image image, int x, int y, int width, int height, ComponentListener listener){
     super(container, image, x, y, width, height, listener);
+    this.container = container;
   }
   
   @Override

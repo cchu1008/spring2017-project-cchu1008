@@ -135,5 +135,14 @@ public class GameDriver extends StateBasedGame {
     this.getState(MENU).init(container, this);
     this.enterState(MENU);
   }
+  
+  public void goToPlay(GameContainer container){
+    try {
+      this.getState(Play.ID).init(container, this);
+    } catch (SlickException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }
 
 }
