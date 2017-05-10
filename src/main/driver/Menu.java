@@ -9,6 +9,10 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import main.helper.Button;
+import main.helper.ComputerNextStateListener;
+import main.helper.HumanNextStateListener;
+
 
 public class Menu extends BasicGameState {
   
@@ -16,7 +20,6 @@ public class Menu extends BasicGameState {
   public static boolean type = true;
   
   private GameDriver game;
-  private NextStateButton playButton;
   private Button chooseComputer;
   private Button chooseHuman;
   
@@ -29,9 +32,8 @@ public class Menu extends BasicGameState {
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     
     this.game = (GameDriver)game;
-    playButton = new PlayButton(container, new Image("main/resources/playButton.png"), (int)(GameDriver.X_SIZE * 0.25), (int)(GameDriver.Y_SIZE * 0.6), 200, 52, game);
-    chooseComputer = new Button(container, new Image("main/resources/hVCChoiceButton.png"), (int)(GameDriver.X_SIZE * 0.25), (int)(GameDriver.Y_SIZE * 0.4), 200, 109);
-    chooseHuman = new Button(container, new Image("main/resources/hVHChoiceButton.png"), (int)(GameDriver.X_SIZE * 0.55), (int)(GameDriver.Y_SIZE * 0.4), 200, 109);
+    chooseComputer = new Button(container, new Image("main/resources/hVCChoiceButton.png"), (int)(GameDriver.X_SIZE * 0.25), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new ComputerNextStateListener(Setup.ID, this.game));
+    chooseHuman = new Button(container, new Image("main/resources/hVHChoiceButton.png"), (int)(GameDriver.X_SIZE * 0.55), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new HumanNextStateListener(Setup.ID, this.game));
     chooseComputer.setDownImage(new Image("main/resources/hVCChoiceButtonSel.png"));
     chooseHuman.setDownImage(new Image("main/resources/hvHChoiceButtonSel.png"));
   }
@@ -51,7 +53,6 @@ public class Menu extends BasicGameState {
     
     chooseComputer.render(container, g);
     chooseHuman.render(container, g);
-    playButton.render(container, g);
 
   }
 

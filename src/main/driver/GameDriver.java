@@ -47,34 +47,34 @@ public class GameDriver extends StateBasedGame {
    * @throws SlickException : Throws slick exception
    */
   public void move(Position start, Position end) throws SlickException {
-    Piece p = GameDriver.board[start.getX()][start.getY()];
-    GameDriver.board[start.getX()][start.getY()] = null;
+    Piece p = board[start.getX()][start.getY()];
+    board[start.getX()][start.getY()] = null;
     p.move(end);
     if (!GameDriver.isEmpty(end)){
-      String name = GameDriver.board[end.getX()][end.getY()].getName();
+      String name = board[end.getX()][end.getY()].getName();
       if(name.equals(" King ")) {
-        GameDriver.board[end.getX()][end.getY()] = p;
+        board[end.getX()][end.getY()] = p;
         this.getState(END).init(getContainer(), this);
         this.enterState(END);
       }
     }
     if (p.getName().equals(" Pawn ")){
       if(((Pawn)p).start.getY() == 1 && (end.getY() == 7)){
-        GameDriver.board[end.getX()][end.getY()] = new Queen(end, true, new Image("main/resources/whiteQueen.png"), this);
+        board[end.getX()][end.getY()] = new Queen(end, true, new Image("main/resources/whiteQueen.png"), this);
       }
       else if(((Pawn)p).start.getY() == 6 && (end.getY() == 0)){
-        GameDriver.board[end.getX()][end.getY()] = new Queen(end, false, new Image("main/resources/blackQueen.png"), this);
+        board[end.getX()][end.getY()] = new Queen(end, false, new Image("main/resources/blackQueen.png"), this);
       }
       else{
-        GameDriver.board[end.getX()][end.getY()] = p;
+        board[end.getX()][end.getY()] = p;
       }
-      GameDriver.turn = 1 - GameDriver.turn;
+      turn = 1 - turn;
       updateValid();
       printBoard();
     }
     else{
-      GameDriver.board[end.getX()][end.getY()] = p;
-      GameDriver.turn = 1 - GameDriver.turn;
+      board[end.getX()][end.getY()] = p;
+      turn = 1 - turn;
       updateValid();
       printBoard();
     }

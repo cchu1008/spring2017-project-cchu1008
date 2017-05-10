@@ -1,13 +1,14 @@
-package main.driver;
+package main.helper;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
 
 public class Button extends MouseOverArea {
   
-  public Button(GameContainer container, Image image, int x, int y, int width, int height){
-    super(container, image, x, y, width, height);
+  public Button(GameContainer container, Image image, int x, int y, int width, int height, ComponentListener listener){
+    super(container, image, x, y, width, height, listener);
   }
   
   @Override

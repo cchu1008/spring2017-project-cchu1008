@@ -11,6 +11,9 @@ import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import main.helper.Button;
+import main.helper.NextStateButtonListener;
+
 
 public class Setup extends BasicGameState {
   
@@ -19,7 +22,7 @@ public class Setup extends BasicGameState {
   private GameDriver game;
   private static TextField nameOne;
   private static TextField nameTwo;
-  private NextStateButton next;
+  private Button next;
   
   public Setup(){
     //Not sure why we need this.
@@ -78,6 +81,7 @@ public class Setup extends BasicGameState {
   }
   
   public void chooseRender(GameContainer container, Graphics g, boolean computer) throws SlickException {
+    this.next = new Button(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new NextStateButtonListener(Play.ID, this.game));
     if(computer){
       humanVComp(container, g);
     }
@@ -86,7 +90,6 @@ public class Setup extends BasicGameState {
   }
   
   public void humanVComp(GameContainer container, Graphics g) throws SlickException {
-    this.next = new ComputerButton(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, Play.ID, game);
     g.setColor(Color.red);
     g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8);
     g.setColor(Color.white);
@@ -102,7 +105,6 @@ public class Setup extends BasicGameState {
   }
   
   public void humanVHuman(GameContainer container, Graphics g) throws SlickException {
-    this.next = new HumanButton(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, Play.ID, game);
     g.setColor(Color.red);
     g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8);
     g.setColor(Color.white);
