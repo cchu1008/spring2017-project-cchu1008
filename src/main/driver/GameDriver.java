@@ -97,16 +97,17 @@ public class GameDriver extends StateBasedGame {
    * printBoard function
    */
   public static void printBoard() {
+    Logger boardLogger = Logger.getLogger("BoardLogger");
     for (int i = 0; i < 8; i++) {
       System.out.print("| ");
       for (int j = 0; j < 8; j++) {
         if (!isEmpty(new Position(j, i))) {
-          Logger.getLogger("BoardLogger").log(Level.SEVERE, null, GameDriver.board[j][i].getName()  + " | ");
+          boardLogger.log(Level.SEVERE, null, GameDriver.board[j][i].getName()  + " | ");
         } else {
-          Logger.getLogger("BoardLogger").log(Level.SEVERE, null, " OOOO  | ");
+          boardLogger.log(Level.SEVERE, null, " OOOO  | ");
         }
       }
-      Logger.getLogger("BoardLogger").log(Level.SEVERE, null, "\n");
+      boardLogger.log(Level.SEVERE, null, "\n");
     }
   }
   

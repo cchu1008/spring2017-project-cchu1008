@@ -1,6 +1,10 @@
 package main.driver;
 
 import main.helper.Position;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.MouseOverArea;
@@ -36,7 +40,7 @@ public class Tile extends MouseOverArea {
     if (isMouseOver()) {
       super.mouseReleased(button, mx, my);
       players[GameDriver.turn].pickTile(new Position(this.row, this.col));
-      System.out.println("Button clicked at (" + this.row + ", " + this.col + ")");
+      Logger.getLogger("BoardLogger").log(Level.SEVERE, null, "Button clicked at (" + this.row + ", " + this.col + ")");
     }
   }
   

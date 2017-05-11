@@ -3,6 +3,9 @@ package main.driver;
 import main.helper.Position;
 import main.piece.Piece;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
@@ -52,6 +55,7 @@ public abstract class Player {
    * @param p : Position
    */
   public void pickTile(Position p) {
+    Logger boardLogger = Logger.getLogger("BoardLogger");
     String normal = this.name + " Begin: (" + this.begin.getX() + ", " 
         + this.begin.getY() + ") ; End: (" + this.end.getX() + ", " + this.end.getY() + ")";
     String invalid = "Invalid move: (" + this.begin.getX() + ", " 
@@ -62,25 +66,24 @@ public abstract class Player {
       this.begin.setPos(p);
       this.piece = GameDriver.board[p.getX()][p.getY()];
       this.piece.printValid();
-
-      System.out.println(normal);
+      boardLogger.log(Level.SEVERE, null, normal);
     } else if (!this.begin.equals(new Position(-1, -1)) && this.end.equals(new Position(-1, -1))) {
       if (this.piece.isValid(p)) {
         this.end.setPos(p);
         try {
           GameDriver.move(this.begin, this.end, this.game, this.container);
-        } catch (SlickException e) {
-          System.err.println(e);
+        } catch (SlickException ex) {
+          Logger.getLogger("GameMoveLogger").log(Level.SEVERE, null, ex);
         }
-        System.out.println(normal);
+        boardLogger.log(Level.SEVERE, null, normal);
         resetPosition();
       } else {
-        System.out.println(invalid);
+        boardLogger.log(Level.SEVERE, null, invalid);
         resetPosition();
       }
 
     } else {
-      System.out.println(invalid);
+      boardLogger.log(Level.SEVERE, null, invalid);
       resetPosition();
     }
   }
