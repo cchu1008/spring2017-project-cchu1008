@@ -14,11 +14,6 @@
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>src/test</testSourceDirectory>
-    <testResources>
-	   <testResource>
-	     <directory>src/test</directory>
-	   </testResource>
-    </testResources>
     <resources>
       <resource>
         <directory>src</directory>
