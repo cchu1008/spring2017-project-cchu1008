@@ -44,7 +44,7 @@ public class End extends BasicGameState {
 
   @Override
   public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
-    // TODO Auto-generated method stub
+    // Not sure what to update
     
   }
 

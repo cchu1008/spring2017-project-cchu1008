@@ -68,7 +68,7 @@ public class Play extends BasicGameState {
         GameDriver.X_SIZE / 3f + 100f, GameDriver.Y_SIZE / 2f);
     
     drawBoard(container, g);
-    drawPieces(container, g);
+    drawPieces(g);
   }
 
   @Override
@@ -81,6 +81,7 @@ public class Play extends BasicGameState {
     return Play.ID;
   }
   
+  @Override
   /** keyReleased function.
    * 
    */
@@ -159,7 +160,7 @@ public class Play extends BasicGameState {
    * @param g : graphics
    * @throws SlickException : SlickException
    */
-  public void drawTiles(GameContainer container, Graphics g) throws SlickException {
+  public void drawTiles(GameContainer container, Graphics g) {
     for (int i = 0; i < 8; i++) {
       for (int j = 0; j < 8; j++) {
         this.tiles[i][j].render(container, g);
@@ -168,12 +169,11 @@ public class Play extends BasicGameState {
   }
   
   /** drawPieces function.
-   * 
-   * @param container : container
    * @param g : graphics
+   * 
    * @throws SlickException : SlickException
    */
-  public void drawPieces(GameContainer container, Graphics g) throws SlickException {
+  public void drawPieces(Graphics g) {
     for (int i = 0; i < 8; i++) {
       for (int j = 0; j < 8; j++) {
         if (!GameDriver.isEmpty(new Position(i,j))) {

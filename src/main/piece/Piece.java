@@ -1,6 +1,8 @@
 package main.piece;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import main.helper.*;
 import org.newdawn.slick.Image;
@@ -151,7 +153,7 @@ public abstract class Piece {
 	public void printValid(){
 		validMoves();
 		for(Position p: this.valid){
-			System.out.println("Valid: (" + p.getX() + ", " + p.getY() + ")");
+		  Logger.getLogger("PositionLogger").log(Level.SEVERE, null, "Valid: (" + p.getX() + ", " + p.getY() + ")");
 		}
 	}
 	public String getName(){

@@ -58,7 +58,7 @@ public class Menu extends BasicGameState {
 
   @Override
   public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
-
+     //Not sure what to do w/ this.
   }
 
   @Override
@@ -66,6 +66,7 @@ public class Menu extends BasicGameState {
     return Menu.ID;
   }
   
+  @Override
   /** keyReleased function.
    *  
    */
