@@ -4,11 +4,10 @@ import java.util.List;
 import main.helper.Position;
 
 import org.newdawn.slick.Image;
-import org.newdawn.slick.state.StateBasedGame;
 public class Queen extends Piece{
 	
-	public Queen(Position p, boolean white, Image image, StateBasedGame game){
-		super(p, white, image, game);
+	public Queen(Position p, boolean white, Image image){
+		super(p, white, image);
 		this.setValid(validMoves());
 		this.setName(" Queen");
 	}

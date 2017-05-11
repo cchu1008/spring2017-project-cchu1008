@@ -6,12 +6,11 @@ import main.helper.Position;
 
 import java.util.ArrayList;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.state.StateBasedGame;
 public class King extends Piece{
 	public Position start;
 	
-	public King(Position p, boolean white, Image image, StateBasedGame game){
-		super(p, white, image, game);
+	public King(Position p, boolean white, Image image){
+		super(p, white, image);
 		this.start = p;
 		this.setValid(validMoves());
 		this.setName(" King ");

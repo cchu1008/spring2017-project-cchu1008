@@ -189,56 +189,56 @@ public class Play extends BasicGameState {
     for (int i = 0; i < 8; i++) {
       try {
         GameDriver.board[i][1] = new Pawn(new Position(i, 1), true, 
-            new Image("main/resources/whitePawn.png"), this.game);
+            new Image("main/resources/whitePawn.png"));
       } catch (SlickException e) {
         e.printStackTrace();
       }
     }
     try {
       GameDriver.board[0][0] = new Rook(new Position(0, 0), true, 
-          new Image("main/resources/whiteRook.png"), this.game);
+          new Image("main/resources/whiteRook.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[7][0] = new Rook(new Position(7, 0), true, 
-          new Image("main/resources/whiteRook.png"), this.game);
+          new Image("main/resources/whiteRook.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[1][0] = new Knight(new Position(1, 0), true, 
-          new Image("main/resources/whiteKnight.png"), this.game);
+          new Image("main/resources/whiteKnight.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[6][0] = new Knight(new Position(6, 0), true, 
-          new Image("main/resources/whiteKnight.png"), this.game);
+          new Image("main/resources/whiteKnight.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[2][0] = new Bishop(new Position(2, 0), true, 
-          new Image("main/resources/whiteBishop.png"), this.game);
+          new Image("main/resources/whiteBishop.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[5][0] = new Bishop(new Position(5, 0), true, 
-          new Image("main/resources/whiteBishop.png"), this.game);
+          new Image("main/resources/whiteBishop.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[3][0] = new Queen(new Position(3, 0), true, 
-          new Image("main/resources/whiteQueen.png"), this.game);
+          new Image("main/resources/whiteQueen.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[4][0] = new King(new Position(4, 0), true, 
-          new Image("main/resources/whiteKing.png"), this.game);
+          new Image("main/resources/whiteKing.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
@@ -252,56 +252,56 @@ public class Play extends BasicGameState {
     for (int i = 0; i < 8; i++) {
       try {
         GameDriver.board[i][6] = new Pawn(new Position(i, 6), false, 
-            new Image("main/resources/blackPawn.png"), this.game);
+            new Image("main/resources/blackPawn.png"));
       } catch (SlickException e) {
         e.printStackTrace();
       }
     }
     try {
       GameDriver.board[0][7] = new Rook(new Position(0, 7), false, 
-          new Image("main/resources/blackRook.png"), this.game);
+          new Image("main/resources/blackRook.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[7][7] = new Rook(new Position(7, 7), false, 
-          new Image("main/resources/blackRook.png"), this.game);
+          new Image("main/resources/blackRook.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[1][7] = new Knight(new Position(1, 7), false, 
-          new Image("main/resources/blackKnight.png"), this.game);
+          new Image("main/resources/blackKnight.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[6][7] = new Knight(new Position(6, 7), false, 
-          new Image("main/resources/blackKnight.png"), this.game);
+          new Image("main/resources/blackKnight.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[2][7] = new Bishop(new Position(2, 7), false, 
-          new Image("main/resources/blackBishop.png"), this.game);
+          new Image("main/resources/blackBishop.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[5][7] = new Bishop(new Position(5, 7), false, 
-          new Image("main/resources/blackBishop.png"), this.game);
+          new Image("main/resources/blackBishop.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[3][7] = new Queen(new Position(3, 7), false, 
-          new Image("main/resources/blackQueen.png"), this.game);
+          new Image("main/resources/blackQueen.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }
     try {
       GameDriver.board[4][7] = new King(new Position(4, 7), false, 
-          new Image("main/resources/blackKing.png"), this.game);
+          new Image("main/resources/blackKing.png"));
     } catch (SlickException e) {
       e.printStackTrace();
     }

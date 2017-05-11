@@ -3,13 +3,11 @@ package test;
 
 import junit.framework.TestCase;
 
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.junit.Test;
 import org.lwjgl.LWJGLException;
-import org.lwjgl.LWJGLUtil;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.Image;
@@ -23,43 +21,19 @@ import main.piece.Pawn;
 public class PawnTest extends TestCase {    
   public GameDriver game = new GameDriver("Chess");
   public Pawn pawn;
-  
-  public static void main(String[] args){
-    File JGLLib = null;
-    switch(LWJGLUtil.getPlatform())
-    {
-        case LWJGLUtil.PLATFORM_WINDOWS:
-        {
-          JGLLib = new File("./native/windows/");
-        }
-        break;
-
-        case LWJGLUtil.PLATFORM_LINUX:
-        {
-            JGLLib = new File("./native/linux/");
-        }
-        break;
-
-        case LWJGLUtil.PLATFORM_MACOSX:
-        {
-            JGLLib = new File("./native/macosx/");
-        }
-        break;
-    }
-
-    System.setProperty("org.lwjgl.librarypath", JGLLib.getAbsolutePath());
-  }
 
   @Test
   public void testConstructor() {
+    
     try{
       Display.setDisplayMode(new DisplayMode(800, 800));
       Display.create();
     } catch(LWJGLException ex){
       Logger.getLogger("DisplayLogger").log(Level.SEVERE, null, ex);
     }
+    
     try {
-      pawn = new Pawn(new Position(0, 1), true, new Image("main/resources/whitePawn.png"), game);
+      pawn = new Pawn(new Position(0, 1), true, new Image("main/resources/whitePawn.png"));
     } catch (SlickException ex) {
       Logger.getLogger("ImageLogger").log(Level.SEVERE, null, ex);
     }

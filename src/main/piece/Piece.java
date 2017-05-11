@@ -4,7 +4,6 @@ import java.util.List;
 
 import main.helper.*;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.state.StateBasedGame;
 
 import main.driver.GameDriver;
 
@@ -16,11 +15,11 @@ public abstract class Piece {
 	private String name;
 	public GameDriver game;
 	
-	public Piece(Position p, boolean white, Image image, StateBasedGame game){
+	public Piece(Position p, boolean white, Image image){
 		this.location = p;
 		this.white = white;
 		this.myImage = image;
-		this.game = (GameDriver)game;
+		//this.game = (GameDriver)game;
 	}
 	
 	public void move(Position p){
