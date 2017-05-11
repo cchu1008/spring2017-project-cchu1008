@@ -3,11 +3,13 @@ package test;
 
 import junit.framework.TestCase;
 
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.junit.Test;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.LWJGLUtil;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.Image;
@@ -21,6 +23,32 @@ import main.piece.Pawn;
 public class PawnTest extends TestCase {    
   public GameDriver game = new GameDriver("Chess");
   public Pawn pawn;
+  
+  public static void main(String[] args){
+    File JGLLib = null;
+    switch(LWJGLUtil.getPlatform())
+    {
+        case LWJGLUtil.PLATFORM_WINDOWS:
+        {
+          JGLLib = new File("./native/windows/");
+        }
+        break;
+
+        case LWJGLUtil.PLATFORM_LINUX:
+        {
+            JGLLib = new File("./native/linux/");
+        }
+        break;
+
+        case LWJGLUtil.PLATFORM_MACOSX:
+        {
+            JGLLib = new File("./native/macosx/");
+        }
+        break;
+    }
+
+    System.setProperty("org.lwjgl.librarypath", JGLLib.getAbsolutePath());
+  }
 
   @Test
   public void testConstructor() {
