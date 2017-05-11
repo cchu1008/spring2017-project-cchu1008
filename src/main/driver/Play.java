@@ -59,7 +59,7 @@ public class Play extends BasicGameState {
 
     g.drawString("Player 1: ", GameDriver.X_SIZE / 3f, GameDriver.Y_SIZE / 3f);
     g.drawString(((GameDriver)game).players[0].getName(), 
-        GameDriver.X_SIZE / 3 + 100, GameDriver.Y_SIZE / 3f);
+        GameDriver.X_SIZE / 3 + 100f, GameDriver.Y_SIZE / 3f);
     g.drawString("Player 2: ", GameDriver.X_SIZE / 3f, GameDriver.Y_SIZE / 2f);
     g.drawString(((GameDriver)game).players[1].getName(), 
         GameDriver.X_SIZE / 3f + 100f, GameDriver.Y_SIZE / 2f);
