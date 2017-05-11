@@ -25,16 +25,10 @@ public abstract class Piece {
 	
 	public void move(Position p){
 		this.setLocation(p);
-		//validMoves();
 	}
 	
 	public abstract List<Position> validMoves();
-/**
-	public List<Position> validMoves(){
-		this.valid = new ArrayList<Position>();
-		return this.valid;
-	}
-	**/
+
 	public boolean isValid(Position point){
 		boolean v = false;
 		for(Position p : this.valid){

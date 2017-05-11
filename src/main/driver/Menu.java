@@ -45,11 +45,11 @@ public class Menu extends BasicGameState {
     g.setBackground(Color.lightGray);
     
     g.setColor(Color.red);
-    g.drawString("This is the Menu State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8);
+    g.drawString("This is the Menu State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8f);
     g.setColor(Color.white);
-    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6);
+    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6f);
     g.drawString("Numbers 0-3 will switch between states.", 
-        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4);
+        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4f);
     
     chooseComputer.render(container, g);
     chooseHuman.render(container, g);

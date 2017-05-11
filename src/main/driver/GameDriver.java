@@ -24,7 +24,7 @@ public class GameDriver extends StateBasedGame {
   public static final int Y_SIZE = 650;
   
   public static Piece[][] board = new Piece[8][8];
-  public static Player[] players = new Player[2];
+  public Player[] players = new Player[2];
   
   public static int turn = 0;
   
@@ -44,8 +44,8 @@ public class GameDriver extends StateBasedGame {
    * 
    * @param start : Start position
    * @param end : End position
-   * @param game TODO
-   * @param container TODO
+   * @param game : game
+   * @param container : container
    * @throws SlickException : Throws slick exception
    */
   public static void move(Position start, Position end, StateBasedGame game, GameContainer container) throws SlickException {
@@ -79,6 +79,11 @@ public class GameDriver extends StateBasedGame {
       updateValid();
       printBoard();
     }
+  }
+  
+  public void setPlayers(Player one, Player two){
+    players[0] = one;
+    players[1] = two;
   }
   
   public static boolean isEmpty(Position p) {

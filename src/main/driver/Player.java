@@ -22,7 +22,7 @@ public abstract class Player {
    * @param name : name
    * @param white : boolean whether white or not
    * @param game : game
-   * @param container TODO
+   * @param container : container
    */
   public Player(String name, boolean white, StateBasedGame game, GameContainer container) {
     this.name = name;

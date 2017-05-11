@@ -33,8 +33,7 @@ public class Setup extends BasicGameState {
     this.game = (GameDriver)game;
     this.next = new Button(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new PlayNextStateListener(Play.ID, this.game));
     
-    GameDriver.players[0] = new HumanPlayer("Player One", true, game, container);
-    GameDriver.players[1] = new HumanPlayer("Player Two", false, game, container);
+    ((GameDriver)game).setPlayers((Player)new HumanPlayer("Player One", true, game, container), (Player)new HumanPlayer("Player Two", false, game, container));
     
     Setup.nameOne = new TextField(container, 
         new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true), 
@@ -42,8 +41,7 @@ public class Setup extends BasicGameState {
     Setup.nameTwo = new TextField(container, 
         new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true), 
         GameDriver.X_SIZE / 4, GameDriver.Y_SIZE / 2, 300, 30);
-    //this.cont = new Button(container, new Image("main/resources/nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, Play.ID, game);
-    
+  
   }
 
   @Override
@@ -89,31 +87,31 @@ public class Setup extends BasicGameState {
       humanVHuman(container, g);
   }
   
-  public void humanVComp(GameContainer container, Graphics g) throws SlickException {
+  public void humanVComp(GameContainer container, Graphics g){
     g.setColor(Color.red);
-    g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8);
+    g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8f);
     g.setColor(Color.white);
-    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6);
+    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6f);
     g.drawString("Numbers 0-3 will switch between states.", 
-        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4);
+        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4f);
     
-    g.drawString("Player One: ", GameDriver.X_SIZE / 10, GameDriver.Y_SIZE / 3);
-    g.drawString("Player Two: CPU", GameDriver.X_SIZE / 10, GameDriver.Y_SIZE / 2);
+    g.drawString("Player One: ", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 3f);
+    g.drawString("Player Two: CPU", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 2f);
     
     Setup.nameOne.render(container, g);
     this.next.render(container, g);
   }
   
-  public void humanVHuman(GameContainer container, Graphics g) throws SlickException {
+  public void humanVHuman(GameContainer container, Graphics g){
     g.setColor(Color.red);
-    g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8);
+    g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8f);
     g.setColor(Color.white);
-    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6);
+    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6f);
     g.drawString("Numbers 0-3 will switch between states.", 
-        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4);
+        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4f);
     
-    g.drawString("Player One: ", GameDriver.X_SIZE / 10, GameDriver.Y_SIZE / 3);
-    g.drawString("Player Two: ", GameDriver.X_SIZE / 10, GameDriver.Y_SIZE / 2);
+    g.drawString("Player One: ", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 3f);
+    g.drawString("Player Two: ", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 2f);
     
     Setup.nameOne.render(container, g);
     Setup.nameTwo.render(container, g);
@@ -121,13 +119,13 @@ public class Setup extends BasicGameState {
   }
   
   public static void makeHumanVCompPlayers(StateBasedGame game, GameContainer container){
-    GameDriver.players[0].setName(Setup.nameOne.getText());
-    GameDriver.players[1] = new ComputerPlayer(game, container);
+    ((GameDriver)game).players[0].setName(Setup.nameOne.getText());
+    ((GameDriver)game).players[1] = new ComputerPlayer(game, container);
   }
   
   public static void makeHumanVHumanPlayers(StateBasedGame game){
-    GameDriver.players[0].setName(Setup.nameOne.getText());
-    GameDriver.players[1].setName(Setup.nameTwo.getText());
+    ((GameDriver)game).players[0].setName(Setup.nameOne.getText());
+    ((GameDriver)game).players[1].setName(Setup.nameTwo.getText());
   }
 
 }

@@ -17,11 +17,10 @@ public class PlayNextStateListener extends NextStateButtonListener {
   
   @Override
   public void componentActivated(AbstractComponent source) {
-    System.out.println("PlayNextStateListener");
-    ((GameDriver)this.game).createState(((Button)source).container, Play.ID);
+    ((GameDriver)this.game).createState(((Button)source).cont, Play.ID);
     super.componentActivated(source);
     if(Menu.type){
-      Setup.makeHumanVCompPlayers(this.game, ((Button)source).container);
+      Setup.makeHumanVCompPlayers(this.game, ((Button)source).cont);
     }
     else{
       Setup.makeHumanVHumanPlayers(this.game);
