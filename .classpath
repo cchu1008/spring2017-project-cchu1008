@@ -19,6 +19,10 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="src/main/lib/jars/lwjgl.jar"/>
 	<classpathentry kind="lib" path="src/main/lib/jars/slick.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="spring2017-project-cchu1008/src/main/lib/native"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
