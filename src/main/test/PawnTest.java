@@ -1,6 +1,6 @@
 package main.test;
 
-import static org.junit.Assert.assertEquals;
+import junit.framework.TestCase;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +17,7 @@ import main.driver.GameDriver;
 import main.helper.Position;
 import main.piece.Pawn;
 
-public class PawnTest {    
+public class PawnTest extends TestCase {    
   public GameDriver game = new GameDriver("Chess");
   public Pawn pawn;
 
