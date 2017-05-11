@@ -12,7 +12,6 @@ import org.lwjgl.opengl.DisplayMode;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import com.sun.javaws.Main;
 
 import main.driver.GameDriver;
 import main.helper.Position;
@@ -28,12 +27,12 @@ public class PawnTest {
       Display.setDisplayMode(new DisplayMode(800, 800));
       Display.create();
     } catch(LWJGLException ex){
-      Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger("DisplayLogger").log(Level.SEVERE, null, ex);
     }
     try {
       pawn = new Pawn(new Position(0, 1), true, new Image("main/resources/whitePawn.png"), game);
     } catch (SlickException ex) {
-      Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger("ImageLogger").log(Level.SEVERE, null, ex);
     }
     
     assertEquals(new Position(0, 1), pawn.getLocation());
