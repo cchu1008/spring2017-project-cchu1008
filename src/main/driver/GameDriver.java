@@ -5,6 +5,9 @@ import main.piece.Pawn;
 import main.piece.Piece;
 import main.piece.Queen;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
@@ -98,12 +101,12 @@ public class GameDriver extends StateBasedGame {
       System.out.print("| ");
       for (int j = 0; j < 8; j++) {
         if (!isEmpty(new Position(j, i))) {
-          System.out.print(GameDriver.board[j][i].getName()  + " | ");
+          Logger.getLogger("BoardLogger").log(Level.SEVERE, null, GameDriver.board[j][i].getName()  + " | ");
         } else {
-          System.out.print(" OOOO  | ");
+          Logger.getLogger("BoardLogger").log(Level.SEVERE, null, " OOOO  | ");
         }
       }
-      System.out.println();
+      Logger.getLogger("BoardLogger").log(Level.SEVERE, null, "\n");
     }
   }
   
@@ -131,8 +134,8 @@ public class GameDriver extends StateBasedGame {
       container.setDisplayMode(X_SIZE, Y_SIZE, false);
       container.setTargetFrameRate(FPS);
       container.start();
-    } catch (SlickException e) {
-      e.printStackTrace();
+    } catch (SlickException ex) {
+      Logger.getLogger("ContainerLogger").log(Level.SEVERE, null, ex);
     }
   }
 
@@ -145,8 +148,8 @@ public class GameDriver extends StateBasedGame {
   public void createState(GameContainer container, int id){
     try {
       this.getState(id).init(container, this);
-    } catch (SlickException e) {
-      e.printStackTrace();
+    } catch (SlickException ex) {
+      Logger.getLogger("StateLogger").log(Level.SEVERE, null, ex);
     }
     this.enterState(id);
   }
