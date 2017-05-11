@@ -21,7 +21,6 @@ public abstract class Piece {
 		this.location = p;
 		this.white = white;
 		this.myImage = image;
-		//this.game = (GameDriver)game;
 	}
 	
 	public void move(Position p){
