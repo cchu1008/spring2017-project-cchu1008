@@ -1,7 +1,7 @@
 package main.driver;
 
 import main.helper.Position;
-
+import main.helper.Tile;
 import main.piece.Bishop;
 import main.piece.King;
 import main.piece.Knight;

@@ -1,6 +1,4 @@
-package main.driver;
-
-import main.helper.Position;
+package main.helper;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -8,6 +6,9 @@ import java.util.logging.Logger;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.MouseOverArea;
+
+import main.driver.GameDriver;
+import main.driver.Player;
 
 
 public class Tile extends MouseOverArea {
