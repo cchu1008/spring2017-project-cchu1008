@@ -73,6 +73,9 @@ public class GameDriver extends StateBasedGame {
         board[end.getX()][end.getY()] = p;
       }
       turn = 1 - turn;
+      if(Menu.type && turn == 1){
+        ((GameDriver)game).players[1].movePiece();
+      }
       updateValid();
       printBoard();
     }
@@ -98,17 +101,20 @@ public class GameDriver extends StateBasedGame {
    */
   public static void printBoard() {
     Logger boardLogger = Logger.getLogger("BoardLogger");
+    String fin = "\n";
     for (int i = 0; i < 8; i++) {
       System.out.print("| ");
       for (int j = 0; j < 8; j++) {
         if (!isEmpty(new Position(j, i))) {
-          boardLogger.log(Level.SEVERE, null, GameDriver.board[j][i].getName()  + " | ");
+          fin += GameDriver.board[j][i].getName()  + " | ";
         } else {
-          boardLogger.log(Level.SEVERE, null, " OOOO  | ");
+          fin += " OOOO  | ";
         }
       }
-      boardLogger.log(Level.SEVERE, null, "\n");
+      fin += "\n";
     }
+    
+    boardLogger.log(Level.INFO, fin, "");
   }
   
   /** updateValid function.

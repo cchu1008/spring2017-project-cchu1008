@@ -101,4 +101,9 @@ public abstract class Player {
     this.end = new Position(-1, -1);
   }
   
+  public void movePiece(){
+    this.pickTile(new Position(4, 6));
+    this.pickTile(new Position(4, 4));
+  }
+  
 }

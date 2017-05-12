@@ -107,8 +107,8 @@ public class Play extends BasicGameState {
    * @throws SlickException : SlickException
    */
   public void drawBoard(GameContainer container, Graphics g) throws SlickException {
-    Image hborder = new Image("main/resources/border.jpg");
-    Image vborder = new Image("main/resources/borderVerticle.jpg");
+    Image hborder = new Image("border.jpg");
+    Image vborder = new Image("borderVerticle.jpg");
     
     for (int i = 1; i < 13; i++) {
       hborder.draw(50f * i, 15, 0.055f);
@@ -132,24 +132,24 @@ public class Play extends BasicGameState {
     for (int j = 0; j < 8; j += 2) {
       for (int i = 0; i < 8; i += 2) {
         this.tiles[i][j] = new Tile(i, j, players, container, 
-            new Image("main/resources/darkTile.jpg"), 
+            new Image("darkTile.jpg"), 
             65 + (143 * (i / 2)), 30 + (143 * (j / 2)), 72, 72);
-        this.tiles[i][j].setMouseOverImage(new Image("main/resources/darkTileHighlighted.jpg"));
+        this.tiles[i][j].setMouseOverImage(new Image("darkTileHighlighted.jpg"));
         this.tiles[i + 1][j] = new Tile(i + 1, j, players, container, 
-            new Image("main/resources/lightTile.jpg"), 
+            new Image("lightTile.jpg"), 
             137 + (143 * (i / 2)), 30 + (143 * (j / 2)), 72, 72);
         this.tiles[i + 1][j].setMouseOverImage(
-            new Image("main/resources/lightTileHighlighted.jpg"));
+            new Image("lightTileHighlighted.jpg"));
         this.tiles[i][j + 1] = new Tile(i, j + 1, players, container, 
-            new Image("main/resources/lightTile.jpg"), 
+            new Image("lightTile.jpg"), 
             65 + (143 * (i / 2)), 102 + (143 * (j / 2)), 72, 72);
         this.tiles[i][j + 1].setMouseOverImage(
-            new Image("main/resources/lightTileHighlighted.jpg"));
+            new Image("lightTileHighlighted.jpg"));
         this.tiles[i + 1][j + 1] = new Tile(i + 1, j + 1, players, container, 
-            new Image("main/resources/darkTile.jpg"), 
+            new Image("darkTile.jpg"), 
             137 + (143 * (i / 2)), 102 + (143 * (j / 2)), 72, 72);
         this.tiles[i + 1][j + 1].setMouseOverImage(
-            new Image("main/resources/darkTileHighlighted.jpg"));
+            new Image("darkTileHighlighted.jpg"));
       }
     }
   }
@@ -193,56 +193,56 @@ public class Play extends BasicGameState {
     for (int i = 0; i < 8; i++) {
       try {
         GameDriver.board[i][1] = new Pawn(new Position(i, 1), true, 
-            new Image("main/resources/whitePawn.png"));
+            new Image("whitePawn.png"));
       } catch (SlickException ex) {
         imageLogger.log(Level.SEVERE, null, ex);
       }
     }
     try {
       GameDriver.board[0][0] = new Rook(new Position(0, 0), true, 
-          new Image("main/resources/whiteRook.png"));
+          new Image("whiteRook.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[7][0] = new Rook(new Position(7, 0), true, 
-          new Image("main/resources/whiteRook.png"));
+          new Image("whiteRook.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[1][0] = new Knight(new Position(1, 0), true, 
-          new Image("main/resources/whiteKnight.png"));
+          new Image("whiteKnight.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[6][0] = new Knight(new Position(6, 0), true, 
-          new Image("main/resources/whiteKnight.png"));
+          new Image("whiteKnight.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[2][0] = new Bishop(new Position(2, 0), true, 
-          new Image("main/resources/whiteBishop.png"));
+          new Image("whiteBishop.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[5][0] = new Bishop(new Position(5, 0), true, 
-          new Image("main/resources/whiteBishop.png"));
+          new Image("whiteBishop.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[3][0] = new Queen(new Position(3, 0), true, 
-          new Image("main/resources/whiteQueen.png"));
+          new Image("whiteQueen.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[4][0] = new King(new Position(4, 0), true, 
-          new Image("main/resources/whiteKing.png"));
+          new Image("whiteKing.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
@@ -257,56 +257,56 @@ public class Play extends BasicGameState {
     for (int i = 0; i < 8; i++) {
       try {
         GameDriver.board[i][6] = new Pawn(new Position(i, 6), false, 
-            new Image("main/resources/blackPawn.png"));
+            new Image("blackPawn.png"));
       } catch (SlickException ex) {
         imageLogger.log(Level.SEVERE, null, ex);
       }
     }
     try {
       GameDriver.board[0][7] = new Rook(new Position(0, 7), false, 
-          new Image("main/resources/blackRook.png"));
+          new Image("blackRook.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[7][7] = new Rook(new Position(7, 7), false, 
-          new Image("main/resources/blackRook.png"));
+          new Image("blackRook.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[1][7] = new Knight(new Position(1, 7), false, 
-          new Image("main/resources/blackKnight.png"));
+          new Image("blackKnight.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[6][7] = new Knight(new Position(6, 7), false, 
-          new Image("main/resources/blackKnight.png"));
+          new Image("blackKnight.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[2][7] = new Bishop(new Position(2, 7), false, 
-          new Image("main/resources/blackBishop.png"));
+          new Image("blackBishop.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[5][7] = new Bishop(new Position(5, 7), false, 
-          new Image("main/resources/blackBishop.png"));
+          new Image("blackBishop.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[3][7] = new Queen(new Position(3, 7), false, 
-          new Image("main/resources/blackQueen.png"));
+          new Image("blackQueen.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
     try {
       GameDriver.board[4][7] = new King(new Position(4, 7), false, 
-          new Image("main/resources/blackKing.png"));
+          new Image("blackKing.png"));
     } catch (SlickException ex) {
       imageLogger.log(Level.SEVERE, null, ex);
     }
