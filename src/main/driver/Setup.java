@@ -31,8 +31,8 @@ public class Setup extends BasicGameState {
   @Override
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     this.game = (GameDriver)game;
-    this.next = new Button(container, new Image("nextButton.png"), GameDriver.X_SIZE / 4, (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new PlayNextStateListener(Play.ID, this.game));
-    
+    this.next = new Button(container, new Image("nextButton.png"), (int)(GameDriver.X_SIZE * 0.8), (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new PlayNextStateListener(Play.ID, this.game));
+    next.setDownImage(new Image("nextButtonSel.png"));
     ((GameDriver)game).setPlayers((Player)new HumanPlayer("Player One", true, game, container), (Player)new HumanPlayer("Player Two", false, game, container));
     
     Setup.nameOne = new TextField(container, 

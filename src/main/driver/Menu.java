@@ -22,6 +22,7 @@ public class Menu extends BasicGameState {
   private GameDriver game;
   private Button chooseComputer;
   private Button chooseHuman;
+  private Image chess;
   
  
   public Menu() {
@@ -32,24 +33,21 @@ public class Menu extends BasicGameState {
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     
     this.game = (GameDriver)game;
-    chooseComputer = new Button(container, new Image("hVCChoiceButton.png"), (int)(GameDriver.X_SIZE * 0.25), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new ComputerNextStateListener(Setup.ID, this.game));
-    chooseHuman = new Button(container, new Image("hVHChoiceButton.png"), (int)(GameDriver.X_SIZE * 0.55), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new HumanNextStateListener(Setup.ID, this.game));
-    chooseComputer.setDownImage(new Image("hVCChoiceButtonSel.png"));
-    chooseHuman.setDownImage(new Image("hvHChoiceButtonSel.png"));
+    chooseComputer = new Button(container, new Image("hVCChoiceButtonSel.png"), (int)(GameDriver.X_SIZE * 0.22), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new ComputerNextStateListener(Setup.ID, this.game));
+    chooseHuman = new Button(container, new Image("hVHChoiceButtonSel.png"), (int)(GameDriver.X_SIZE * 0.52), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new HumanNextStateListener(Setup.ID, this.game));
+    chooseComputer.setDownImage(new Image("hVCChoiceButton.png"));
+    chooseHuman.setDownImage(new Image("hvHChoiceButton.png"));
+    chess = new Image("Chess.png");
   }
 
   @Override
   public void render(GameContainer container, StateBasedGame game, 
       Graphics g) throws SlickException {
     
-    g.setBackground(Color.lightGray);
+    g.setBackground(Color.darkGray);
     
-    g.setColor(Color.red);
-    g.drawString("This is the Menu State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8f);
     g.setColor(Color.white);
-    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6f);
-    g.drawString("Numbers 0-3 will switch between states.", 
-        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4f);
+    chess.draw(GameDriver.X_SIZE * 0.22f, GameDriver.Y_SIZE / 6f);
     
     chooseComputer.render(container, g);
     chooseHuman.render(container, g);
@@ -71,17 +69,9 @@ public class Menu extends BasicGameState {
    *  
    */
   public void keyReleased(int key, char c) {
-    if (key == Input.KEY_RIGHT || key == Input.KEY_1) {
+    if (key == Input.KEY_RIGHT) {
       game.getState(Setup.ID);
       game.enterState(Setup.ID);
-    }
-    if (key == Input.KEY_2) {
-      game.getState(Play.ID);
-      game.enterState(Play.ID);
-    }
-    if (key == Input.KEY_3) {
-      game.getState(End.ID);
-      game.enterState(End.ID);
     }
   }
 

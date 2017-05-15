@@ -64,10 +64,10 @@ public class GameDriver extends StateBasedGame {
     }
     if (p.getName().equals(" Pawn ")){
       if(((Pawn)p).start.getY() == 1 && (end.getY() == 7)){
-        board[end.getX()][end.getY()] = new Queen(end, true, new Image("main/resources/whiteQueen.png"));
+        board[end.getX()][end.getY()] = new Queen(end, true, new Image("whiteQueen.png"));
       }
       else if(((Pawn)p).start.getY() == 6 && (end.getY() == 0)){
-        board[end.getX()][end.getY()] = new Queen(end, false, new Image("main/resources/blackQueen.png"));
+        board[end.getX()][end.getY()] = new Queen(end, false, new Image("blackQueen.png"));
       }
       else{
         board[end.getX()][end.getY()] = p;
