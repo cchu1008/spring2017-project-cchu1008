@@ -1,12 +1,19 @@
 package main.driver;
 
+
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import main.helper.Button;
+import main.helper.ExitListener;
 
 
 public class End extends BasicGameState {
@@ -15,6 +22,8 @@ public class End extends BasicGameState {
   
   private GameDriver game;
   private Player winner;
+  private Button exit;
+  private Font f;
   
   public End(){
     //Not sure why we need this.
@@ -24,21 +33,19 @@ public class End extends BasicGameState {
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     this.game = (GameDriver)game;
     this.winner = ((GameDriver)game).players[GameDriver.turn];
+    this.exit = new Button(container, new Image("exit.png"), (int)(GameDriver.X_SIZE * 0.5), (int)(GameDriver.Y_SIZE * 0.7), 200, 52, new ExitListener(container));
+    this.exit.setDownImage(new Image("exitSel.png"));
+    f = new TrueTypeFont(new java.awt.Font("Serif", 0, 40), false);
   }
 
   @Override
   public void render(GameContainer container, StateBasedGame game, 
       Graphics g) throws SlickException {
-    g.setColor(Color.red);
-    g.drawString("This is the End State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8f);
-    g.drawString("This is the winner: " + this.winner.getName(), 
-        GameDriver.X_SIZE * 0.3f, GameDriver.Y_SIZE / 3f);
+    g.setFont(this.f);
     g.setColor(Color.white);
-    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6f);
-    g.drawString("Numbers 0-3 will switch between states.", 
-        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4f);
-    
-
+    g.drawString("The winner is: " + this.winner.getName(), 
+        GameDriver.X_SIZE * 0.2f, GameDriver.Y_SIZE / 4f);
+    exit.render(container, g);
 
   }
 

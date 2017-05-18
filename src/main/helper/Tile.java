@@ -6,8 +6,10 @@ import java.util.logging.Logger;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.gui.MouseOverArea;
+import org.newdawn.slick.state.GameState;
 
 import main.driver.GameDriver;
+import main.driver.Play;
 import main.driver.Player;
 
 
@@ -15,6 +17,12 @@ public class Tile extends MouseOverArea {
   private int row;
   private int col;
   private Player[] players;
+  private GameDriver game;
+  private GameState play;
+  private Image overImage;
+  private Image normalImage;
+  private Image currentImage;
+  private boolean amValid = false;
   
   /** Button Function.
    * 
@@ -29,11 +37,25 @@ public class Tile extends MouseOverArea {
    * @param height : height
    */
   public Tile(int row, int col, Player[] p, GameContainer container, 
-      Image image, int x, int y, int width, int height) {
-    super(container, image, x, y, width, height);
+      Image image, Position pos, Position widthHeight, GameDriver game, GameState play) {
+    super(container, image, pos.getX(), pos.getY(), widthHeight.getX(), widthHeight.getY());
     this.row = row;
     this.col = col;
     this.players = p;
+    this.game = game;
+    this.play = play;
+    this.normalImage = image;
+    this.currentImage = normalImage;
+  }
+  
+  public void mousedOver(){
+    this.setNormalImage(this.overImage);
+    this.currentImage = this.overImage;
+  }
+  
+  public void reset(){
+    this.setNormalImage(this.normalImage);
+    this.currentImage = this.normalImage;
   }
   
   @Override
@@ -44,6 +66,19 @@ public class Tile extends MouseOverArea {
       Logger.getLogger("BoardLogger").log(Level.SEVERE, null, "Button clicked at (" + this.row + ", " + this.col + ")");
     }
   }
+  
+  @Override
+  public void setMouseOverImage(Image im){
+    super.setMouseOverImage(im);
+    this.overImage = im;
+  }
+  
+  public void check(){
+    if(isMouseOver()){
+      this.game.lightUpValid(this.play, new Position(this.row, this.col));
+    }
+  }
+  
   
   public int getRow() {
     return this.row;

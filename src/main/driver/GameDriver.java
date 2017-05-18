@@ -5,6 +5,7 @@ import main.piece.Pawn;
 import main.piece.Piece;
 import main.piece.Queen;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 
@@ -94,6 +96,17 @@ public class GameDriver extends StateBasedGame {
   
   public static boolean isEmpty(Position p) {
     return GameDriver.board[p.getX()][p.getY()] == null;
+  }
+  
+  public void lightUpValid(GameState play, Position pos){
+    if(!GameDriver.isEmpty(pos)){
+      ArrayList<Position> valid = (ArrayList<Position>)this.board[pos.getX()][pos.getY()].getValid();
+      valid.add(0, pos);
+      ((Play)play).lightTiles(valid);
+    }
+    else {
+      ((Play)play).lightTiles(new ArrayList<Position>());
+    }
   }
   
   /** .

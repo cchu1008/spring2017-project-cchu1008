@@ -37,7 +37,7 @@ public class Menu extends BasicGameState {
     chooseHuman = new Button(container, new Image("hVHChoiceButtonSel.png"), (int)(GameDriver.X_SIZE * 0.52), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new HumanNextStateListener(Setup.ID, this.game));
     chooseComputer.setDownImage(new Image("hVCChoiceButton.png"));
     chooseHuman.setDownImage(new Image("hvHChoiceButton.png"));
-    chess = new Image("Chess.png");
+    chess = new Image("chess.png");
   }
 
   @Override
