@@ -26,7 +26,7 @@ public class GameDriver extends StateBasedGame {
   public static final int END = 3;
   public static final int FPS = 300;
   public static final int X_SIZE = 700;
-  public static final int Y_SIZE = 650;
+  public static final int Y_SIZE = 700;
   
   public static Piece[][] board = new Piece[8][8];
   public Player[] players = new Player[2];

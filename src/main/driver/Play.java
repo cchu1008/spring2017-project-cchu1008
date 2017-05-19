@@ -9,6 +9,7 @@ import main.piece.Pawn;
 import main.piece.Queen;
 import main.piece.Rook;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +33,7 @@ public class Play extends BasicGameState {
   
   private Tile[][] tiles = new Tile[8][8];
   private ArrayList<Position> validMoves;
+  private String turnColor;
   
   public Play(){
     //Not sure why we need this
@@ -54,6 +56,16 @@ public class Play extends BasicGameState {
   @Override
   public void render(GameContainer container, StateBasedGame game, 
       Graphics g) throws SlickException {
+    
+    turnColor = "White";
+    
+    if(((GameDriver)game).turn == 1){
+      turnColor = "Black";
+    }
+    
+    g.setColor(org.newdawn.slick.Color.white);
+    g.drawString("Turn: " + turnColor + " (" + ((GameDriver)game).players[((GameDriver)game).turn].getName() + ")" , GameDriver.X_SIZE * 0.35f, GameDriver.Y_SIZE * 0.05f);
+    
     
     drawBoard(container, g);
     drawPieces(g);
@@ -127,13 +139,13 @@ public class Play extends BasicGameState {
     Image vborder = new Image("borderVerticle.jpg");
     
     for (int i = 1; i < 13; i++) {
-      hborder.draw(50f * i, 15, 0.055f);
-      hborder.draw(50f * i, 603, 0.055f);
+      hborder.draw(50f * i, 75, 0.055f);
+      hborder.draw(50f * i, 663, 0.055f);
     }
     
     for (int i = 0; i < 12; i++) {
-      vborder.draw(50, 15f + (50 * i), 0.055f);
-      vborder.draw(638, 15f + (50 * i), 0.055f);
+      vborder.draw(50, 75f + (50 * i), 0.055f);
+      vborder.draw(638, 75f + (50 * i), 0.055f);
     }
     
     drawTiles(container, g);
@@ -149,21 +161,21 @@ public class Play extends BasicGameState {
       for (int i = 0; i < 8; i += 2) {
         this.tiles[i][j] = new Tile(i, j, players, container, 
             new Image("darkTile.jpg"), 
-            new Position(65 + (143 * (i / 2)), 30 + (143 * (j / 2))), new Position(72, 72), game, this);
+            new Position(65 + (143 * (i / 2)), 90 + (143 * (j / 2))), new Position(72, 72), game, this);
         this.tiles[i][j].setMouseOverImage(new Image("darkTileHighlighted.jpg"));
         this.tiles[i + 1][j] = new Tile(i + 1, j, players, container, 
             new Image("lightTile.jpg"), 
-            new Position(137 + (143 * (i / 2)), 30 + (143 * (j / 2))), new Position(72, 72), game, this);
+            new Position(137 + (143 * (i / 2)), 90 + (143 * (j / 2))), new Position(72, 72), game, this);
         this.tiles[i + 1][j].setMouseOverImage(
             new Image("lightTileHighlighted.jpg"));
         this.tiles[i][j + 1] = new Tile(i, j + 1, players, container, 
             new Image("lightTile.jpg"), 
-            new Position(65 + (143 * (i / 2)), 102 + (143 * (j / 2))), new Position(72, 72), game, this);
+            new Position(65 + (143 * (i / 2)), 162 + (143 * (j / 2))), new Position(72, 72), game, this);
         this.tiles[i][j + 1].setMouseOverImage(
             new Image("lightTileHighlighted.jpg"));
         this.tiles[i + 1][j + 1] = new Tile(i + 1, j + 1, players, container, 
             new Image("darkTile.jpg"), 
-            new Position(137 + (143 * (i / 2)), 102 + (143 * (j / 2))), new Position(72, 72), game, this);
+            new Position(137 + (143 * (i / 2)), 162 + (143 * (j / 2))), new Position(72, 72), game, this);
         this.tiles[i + 1][j + 1].setMouseOverImage(
             new Image("darkTileHighlighted.jpg"));
       }
