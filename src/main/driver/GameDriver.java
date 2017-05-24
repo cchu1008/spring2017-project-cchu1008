@@ -55,6 +55,7 @@ public class GameDriver extends StateBasedGame {
    */
   public static void move(Position start, Position end, StateBasedGame game, GameContainer container) throws SlickException {
     Piece p = board[start.getX()][start.getY()];
+    Logger moveDebug = Logger.getLogger("MoveDebug");
     board[start.getX()][start.getY()] = null;
     p.move(end);
     if (!GameDriver.isEmpty(end)){
@@ -75,6 +76,7 @@ public class GameDriver extends StateBasedGame {
         board[end.getX()][end.getY()] = p;
       }
       turn = 1 - turn;
+      moveDebug.log(Level.INFO, "CPU Game: " + Menu.type + "Turn: " + turn, "");
       if(Menu.type && turn == 1){
         ((GameDriver)game).players[1].movePiece();
       }
@@ -84,6 +86,10 @@ public class GameDriver extends StateBasedGame {
     else{
       board[end.getX()][end.getY()] = p;
       turn = 1 - turn;
+      moveDebug.log(Level.INFO, "CPU Game: " + Menu.type + "Turn: " + turn, "");
+      if(Menu.type && turn == 1){
+        ((GameDriver)game).players[1].movePiece();
+      }
       updateValid();
       printBoard();
     }

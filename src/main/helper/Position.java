@@ -9,6 +9,10 @@ public class Position extends Object {
     this.y = y;
   }
   
+  public String toString(){
+    return "(" + this.x + ", " + this.y + ")";
+  }
+  
   public void setX(int x) {
     this.x = x;
   }

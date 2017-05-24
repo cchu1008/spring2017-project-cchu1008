@@ -1,8 +1,10 @@
 package main.driver;
 
+import main.helper.Move;
 import main.helper.Position;
 import main.piece.Piece;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -102,8 +104,39 @@ public abstract class Player {
   }
   
   public void movePiece(){
-    this.pickTile(new Position(4, 6));
-    this.pickTile(new Position(4, 4));
+    ArrayList<Move> availableMoves = getAvailableMoves();
+    Move picked = null;
+    
+    if(!availableMoves.isEmpty()){
+      picked = availableMoves.get((int) (Math.random()* availableMoves.size()));
+      Logger moveLogger = Logger.getLogger("MoveLogger");
+      
+      this.pickTile(picked.getStart());
+      moveLogger.log(Level.INFO, "Start: " + picked.getStart().toString(), "");
+      
+      this.pickTile(picked.getEnd());
+      moveLogger.log(Level.INFO, "End: " + picked.getEnd().toString(), "");
+    }
+    
+  }
+  
+  public ArrayList<Move> getAvailableMoves(){
+    ArrayList<Move> availableMoves = new ArrayList<Move>();
+    ArrayList<Position> chosen = null;
+    
+    for(int j = 0; j < 8; j++){
+      for(int i = 0; i < 8; i++){
+        if(this.game.board[i][j] != null && this.game.board[i][j].isWhite() == this.isWhite()){
+          chosen = (ArrayList<Position>) this.game.board[i][j].getValid();
+          for(int k = 0; k < chosen.size(); k++){
+            if(!this.game.board[i][j].getLocation().equals(chosen.get(k))){
+              availableMoves.add(new Move(this.game.board[i][j].getLocation(), chosen.get(k)));
+            }
+          }
+        }
+      }
+    }
+    return availableMoves;
   }
   
 }
