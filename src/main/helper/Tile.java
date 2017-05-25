@@ -9,7 +9,6 @@ import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.GameState;
 
 import main.driver.GameDriver;
-import main.driver.Play;
 import main.driver.Player;
 
 
@@ -21,7 +20,6 @@ public class Tile extends MouseOverArea {
   private GameState play;
   private Image overImage;
   private Image normalImage;
-  private Image currentImage;
   
   /** Button Function.
    * 
@@ -44,17 +42,14 @@ public class Tile extends MouseOverArea {
     this.game = game;
     this.play = play;
     this.normalImage = image;
-    this.currentImage = normalImage;
   }
   
   public void mousedOver(){
     this.setNormalImage(this.overImage);
-    this.currentImage = this.overImage;
   }
   
   public void reset(){
     this.setNormalImage(this.normalImage);
-    this.currentImage = this.normalImage;
   }
   
   @Override
