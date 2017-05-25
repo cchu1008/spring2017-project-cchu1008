@@ -126,11 +126,11 @@ public abstract class Player {
     
     for(int j = 0; j < 8; j++){
       for(int i = 0; i < 8; i++){
-        if(this.game.board[i][j] != null && this.game.board[i][j].isWhite() == this.isWhite()){
-          chosen = (ArrayList<Position>) this.game.board[i][j].getValid();
+        if(GameDriver.board[i][j] != null && GameDriver.board[i][j].isWhite() == this.isWhite()){
+          chosen = (ArrayList<Position>) GameDriver.board[i][j].getValid();
           for(int k = 0; k < chosen.size(); k++){
-            if(!this.game.board[i][j].getLocation().equals(chosen.get(k))){
-              availableMoves.add(new Move(this.game.board[i][j].getLocation(), chosen.get(k)));
+            if(!GameDriver.board[i][j].getLocation().equals(chosen.get(k))){
+              availableMoves.add(new Move(GameDriver.board[i][j].getLocation(), chosen.get(k)));
             }
           }
         }

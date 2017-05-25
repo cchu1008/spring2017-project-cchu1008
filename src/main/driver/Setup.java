@@ -119,13 +119,13 @@ public class Setup extends BasicGameState {
   }
   
   public static void makeHumanVCompPlayers(StateBasedGame game, GameContainer container){
-    ((GameDriver)game).players[0].setName(Setup.nameOne.getText());
-    ((GameDriver)game).players[1] = new ComputerPlayer(game, container);
+    GameDriver.players[0].setName(Setup.nameOne.getText());
+    GameDriver.players[1] = new ComputerPlayer(game, container);
   }
   
   public static void makeHumanVHumanPlayers(StateBasedGame game){
-    ((GameDriver)game).players[0].setName(Setup.nameOne.getText());
-    ((GameDriver)game).players[1].setName(Setup.nameTwo.getText());
+    GameDriver.players[0].setName(Setup.nameOne.getText());
+    GameDriver.players[1].setName(Setup.nameTwo.getText());
   }
 
 }

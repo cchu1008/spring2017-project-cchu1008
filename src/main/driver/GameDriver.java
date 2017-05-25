@@ -29,7 +29,7 @@ public class GameDriver extends StateBasedGame {
   public static final int Y_SIZE = 700;
   
   public static Piece[][] board = new Piece[8][8];
-  public Player[] players = new Player[2];
+  public static Player[] players = new Player[2];
   
   public static int turn = 0;
   
@@ -55,7 +55,6 @@ public class GameDriver extends StateBasedGame {
    */
   public static void move(Position start, Position end, StateBasedGame game, GameContainer container) throws SlickException {
     Piece p = board[start.getX()][start.getY()];
-    Logger moveDebug = Logger.getLogger("MoveDebug");
     board[start.getX()][start.getY()] = null;
     p.move(end);
     if (!GameDriver.isEmpty(end)){
@@ -66,32 +65,44 @@ public class GameDriver extends StateBasedGame {
       }
     }
     if (p.getName().equals(" Pawn ")){
-      if(((Pawn)p).start.getY() == 1 && (end.getY() == 7)){
-        board[end.getX()][end.getY()] = new Queen(end, true, new Image("whiteQueen.png"));
-      }
-      else if(((Pawn)p).start.getY() == 6 && (end.getY() == 0)){
-        board[end.getX()][end.getY()] = new Queen(end, false, new Image("blackQueen.png"));
-      }
-      else{
-        board[end.getX()][end.getY()] = p;
-      }
-      turn = 1 - turn;
-      moveDebug.log(Level.INFO, "CPU Game: " + Menu.type + "Turn: " + turn, "");
-      if(Menu.type && turn == 1){
-        ((GameDriver)game).players[1].movePiece();
-      }
-      updateValid();
-      printBoard();
+      pawnQueening((Pawn)p, end);
+      advanceTurn();
     }
     else{
       board[end.getX()][end.getY()] = p;
-      turn = 1 - turn;
-      moveDebug.log(Level.INFO, "CPU Game: " + Menu.type + "Turn: " + turn, "");
-      if(Menu.type && turn == 1){
-        ((GameDriver)game).players[1].movePiece();
+      advanceTurn();
+    }
+  }
+  
+  public static void advanceTurn(){
+    Logger moveDebug = Logger.getLogger("MoveDebug");
+    turn = 1 - turn;
+    moveDebug.log(Level.INFO, "CPU Game: " + Menu.type + "Turn: " + turn, "");
+    if(Menu.type && turn == 1){
+      GameDriver.players[1].movePiece();
+    }
+    updateValid();
+    printBoard();
+  }
+  
+  public static void pawnQueening(Pawn p, Position end){
+    Logger pawnLogger = Logger.getLogger("PawnLogger");
+    if(((Pawn)p).start.getY() == 1 && (end.getY() == 7)){
+      try {
+        board[end.getX()][end.getY()] = new Queen(end, true, new Image("whiteQueen.png"));
+      } catch (SlickException e) {
+        pawnLogger.log(Level.SEVERE, "Bad Image for whiteQueen", "");
       }
-      updateValid();
-      printBoard();
+    }
+    else if(((Pawn)p).start.getY() == 6 && (end.getY() == 0)){
+      try {
+        board[end.getX()][end.getY()] = new Queen(end, false, new Image("blackQueen.png"));
+      } catch (SlickException e) {
+        pawnLogger.log(Level.SEVERE, "Bad Image for blackQueen", "");
+      }
+    }
+    else{
+      board[end.getX()][end.getY()] = p;
     }
   }
   
@@ -106,7 +117,7 @@ public class GameDriver extends StateBasedGame {
   
   public void lightUpValid(GameState play, Position pos){
     if(!GameDriver.isEmpty(pos)){
-      ArrayList<Position> valid = (ArrayList<Position>)this.board[pos.getX()][pos.getY()].getValid();
+      ArrayList<Position> valid = (ArrayList<Position>)board[pos.getX()][pos.getY()].getValid();
       valid.add(0, pos);
       ((Play)play).lightTiles(valid);
     }

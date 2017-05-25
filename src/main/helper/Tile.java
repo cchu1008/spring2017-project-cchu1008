@@ -22,7 +22,6 @@ public class Tile extends MouseOverArea {
   private Image overImage;
   private Image normalImage;
   private Image currentImage;
-  private boolean amValid = false;
   
   /** Button Function.
    * 

@@ -32,7 +32,7 @@ public class End extends BasicGameState {
   @Override
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     this.game = (GameDriver)game;
-    this.winner = ((GameDriver)game).players[GameDriver.turn];
+    this.winner = GameDriver.players[GameDriver.turn];
     this.exit = new Button(container, new Image("exit.png"), (int)(GameDriver.X_SIZE * 0.5), (int)(GameDriver.Y_SIZE * 0.7), 200, 52, new ExitListener(container));
     this.exit.setDownImage(new Image("exitSel.png"));
     f = new TrueTypeFont(new java.awt.Font("Serif", 0, 40), false);

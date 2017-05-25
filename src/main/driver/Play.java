@@ -9,7 +9,6 @@ import main.piece.Pawn;
 import main.piece.Queen;
 import main.piece.Rook;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,7 +42,7 @@ public class Play extends BasicGameState {
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     
     this.game = (GameDriver)game;
-    this.players = ((GameDriver)game).players;
+    this.players = GameDriver.players;
     this.validMoves = new ArrayList<Position>();
     
     generateTiles(container, (GameDriver)game);
@@ -59,12 +58,12 @@ public class Play extends BasicGameState {
     
     turnColor = "White";
     
-    if(((GameDriver)game).turn == 1){
+    if(GameDriver.turn == 1){
       turnColor = "Black";
     }
     
     g.setColor(org.newdawn.slick.Color.white);
-    g.drawString("Turn: " + turnColor + " (" + ((GameDriver)game).players[((GameDriver)game).turn].getName() + ")" , GameDriver.X_SIZE * 0.35f, GameDriver.Y_SIZE * 0.05f);
+    g.drawString("Turn: " + turnColor + " (" + GameDriver.players[GameDriver.turn].getName() + ")" , GameDriver.X_SIZE * 0.35f, GameDriver.Y_SIZE * 0.05f);
     
     
     drawBoard(container, g);
