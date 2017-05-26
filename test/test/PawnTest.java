@@ -116,5 +116,11 @@ public class PawnTest {
     
     assertEquals(moves, (ArrayList<Position>)(p.getValid()));
   }
+  
+  @Test
+  public void testPieceHash(){
+    p = new Pawn(new Position(1, 1), false, ImageType.BLACK_PAWN);
+    assertEquals(7267, p.hashCode());
+  }
 
 }

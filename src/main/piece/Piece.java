@@ -163,7 +163,22 @@ public abstract class Piece {
 	
 	@Override
 	public boolean equals(Object obj){
+	  
+	  if(obj == null)
+	    return false;
+	  
+	  if(this.getClass() != obj.getClass())
+	    return false;
+	  
 	  Piece p = (Piece)obj;
 	  return this.name == p.getName() && this.white == p.isWhite() && this.location == p.getLocation();
+	}
+	
+	@Override
+	public int hashCode(){
+	  int whiteInt = 0;
+	  if(this.white)
+	    whiteInt = 1;
+	  return this.location.hashCode() * 13 + whiteInt;
 	}
 }
