@@ -24,7 +24,7 @@ public class King extends Piece{
 		//Also add check for GameDriver.board edge
 		
 		for(int i = -1; i < 2; i++){
-			//top row
+			//bottom row
 			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1)) && (GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() + 1] == null || GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() + 1].isWhite() != this.isWhite())){
 				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1));
 			}
@@ -32,7 +32,7 @@ public class King extends Piece{
 			if(i != 0 && onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY())) && (GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY()] == null || GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY()].isWhite() != this.isWhite())){
 				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY()));
 			}
-			//lower
+			//top row
 			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 1)) && (GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() - 1] == null || GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() - 1].isWhite() != this.isWhite())){
 				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 1));
 			}

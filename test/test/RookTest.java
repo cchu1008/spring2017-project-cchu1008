@@ -85,6 +85,9 @@ public class RookTest {
     moves.add(new Position(0, 2));
     
     assertEquals(moves, (ArrayList<Position>)(rook.getValid()));
+    
+    assertTrue(rook.isValid(new Position(3, 0)));
+    assertFalse(rook.isValid(new Position(4, 4)));
   }
 
 }

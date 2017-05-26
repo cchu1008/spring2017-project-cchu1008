@@ -106,6 +106,9 @@ public class GameDriverTest {
       }
     }
     
+    boolean reportNotEquals = compare[0][0].equals(GameDriver.board[5][1]);
+    assertFalse(reportNotEquals);
+    
   }
 
 }
