@@ -5,6 +5,7 @@ import main.helper.Position;
 import main.piece.Piece;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,7 +15,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 public abstract class Player {
-  public String name;
+  private String name;
   private boolean white;
   public GameDriver game;
   private Position begin = new Position(-1, -1);
@@ -32,7 +33,7 @@ public abstract class Player {
   public Player(String name, boolean white, StateBasedGame game, GameContainer container) {
     this.name = name;
     this.white = white;
-    this.game = (GameDriver) game;
+    this.game = (GameDriver)game;
     this.container = container;
   }
   
@@ -104,7 +105,7 @@ public abstract class Player {
   }
   
   public void movePiece(){
-    ArrayList<Move> availableMoves = getAvailableMoves();
+    ArrayList<Move> availableMoves = (ArrayList<Move>)getAvailableMoves();
     Move picked = null;
     
     if(!availableMoves.isEmpty()){
@@ -120,23 +121,28 @@ public abstract class Player {
     
   }
   
-  public ArrayList<Move> getAvailableMoves(){
-    ArrayList<Move> availableMoves = new ArrayList<Move>();
-    ArrayList<Position> chosen = null;
+  public List<Move> getAvailableMoves(){
+    ArrayList<Move> availableMoves = new ArrayList<>();
     
     for(int j = 0; j < 8; j++){
       for(int i = 0; i < 8; i++){
-        if(GameDriver.board[i][j] != null && GameDriver.board[i][j].isWhite() == this.isWhite()){
-          chosen = (ArrayList<Position>) GameDriver.board[i][j].getValid();
-          for(int k = 0; k < chosen.size(); k++){
-            if(!GameDriver.board[i][j].getLocation().equals(chosen.get(k))){
-              availableMoves.add(new Move(GameDriver.board[i][j].getLocation(), chosen.get(k)));
-            }
-          }
-        }
+        addMoves(availableMoves, i, j);
       }
     }
     return availableMoves;
+  }
+  
+  public void addMoves(ArrayList<Move> availableMoves, int i, int j){
+    ArrayList<Position> chosen = null;
+    
+    if(GameDriver.board[i][j] != null && GameDriver.board[i][j].isWhite() == this.isWhite()){
+      chosen = (ArrayList<Position>) GameDriver.board[i][j].getValid();
+      for(int k = 0; k < chosen.size(); k++){
+        if(!GameDriver.board[i][j].getLocation().equals(chosen.get(k))){
+          availableMoves.add(new Move(GameDriver.board[i][j].getLocation(), chosen.get(k)));
+        }
+      }
+    }
   }
   
 }
