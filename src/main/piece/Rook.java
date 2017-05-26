@@ -1,12 +1,13 @@
 package main.piece;
 import java.util.List;
 
+import main.helper.ImageType;
 import main.helper.Position;
-import org.newdawn.slick.Image;
+
 public class Rook extends Piece{
 	public Position start;
 	
-	public Rook(Position p, boolean white, Image image){
+	public Rook(Position p, boolean white, ImageType image){
 		super(p, white, image);
 		this.start = p;
 		this.setValid(validMoves());

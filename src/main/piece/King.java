@@ -2,14 +2,15 @@ package main.piece;
 import java.util.List;
 
 import main.driver.GameDriver;
+import main.helper.ImageType;
 import main.helper.Position;
 
 import java.util.ArrayList;
-import org.newdawn.slick.Image;
+
 public class King extends Piece{
 	public Position start;
 	
-	public King(Position p, boolean white, Image image){
+	public King(Position p, boolean white, ImageType image){
 		super(p, white, image);
 		this.start = p;
 		this.setValid(validMoves());

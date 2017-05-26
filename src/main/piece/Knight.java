@@ -2,13 +2,14 @@ package main.piece;
 import java.util.List;
 
 import main.driver.GameDriver;
+import main.helper.ImageType;
 import main.helper.Position;
 
 import java.util.ArrayList;
-import org.newdawn.slick.Image;
+
 public class Knight extends Piece{
 	
-	public Knight(Position p, boolean white, Image image){
+	public Knight(Position p, boolean white, ImageType image){
 		super(p, white, image);
 		this.setValid(validMoves());
 		this.setName("Knight");

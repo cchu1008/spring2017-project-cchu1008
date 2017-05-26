@@ -2,14 +2,15 @@ package main.piece;
 import java.util.List;
 
 import main.driver.GameDriver;
+import main.helper.ImageType;
 import main.helper.Position;
 
 import java.util.ArrayList;
-import org.newdawn.slick.Image;
+
 public class Pawn extends Piece{
 	public Position start;
 	
-	public Pawn(Position p, boolean white, Image image){
+	public Pawn(Position p, boolean white, ImageType image){
 		super(p, white, image);
 		this.start = p;
 		this.setValid(validMoves());
@@ -20,7 +21,7 @@ public class Pawn extends Piece{
 	public List<Position> validMoves(){
 		List<Position> moves = new ArrayList<>();
 		
-		if(this.isWhite()){
+		if(!this.isWhite()){
 			//First Move
 			if(this.start.equals(this.getLocation()) && (GameDriver.board[this.start.getX()][this.start.getY() + 1] == null) && (GameDriver.board[this.start.getX()][this.start.getY() + 2] == null))
 				moves.add(new Position(this.getLocation().getX(), this.getLocation().getY() + 2));

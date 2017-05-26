@@ -1,5 +1,6 @@
 package main.driver;
 
+import main.helper.ImageType;
 import main.helper.Position;
 import main.piece.Pawn;
 import main.piece.Piece;
@@ -11,12 +12,9 @@ import java.util.logging.Logger;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
-
-
 
 public class GameDriver extends StateBasedGame {
   public static final String GAME = "Chess";
@@ -86,20 +84,11 @@ public class GameDriver extends StateBasedGame {
   }
   
   public static void pawnQueening(Pawn p, Position end){
-    Logger pawnLogger = Logger.getLogger("PawnLogger");
     if(((Pawn)p).start.getY() == 1 && (end.getY() == 7)){
-      try {
-        board[end.getX()][end.getY()] = new Queen(end, true, new Image("whiteQueen.png"));
-      } catch (SlickException e) {
-        pawnLogger.log(Level.SEVERE, "Bad Image for whiteQueen", "");
-      }
+      board[end.getX()][end.getY()] = new Queen(end, false, ImageType.BLACK_QUEEN);
     }
     else if(((Pawn)p).start.getY() == 6 && (end.getY() == 0)){
-      try {
-        board[end.getX()][end.getY()] = new Queen(end, false, new Image("blackQueen.png"));
-      } catch (SlickException e) {
-        pawnLogger.log(Level.SEVERE, "Bad Image for blackQueen", "");
-      }
+      board[end.getX()][end.getY()] = new Queen(end, true, ImageType.WHITE_QUEEN);
     }
     else{
       board[end.getX()][end.getY()] = p;
@@ -113,6 +102,14 @@ public class GameDriver extends StateBasedGame {
   
   public static boolean isEmpty(Position p) {
     return GameDriver.board[p.getX()][p.getY()] == null;
+  }
+  
+  public static void clearBoard(){
+    for(int j = 0; j < 8; j++){
+      for(int i = 0; i < 8; i++){
+        GameDriver.board[i][j] = null;
+      }
+    }
   }
   
   public void lightUpValid(GameState play, Position pos){

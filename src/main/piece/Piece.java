@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import main.helper.*;
-import org.newdawn.slick.Image;
 
 import main.driver.GameDriver;
 
@@ -13,11 +12,11 @@ public abstract class Piece {
 	private Position location;
 	private ArrayList<Position> valid;
 	private boolean white;
-	private Image myImage;
+	private ImageType myImage;
 	private String name;
 	public GameDriver game;
 	
-	public Piece(Position p, boolean white, Image image){
+	public Piece(Position p, boolean white, ImageType image){
 		this.location = p;
 		this.white = white;
 		this.myImage = image;
@@ -146,7 +145,7 @@ public abstract class Piece {
 	public boolean isWhite(){
 		return this.white;
 	}
-	public Image getImage(){
+	public ImageType getImage(){
 		return this.myImage;
 	}
 	public void printValid(){

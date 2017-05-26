@@ -1,12 +1,12 @@
 package main.piece;
 import java.util.List;
 
+import main.helper.ImageType;
 import main.helper.Position;
-import org.newdawn.slick.Image;
 
 public class Bishop extends Piece{
 	
-	public Bishop(Position p, boolean white, Image image){
+	public Bishop(Position p, boolean white, ImageType image){
 		super(p, white, image);
 		this.setValid(validMoves());
 		this.setName("Bishop");
