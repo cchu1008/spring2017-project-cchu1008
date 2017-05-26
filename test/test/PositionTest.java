@@ -59,5 +59,13 @@ public class PositionTest {
     
     assertEquals(559, p.hashCode());
   }
+  
+  @Test
+  public void testToString(){
+    p = new Position(1, 1);
+    String s = "(1, 1)";
+    
+    assertEquals(s, p.toString());
+  }
 
 }

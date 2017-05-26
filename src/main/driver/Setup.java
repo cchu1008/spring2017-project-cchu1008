@@ -33,7 +33,7 @@ public class Setup extends BasicGameState {
     this.game = (GameDriver)game;
     this.next = new Button(container, new Image("nextButton.png"), (int)(GameDriver.X_SIZE * 0.8), (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new PlayNextStateListener(Play.ID, this.game));
     next.setDownImage(new Image("nextButtonSel.png"));
-    ((GameDriver)game).setPlayers((Player)new HumanPlayer("Player One", true, game, container), (Player)new HumanPlayer("Player Two", false, game, container));
+    GameDriver.setPlayers((Player)new HumanPlayer("Player One", true, game, container), (Player)new HumanPlayer("Player Two", false, game, container));
     
     Setup.nameOne = new TextField(container, 
         new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true), 

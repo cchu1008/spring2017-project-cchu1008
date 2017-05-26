@@ -86,5 +86,35 @@ public class PawnTest {
     
     assertEquals(moves, (ArrayList<Position>)(p.getValid()));
   }
+  
+  @Test
+  public void testValidAttackLeft(){
+    GameDriver.clearBoard();
+    Pawn blocker = new Pawn(new Position(1, 2), true, ImageType.WHITE_PAWN);
+    GameDriver.board[1][2] = blocker;
+    
+    p = new Pawn(new Position(2, 1), false, ImageType.BLACK_PAWN);
+    GameDriver.board[2][1] = p;
+    
+    moves.add(new Position(2, 3));
+    moves.add(new Position(2, 2));
+    moves.add(new Position(1, 2));
+    
+    assertEquals(moves, (ArrayList<Position>)(p.getValid()));
+    
+    GameDriver.clearBoard();
+    moves = new ArrayList<Position>();
+    blocker = new Pawn(new Position(1, 5), false, ImageType.BLACK_PAWN);
+    GameDriver.board[1][5] = blocker;
+    
+    p = new Pawn(new Position(2, 6), true, ImageType.WHITE_PAWN);
+    GameDriver.board[2][6] = p;
+    
+    moves.add(new Position(2, 4));
+    moves.add(new Position(2, 5));
+    moves.add(new Position(1, 5));
+    
+    assertEquals(moves, (ArrayList<Position>)(p.getValid()));
+  }
 
 }

@@ -95,7 +95,7 @@ public class GameDriver extends StateBasedGame {
     }
   }
   
-  public void setPlayers(Player one, Player two){
+  public static void setPlayers(Player one, Player two){
     players[0] = one;
     players[1] = two;
   }
@@ -130,7 +130,6 @@ public class GameDriver extends StateBasedGame {
     Logger boardLogger = Logger.getLogger("BoardLogger");
     String fin = "\n";
     for (int i = 0; i < 8; i++) {
-      System.out.print("| ");
       for (int j = 0; j < 8; j++) {
         if (!isEmpty(new Position(j, i))) {
           fin += GameDriver.board[j][i].getName()  + " | ";

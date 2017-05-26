@@ -160,4 +160,10 @@ public abstract class Piece {
 	public void setName(String s){
 		this.name = s;
 	}
+	
+	@Override
+	public boolean equals(Object obj){
+	  Piece p = (Piece)obj;
+	  return this.name == p.getName() && this.white == p.isWhite() && this.location == p.getLocation();
+	}
 }
