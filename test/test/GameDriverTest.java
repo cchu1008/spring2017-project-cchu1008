@@ -31,12 +31,14 @@ public class GameDriverTest {
 
   @Test
   public void testEmptySpace(){
+    GameDriver.clearBoard();
     GameDriver.board[0][3] = null;
     assertEquals(true, GameDriver.isEmpty(new Position(0, 3)));
   }
   
   @Test
   public void testPawnQueening(){
+    GameDriver.clearBoard();
     GameDriver.board[2][1] = new Pawn(new Position(2, 1), false, ImageType.BLACK_PAWN);
     Pawn p = (Pawn)(GameDriver.board[2][1]);
     

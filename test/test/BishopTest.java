@@ -19,6 +19,7 @@ public class BishopTest {
   
   @Test
   public void testValidEmpty() {
+    GameDriver.clearBoard();
     bishop = new Bishop(new Position(3, 3), false, ImageType.BLACK_BISHOP);
     GameDriver.board[3][3] = bishop;
     
