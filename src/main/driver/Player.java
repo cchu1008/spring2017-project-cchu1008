@@ -68,7 +68,6 @@ public abstract class Player {
         && (GameDriver.board[p.getX()][p.getY()].isWhite() == this.isWhite())) {
       this.begin.setPos(p);
       this.piece = GameDriver.board[p.getX()][p.getY()];
-      this.piece.printValid();
       boardLogger.log(Level.SEVERE, null, normal);
     } else if (!this.begin.equals(new Position(-1, -1)) && this.end.equals(new Position(-1, -1))) {
       if (this.piece.isValid(p)) {

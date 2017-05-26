@@ -22,6 +22,8 @@ public class KnightTest {
     knight = new Knight(new Position(3, 3), false, ImageType.BLACK_KNIGHT);
     GameDriver.board[3][3] = knight;
     
+    assertEquals(ImageType.BLACK_KNIGHT, knight.getImage());
+    
     moves.add(new Position(2, 5));
     moves.add(new Position(2, 1));
     

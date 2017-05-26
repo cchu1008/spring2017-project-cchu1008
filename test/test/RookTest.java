@@ -21,6 +21,8 @@ public class RookTest {
     GameDriver.clearBoard();
     rook = new Rook(new Position(5, 5), false, ImageType.BLACK_ROOK);
     GameDriver.board[5][5] = rook;
+    
+    assertEquals(ImageType.BLACK_ROOK, rook.getImage());
     //Right, Up, Down, Left
     
     moves.add(new Position(6, 5));

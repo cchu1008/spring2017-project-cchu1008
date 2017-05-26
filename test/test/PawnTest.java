@@ -20,6 +20,9 @@ public class PawnTest {
     GameDriver.clearBoard();
     p = new Pawn(new Position(2, 1), false, ImageType.BLACK_PAWN);
     GameDriver.board[2][1] = p;
+    
+    assertEquals(ImageType.BLACK_PAWN, p.getImage());
+    
     moves.add(new Position(2, 3));
     moves.add(new Position(2, 2));
     

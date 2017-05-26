@@ -1,8 +1,6 @@
 package main.piece;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import main.helper.*;
 
@@ -133,30 +131,31 @@ public abstract class Piece {
 		}
 		return moves;
 	}
+	
 	public Position getLocation(){
 		return this.location;
 	}
+	
 	public void setLocation(Position p){
 		this.location = p;
 	}
+	
 	public boolean onBoard(Position p){
 		return p.getX() >= 0 && p.getX() < 8 && p.getY() >= 0 && p.getY() < 8;
 	}
+	
 	public boolean isWhite(){
 		return this.white;
 	}
+	
 	public ImageType getImage(){
 		return this.myImage;
 	}
-	public void printValid(){
-		validMoves();
-		for(Position p: this.valid){
-		  Logger.getLogger("PositionLogger").log(Level.SEVERE, null, "Valid: (" + p.getX() + ", " + p.getY() + ")");
-		}
-	}
+	
 	public String getName(){
 		return this.name;
 	}
+	
 	public void setName(String s){
 		this.name = s;
 	}

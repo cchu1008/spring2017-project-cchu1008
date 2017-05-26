@@ -21,6 +21,7 @@ public class KingTest {
     GameDriver.clearBoard();
     king = new King(new Position(3, 3), false, ImageType.BLACK_KING);
     GameDriver.board[3][3] = king;
+    assertEquals(ImageType.BLACK_KING, king.getImage());
     
 
     moves.add(new Position(2, 4));

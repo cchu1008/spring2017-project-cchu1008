@@ -23,6 +23,8 @@ public class BishopTest {
     bishop = new Bishop(new Position(3, 3), false, ImageType.BLACK_BISHOP);
     GameDriver.board[3][3] = bishop;
     
+    assertEquals(ImageType.BLACK_BISHOP, bishop.getImage());
+    
     //UP right, left
     //Down right, left
     
