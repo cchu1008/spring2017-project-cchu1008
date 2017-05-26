@@ -12,7 +12,6 @@ public abstract class Piece {
 	private boolean white;
 	private ImageType myImage;
 	private String name;
-	public GameDriver game;
 	
 	public Piece(Position p, boolean white, ImageType image){
 		this.location = p;

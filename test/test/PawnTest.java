@@ -124,6 +124,25 @@ public class PawnTest {
   public void testPieceHash(){
     p = new Pawn(new Position(1, 1), false, ImageType.BLACK_PAWN);
     assertEquals(7267, p.hashCode());
+    
+    p = new Pawn(new Position(1, 2), true, ImageType.WHITE_PAWN);
+    assertEquals(7281, p.hashCode());
+  }
+  
+  @Test
+  public void testNullPiece(){
+    p = null;
+    Pawn blocker = new Pawn(new Position(1, 1), false, ImageType.BLACK_PAWN);
+    
+    assertFalse(blocker.equals(p));
+  }
+  
+  @Test
+  public void testEqualsNonNull(){
+    p = new Pawn(new Position(1, 1), false, ImageType.BLACK_PAWN);
+    Pawn otherPawn = new Pawn(new Position(1, 6), true, ImageType.WHITE_PAWN);
+    
+    assertFalse(otherPawn.equals(p));
   }
 
 }
