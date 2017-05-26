@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import main.driver.GameDriver;
 import main.driver.Menu;
+import main.helper.Position;
 
 public class GameDriverTest {
 
@@ -18,7 +19,12 @@ public class GameDriverTest {
     GameDriver.advanceTurn();
     
     assertEquals(1, GameDriver.turn);
-    
+  }
+
+  @Test
+  public void testEmptySpace(){
+    GameDriver.board[0][3] = null;
+    assertEquals(true, GameDriver.isEmpty(new Position(0, 3)));
   }
 
 }
