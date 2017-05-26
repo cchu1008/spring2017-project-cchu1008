@@ -7,7 +7,7 @@
   <properties>
     <sonar.language>java</sonar.language>
     <sonar.projectKey>cchu1008.Chess</sonar.projectKey>
-    <sonar.coverage.exclusions>src/main/driver/Setup, src/main/driver/Play, src/main/driver/End</sonar.coverage.exclusions>
+    <sonar.coverage.exclusions>src/main/driver/Setup.java, src/main/driver/Play.java, src/main/driver/End.java</sonar.coverage.exclusions>
   </properties>
   <organization>
     <name>305</name>
