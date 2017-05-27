@@ -1,4 +1,4 @@
-package main.driver;
+package main.states;
 
 
 import org.newdawn.slick.Color;
@@ -12,8 +12,10 @@ import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import main.helper.Button;
-import main.helper.ExitListener;
+import main.buttons.Button;
+import main.buttons.ExitListener;
+import main.driver.GameDriver;
+import main.driver.Player;
 
 
 public class End extends BasicGameState {
@@ -23,10 +25,16 @@ public class End extends BasicGameState {
   private GameDriver game;
   private Player winner;
   private Button exit;
+  private Button playAgain;
   private Font f;
   
   public End(){
-    //Not sure why we need this.
+    //Don't know what to put here
+  }
+  
+  public void reset(){
+    this.exit.turnOn();
+    this.playAgain.turnOn();
   }
 
   @Override

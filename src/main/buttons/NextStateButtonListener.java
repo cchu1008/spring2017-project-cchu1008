@@ -1,11 +1,10 @@
-package main.helper;
+package main.buttons;
 
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.state.StateBasedGame;
 
 public abstract class NextStateButtonListener implements ComponentListener {
-  public boolean on = true;
   public int id;
   public StateBasedGame game;
   
@@ -16,8 +15,8 @@ public abstract class NextStateButtonListener implements ComponentListener {
   
   @Override
   public void componentActivated(AbstractComponent source) {
-    this.on = false;
-    source.setAcceptingInput(this.on);
+    ((Button)source).on = false;
+    source.setAcceptingInput(((Button)source).on);
     this.game.enterState(this.id);
   }
 

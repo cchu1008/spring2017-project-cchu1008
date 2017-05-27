@@ -1,4 +1,4 @@
-package main.driver;
+package main.states;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -9,9 +9,10 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import main.helper.Button;
-import main.helper.ComputerNextStateListener;
-import main.helper.HumanNextStateListener;
+import main.buttons.Button;
+import main.buttons.ComputerNextStateListener;
+import main.buttons.HumanNextStateListener;
+import main.driver.GameDriver;
 
 
 public class Menu extends BasicGameState {
@@ -26,12 +27,16 @@ public class Menu extends BasicGameState {
   
  
   public Menu() {
-    //Not sure why we need this.
+    //Don't know what to put here
+  }
+  
+  public void reset(){
+    this.chooseComputer.turnOn();
+    this.chooseHuman.turnOn();
   }
 
   @Override
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
-    
     this.game = (GameDriver)game;
     chooseComputer = new Button(container, new Image("hVCChoiceButtonSel.png"), (int)(GameDriver.X_SIZE * 0.22), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new ComputerNextStateListener(Setup.ID, this.game));
     chooseHuman = new Button(container, new Image("hVHChoiceButtonSel.png"), (int)(GameDriver.X_SIZE * 0.52), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new HumanNextStateListener(Setup.ID, this.game));

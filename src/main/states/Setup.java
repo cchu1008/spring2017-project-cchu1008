@@ -1,4 +1,4 @@
-package main.driver;
+package main.states;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -11,8 +11,12 @@ import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import main.helper.Button;
-import main.helper.PlayNextStateListener;
+import main.buttons.Button;
+import main.buttons.PlayNextStateListener;
+import main.driver.ComputerPlayer;
+import main.driver.GameDriver;
+import main.driver.HumanPlayer;
+import main.driver.Player;
 
 
 public class Setup extends BasicGameState {
@@ -25,7 +29,11 @@ public class Setup extends BasicGameState {
   private Button next;
   
   public Setup(){
-    //Not sure why we need this.
+    //Don't know what to put here
+  }
+  
+  public void reset(){
+    this.next.turnOn();
   }
 
   @Override

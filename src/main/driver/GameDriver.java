@@ -5,6 +5,10 @@ import main.helper.Position;
 import main.piece.Pawn;
 import main.piece.Piece;
 import main.piece.Queen;
+import main.states.End;
+import main.states.Menu;
+import main.states.Play;
+import main.states.Setup;
 
 import java.util.ArrayList;
 import java.util.logging.Level;

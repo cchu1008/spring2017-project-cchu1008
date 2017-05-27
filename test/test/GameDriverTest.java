@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import main.driver.GameDriver;
-import main.driver.Menu;
-import main.driver.Play;
 import main.helper.ImageType;
 import main.helper.Position;
 import main.piece.Bishop;
@@ -16,6 +14,8 @@ import main.piece.Pawn;
 import main.piece.Piece;
 import main.piece.Queen;
 import main.piece.Rook;
+import main.states.Menu;
+import main.states.Play;
 
 public class GameDriverTest {
 

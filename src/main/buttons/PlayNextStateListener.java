@@ -1,12 +1,12 @@
-package main.helper;
+package main.buttons;
 
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.state.StateBasedGame;
 
 import main.driver.GameDriver;
-import main.driver.Menu;
-import main.driver.Play;
-import main.driver.Setup;
+import main.states.Menu;
+import main.states.Play;
+import main.states.Setup;
 
 
 public class PlayNextStateListener extends NextStateButtonListener {

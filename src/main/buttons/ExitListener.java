@@ -1,11 +1,10 @@
-package main.helper;
+package main.buttons;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.gui.ComponentListener;
 
 public class ExitListener implements ComponentListener {
-  public boolean on = true;
   public GameContainer container;
 
   public ExitListener(GameContainer container) {
@@ -14,8 +13,8 @@ public class ExitListener implements ComponentListener {
 
   @Override
   public void componentActivated(AbstractComponent source) {
-    this.on = false;
-    source.setAcceptingInput(this.on);
+    ((Button)source).on = false;
+    source.setAcceptingInput(((Button)source).on);
     this.container.exit();
 
   }

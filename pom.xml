@@ -7,7 +7,7 @@
   <properties>
     <sonar.language>java</sonar.language>
     <sonar.projectKey>cchu1008.Chess</sonar.projectKey>
-    <sonar.coverage.exclusions>src/main/driver/Setup.java, src/main/driver/Play.java, src/main/driver/End.java, src/main/helper/Button.java, src/main/helper/ComputerNextStateListener.java, src/main/helper/ExitListener.java, src/main/helper/HumanNextStateListener.java, src/main/helper/NextStateButtonListener.java, src/main/helper/PlayNextStateListener.java, src/main/helper/Tile.java, src/main/driver/Menu.java</sonar.coverage.exclusions>
+    <sonar.coverage.exclusions>src/main/states/*, src/main/buttons/*, src/main/helper/Tile.java</sonar.coverage.exclusions>
   </properties>
   <organization>
     <name>305</name>

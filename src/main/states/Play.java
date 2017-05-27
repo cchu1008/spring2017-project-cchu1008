@@ -1,5 +1,7 @@
-package main.driver;
+package main.states;
 
+import main.driver.GameDriver;
+import main.driver.Player;
 import main.helper.ImageType;
 import main.helper.Position;
 import main.helper.Tile;
