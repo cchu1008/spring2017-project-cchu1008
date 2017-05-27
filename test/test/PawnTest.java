@@ -123,10 +123,10 @@ public class PawnTest {
   @Test
   public void testPieceHash(){
     p = new Pawn(new Position(1, 1), false, ImageType.BLACK_PAWN);
-    assertEquals(7267, p.hashCode());
+    assertEquals(7826, p.hashCode());
     
     p = new Pawn(new Position(1, 2), true, ImageType.WHITE_PAWN);
-    assertEquals(7281, p.hashCode());
+    assertEquals(7841, p.hashCode());
   }
   
   @Test

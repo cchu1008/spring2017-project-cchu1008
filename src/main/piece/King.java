@@ -59,4 +59,12 @@ public class King extends Piece{
     return this.getName() == p.getName() && this.isWhite() == p.isWhite() && this.getLocation() == p.getLocation()&& this.start.equals(p.getStart());
 
 	}
+	
+  @Override
+  public int hashCode(){
+    int whiteInt = 0;
+    if(this.isWhite())
+      whiteInt = 1;
+    return this.getLocation().hashCode() * 13 + this.getStart().hashCode() + whiteInt;
+  }
 }
