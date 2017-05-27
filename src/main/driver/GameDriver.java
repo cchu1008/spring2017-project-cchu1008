@@ -45,7 +45,7 @@ public class GameDriver extends StateBasedGame {
     this.addState(new Play());
     this.addState(new End());
     this.addState(new Setup());
-    GameDriver.turn = 0;
+    GameDriver.setTurn(0);
   }
   
   public void reset(GameContainer container){
