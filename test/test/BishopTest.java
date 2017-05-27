@@ -21,7 +21,7 @@ public class BishopTest {
   public void testValidEmpty() {
     GameDriver.clearBoard();
     bishop = new Bishop(new Position(3, 3), false, ImageType.BLACK_BISHOP);
-    GameDriver.board[3][3] = bishop;
+    GameDriver.getBoard()[3][3] = bishop;
     
     assertEquals(ImageType.BLACK_BISHOP, bishop.getImage());
     
@@ -54,10 +54,10 @@ public class BishopTest {
     GameDriver.clearBoard();
     moves = new ArrayList<Position>();
     Rook blocker = new Rook(new Position(4, 2), false, ImageType.BLACK_ROOK);
-    GameDriver.board[4][2] = blocker;
+    GameDriver.getBoard()[4][2] = blocker;
     
     bishop = new Bishop(new Position(3, 3), false, ImageType.BLACK_BISHOP);
-    GameDriver.board[3][3] = bishop;
+    GameDriver.getBoard()[3][3] = bishop;
     
     moves.add(new Position(2, 2));
     moves.add(new Position(1, 1));
@@ -81,10 +81,10 @@ public class BishopTest {
     GameDriver.clearBoard();
     moves = new ArrayList<Position>();
     Rook blocker = new Rook(new Position(4, 2), true, ImageType.WHITE_ROOK);
-    GameDriver.board[4][2] = blocker;
+    GameDriver.getBoard()[4][2] = blocker;
     
     bishop = new Bishop(new Position(3, 3), false, ImageType.BLACK_BISHOP);
-    GameDriver.board[3][3] = bishop;
+    GameDriver.getBoard()[3][3] = bishop;
     
     moves.add(new Position(4, 2));
     

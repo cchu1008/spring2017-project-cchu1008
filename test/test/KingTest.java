@@ -20,7 +20,7 @@ public class KingTest {
   public void testValidClearBoard() {
     GameDriver.clearBoard();
     king = new King(new Position(3, 3), false, ImageType.BLACK_KING);
-    GameDriver.board[3][3] = king;
+    GameDriver.getBoard()[3][3] = king;
     assertEquals(ImageType.BLACK_KING, king.getImage());
     
 
@@ -43,9 +43,9 @@ public class KingTest {
   public void testValidBlocked(){
     GameDriver.clearBoard();
     Pawn blocker = new Pawn(new Position(2, 4), false, ImageType.BLACK_PAWN);
-    GameDriver.board[2][4] = blocker;
+    GameDriver.getBoard()[2][4] = blocker;
     king = new King(new Position(3, 3), false, ImageType.BLACK_KING);
-    GameDriver.board[3][3] = king;
+    GameDriver.getBoard()[3][3] = king;
     
     moves.add(new Position(2, 3));
     moves.add(new Position(2, 2));
@@ -65,9 +65,9 @@ public class KingTest {
   public void testValidAttack(){
     GameDriver.clearBoard();
     Pawn blocker = new Pawn(new Position(2, 4), true, ImageType.WHITE_PAWN);
-    GameDriver.board[2][4] = blocker;
+    GameDriver.getBoard()[2][4] = blocker;
     king = new King(new Position(3, 3), false, ImageType.BLACK_KING);
-    GameDriver.board[3][3] = king;
+    GameDriver.getBoard()[3][3] = king;
     
     moves.add(new Position(2, 4));
     moves.add(new Position(2, 3));

@@ -65,9 +65,9 @@ public abstract class Player {
         + this.begin.getY() + ") to (" + this.end.getX() + ", " + this.end.getY() + ")";
     
     if (!GameDriver.isEmpty(p) 
-        && (GameDriver.board[p.getX()][p.getY()].isWhite() == this.isWhite())) {
+        && (GameDriver.getBoard()[p.getX()][p.getY()].isWhite() == this.isWhite())) {
       this.begin.setPos(p);
-      this.piece = GameDriver.board[p.getX()][p.getY()];
+      this.piece = GameDriver.getBoard()[p.getX()][p.getY()];
       boardLogger.log(Level.SEVERE, null, normal);
     } else if (!this.begin.equals(new Position(-1, -1)) && this.end.equals(new Position(-1, -1))) {
       if (this.piece.isValid(p)) {
@@ -134,11 +134,11 @@ public abstract class Player {
   public void addMoves(ArrayList<Move> availableMoves, int i, int j){
     ArrayList<Position> chosen = null;
     
-    if(GameDriver.board[i][j] != null && GameDriver.board[i][j].isWhite() == this.isWhite()){
-      chosen = (ArrayList<Position>) GameDriver.board[i][j].getValid();
+    if(GameDriver.getBoard()[i][j] != null && GameDriver.getBoard()[i][j].isWhite() == this.isWhite()){
+      chosen = (ArrayList<Position>) GameDriver.getBoard()[i][j].getValid();
       for(int k = 0; k < chosen.size(); k++){
-        if(!GameDriver.board[i][j].getLocation().equals(chosen.get(k))){
-          availableMoves.add(new Move(GameDriver.board[i][j].getLocation(), chosen.get(k)));
+        if(!GameDriver.getBoard()[i][j].getLocation().equals(chosen.get(k))){
+          availableMoves.add(new Move(GameDriver.getBoard()[i][j].getLocation(), chosen.get(k)));
         }
       }
     }

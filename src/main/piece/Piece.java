@@ -50,36 +50,36 @@ public abstract class Piece {
 		int thisY = this.getLocation().getY();
 		//Up and Right
 		while(onBoard(new Position(thisX + i, thisY - i))){
-			if((GameDriver.board[thisX + i][thisY - i] == null) || (GameDriver.board[thisX + i][thisY - i].isWhite() != this.isWhite()))
+			if((GameDriver.getBoard()[thisX + i][thisY - i] == null) || (GameDriver.getBoard()[thisX + i][thisY - i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX + i, thisY - i));
-			if(GameDriver.board[thisX + i][thisY - i] != null)
+			if(GameDriver.getBoard()[thisX + i][thisY - i] != null)
 				break;
 			i++;
 		}
 		i = 1;
 		//Up and Left
-		while(onBoard(new Position(thisX - i, thisY - i)) && ((GameDriver.board[thisX - i][thisY - i] == null) || (GameDriver.board[thisX - i][thisY - i].isWhite() != this.isWhite()))){
-			if((GameDriver.board[thisX - i][thisY - i] == null) || (GameDriver.board[thisX - i][thisY - i].isWhite() != this.isWhite()))
+		while(onBoard(new Position(thisX - i, thisY - i)) && ((GameDriver.getBoard()[thisX - i][thisY - i] == null) || (GameDriver.getBoard()[thisX - i][thisY - i].isWhite() != this.isWhite()))){
+			if((GameDriver.getBoard()[thisX - i][thisY - i] == null) || (GameDriver.getBoard()[thisX - i][thisY - i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX - i, thisY - i));
-			if(GameDriver.board[thisX - i][thisY - i] != null)
+			if(GameDriver.getBoard()[thisX - i][thisY - i] != null)
 				break;
 			i++;
 		}
 		i = 1;
 		//Down and Right
-		while(onBoard(new Position(thisX + i, thisY + i)) && ((GameDriver.board[thisX + i][thisY + i] == null) || (GameDriver.board[thisX + i][thisY + i].isWhite() != this.isWhite()))){
-			if((GameDriver.board[thisX + i][thisY + i] == null) || (GameDriver.board[thisX + i][thisY + i].isWhite() != this.isWhite()))
+		while(onBoard(new Position(thisX + i, thisY + i)) && ((GameDriver.getBoard()[thisX + i][thisY + i] == null) || (GameDriver.getBoard()[thisX + i][thisY + i].isWhite() != this.isWhite()))){
+			if((GameDriver.getBoard()[thisX + i][thisY + i] == null) || (GameDriver.getBoard()[thisX + i][thisY + i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX + i, thisY + i));
-			if(GameDriver.board[thisX + i][thisY + i] != null)
+			if(GameDriver.getBoard()[thisX + i][thisY + i] != null)
 				break;
 			i++;
 		}
 		i = 1;
 		//Down and Left
-		while(onBoard(new Position(thisX - i, thisY + i)) && ((GameDriver.board[thisX - i][thisY + i] == null) || (GameDriver.board[thisX - i][thisY + i].isWhite() != this.isWhite()))){
-			if((GameDriver.board[thisX - i][thisY + i] == null) || (GameDriver.board[thisX - i][thisY + i].isWhite() != this.isWhite()))
+		while(onBoard(new Position(thisX - i, thisY + i)) && ((GameDriver.getBoard()[thisX - i][thisY + i] == null) || (GameDriver.getBoard()[thisX - i][thisY + i].isWhite() != this.isWhite()))){
+			if((GameDriver.getBoard()[thisX - i][thisY + i] == null) || (GameDriver.getBoard()[thisX - i][thisY + i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX - i, thisY + i));
-			if(GameDriver.board[thisX - i][thisY + i] != null)
+			if(GameDriver.getBoard()[thisX - i][thisY + i] != null)
 				break;
 			i++;
 		}
@@ -95,36 +95,36 @@ public abstract class Piece {
 		
 		//Right
 		while(onBoard(new Position(thisX + i, thisY))){
-			if((GameDriver.board[thisX + i][thisY] == null) || (GameDriver.board[thisX + i][thisY].isWhite() != this.isWhite()))
+			if((GameDriver.getBoard()[thisX + i][thisY] == null) || (GameDriver.getBoard()[thisX + i][thisY].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX + i, thisY));
-			if(GameDriver.board[thisX + i][thisY] != null)
+			if(GameDriver.getBoard()[thisX + i][thisY] != null)
 				break;
 			i++;
 		}
 		i = 1;
 		//Up
-		while(onBoard(new Position(thisX, thisY - i)) && ((GameDriver.board[thisX][thisY - i] == null) || (GameDriver.board[thisX][thisY - i].isWhite() != this.isWhite()))){
-			if((GameDriver.board[thisX][thisY - i] == null) || (GameDriver.board[thisX][thisY - i].isWhite() != this.isWhite()))
+		while(onBoard(new Position(thisX, thisY - i)) && ((GameDriver.getBoard()[thisX][thisY - i] == null) || (GameDriver.getBoard()[thisX][thisY - i].isWhite() != this.isWhite()))){
+			if((GameDriver.getBoard()[thisX][thisY - i] == null) || (GameDriver.getBoard()[thisX][thisY - i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX, thisY - i));
-			if(GameDriver.board[thisX][thisY - i] != null)
+			if(GameDriver.getBoard()[thisX][thisY - i] != null)
 				break;
 			i++;
 		}
 		i = 1;
 		//Down
-		while(onBoard(new Position(thisX, thisY + i)) && ((GameDriver.board[thisX][thisY + i] == null) || (GameDriver.board[thisX][thisY + i].isWhite() != this.isWhite()))){
-			if((GameDriver.board[thisX][thisY + i] == null) || (GameDriver.board[thisX][thisY + i].isWhite() != this.isWhite()))
+		while(onBoard(new Position(thisX, thisY + i)) && ((GameDriver.getBoard()[thisX][thisY + i] == null) || (GameDriver.getBoard()[thisX][thisY + i].isWhite() != this.isWhite()))){
+			if((GameDriver.getBoard()[thisX][thisY + i] == null) || (GameDriver.getBoard()[thisX][thisY + i].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX, thisY + i));
-			if(GameDriver.board[thisX][thisY + i] != null)
+			if(GameDriver.getBoard()[thisX][thisY + i] != null)
 				break;
 			i++;
 		}
 		i = 1;
 		//Left
-		while(onBoard(new Position(thisX - i, thisY)) && ((GameDriver.board[thisX - i][thisY] == null) || (GameDriver.board[thisX - i][thisY].isWhite() != this.isWhite()))){
-			if((GameDriver.board[thisX - i][thisY] == null) || (GameDriver.board[thisX - i][thisY].isWhite() != this.isWhite()))
+		while(onBoard(new Position(thisX - i, thisY)) && ((GameDriver.getBoard()[thisX - i][thisY] == null) || (GameDriver.getBoard()[thisX - i][thisY].isWhite() != this.isWhite()))){
+			if((GameDriver.getBoard()[thisX - i][thisY] == null) || (GameDriver.getBoard()[thisX - i][thisY].isWhite() != this.isWhite()))
 				moves.add(new Position(thisX - i, thisY));
-			if(GameDriver.board[thisX - i][thisY] != null)
+			if(GameDriver.getBoard()[thisX - i][thisY] != null)
 				break;
 			i++;
 		}

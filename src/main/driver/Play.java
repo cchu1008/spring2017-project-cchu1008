@@ -45,7 +45,7 @@ public class Play extends BasicGameState {
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     
     this.game = (GameDriver)game;
-    this.players = GameDriver.players;
+    this.players = GameDriver.getPlayers();
     this.validMoves = new ArrayList<Position>();
     
     this.initImages();
@@ -68,7 +68,7 @@ public class Play extends BasicGameState {
     }
     
     g.setColor(org.newdawn.slick.Color.white);
-    g.drawString("Turn: " + turnColor + " (" + GameDriver.players[GameDriver.turn].getName() + ")" , GameDriver.X_SIZE * 0.35f, GameDriver.Y_SIZE * 0.05f);
+    g.drawString("Turn: " + turnColor + " (" + GameDriver.getPlayers()[GameDriver.turn].getName() + ")" , GameDriver.X_SIZE * 0.35f, GameDriver.Y_SIZE * 0.05f);
     
     
     drawBoard(container, g);
@@ -275,7 +275,7 @@ public class Play extends BasicGameState {
     for (int i = 0; i < 8; i++) {
       for (int j = 0; j < 8; j++) {
         if (!GameDriver.isEmpty(new Position(i,j))) {
-          Play.images.get(GameDriver.board[i][j].getImage()).draw(tiles[i][j].getX() + 13f, 
+          Play.images.get(GameDriver.getBoard()[i][j].getImage()).draw(tiles[i][j].getX() + 13f, 
               tiles[i][j].getY() + 5f, 0.3f);
         }
       }
@@ -288,23 +288,23 @@ public class Play extends BasicGameState {
    */
   public static void generateBlack(){
     for (int i = 0; i < 8; i++) {
-      GameDriver.board[i][1] = new Pawn(new Position(i, 1), false, ImageType.BLACK_PAWN);
+      GameDriver.getBoard()[i][1] = new Pawn(new Position(i, 1), false, ImageType.BLACK_PAWN);
     }
-    GameDriver.board[0][0] = new Rook(new Position(0, 0), false, 
+    GameDriver.getBoard()[0][0] = new Rook(new Position(0, 0), false, 
         ImageType.BLACK_ROOK);
-    GameDriver.board[7][0] = new Rook(new Position(7, 0), false, 
+    GameDriver.getBoard()[7][0] = new Rook(new Position(7, 0), false, 
         ImageType.BLACK_ROOK);
-    GameDriver.board[1][0] = new Knight(new Position(1, 0), false, 
+    GameDriver.getBoard()[1][0] = new Knight(new Position(1, 0), false, 
         ImageType.BLACK_KNIGHT);
-    GameDriver.board[6][0] = new Knight(new Position(6, 0), false, 
+    GameDriver.getBoard()[6][0] = new Knight(new Position(6, 0), false, 
         ImageType.BLACK_KNIGHT);
-    GameDriver.board[2][0] = new Bishop(new Position(2, 0), false, 
+    GameDriver.getBoard()[2][0] = new Bishop(new Position(2, 0), false, 
         ImageType.BLACK_BISHOP);
-    GameDriver.board[5][0] = new Bishop(new Position(5, 0), false, 
+    GameDriver.getBoard()[5][0] = new Bishop(new Position(5, 0), false, 
         ImageType.BLACK_BISHOP);
-    GameDriver.board[3][0] = new Queen(new Position(3, 0), false, 
+    GameDriver.getBoard()[3][0] = new Queen(new Position(3, 0), false, 
         ImageType.BLACK_QUEEN);
-    GameDriver.board[4][0] = new King(new Position(4, 0), false, 
+    GameDriver.getBoard()[4][0] = new King(new Position(4, 0), false, 
         ImageType.BLACK_KING);
   }
   
@@ -314,24 +314,24 @@ public class Play extends BasicGameState {
    */
   public static void generateWhite(){
     for (int i = 0; i < 8; i++) {
-      GameDriver.board[i][6] = new Pawn(new Position(i, 6), true, 
+      GameDriver.getBoard()[i][6] = new Pawn(new Position(i, 6), true, 
           ImageType.WHITE_PAWN);
     }
-    GameDriver.board[0][7] = new Rook(new Position(0, 7), true, 
+    GameDriver.getBoard()[0][7] = new Rook(new Position(0, 7), true, 
         ImageType.WHITE_ROOK);
-    GameDriver.board[7][7] = new Rook(new Position(7, 7), true, 
+    GameDriver.getBoard()[7][7] = new Rook(new Position(7, 7), true, 
         ImageType.WHITE_ROOK);
-    GameDriver.board[1][7] = new Knight(new Position(1, 7), true, 
+    GameDriver.getBoard()[1][7] = new Knight(new Position(1, 7), true, 
         ImageType.WHITE_KNIGHT);
-    GameDriver.board[6][7] = new Knight(new Position(6, 7), true, 
+    GameDriver.getBoard()[6][7] = new Knight(new Position(6, 7), true, 
         ImageType.WHITE_KNIGHT);
-    GameDriver.board[2][7] = new Bishop(new Position(2, 7), true, 
+    GameDriver.getBoard()[2][7] = new Bishop(new Position(2, 7), true, 
         ImageType.WHITE_BISHOP);
-    GameDriver.board[5][7] = new Bishop(new Position(5, 7), true, 
+    GameDriver.getBoard()[5][7] = new Bishop(new Position(5, 7), true, 
         ImageType.WHITE_BISHOP);
-    GameDriver.board[3][7] = new Queen(new Position(3, 7), true, 
+    GameDriver.getBoard()[3][7] = new Queen(new Position(3, 7), true, 
         ImageType.WHITE_QUEEN);
-    GameDriver.board[4][7] = new King(new Position(4, 7), true, 
+    GameDriver.getBoard()[4][7] = new King(new Position(4, 7), true, 
         ImageType.WHITE_KING);
     
   }

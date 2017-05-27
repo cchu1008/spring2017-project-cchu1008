@@ -26,8 +26,8 @@ public class GameDriver extends StateBasedGame {
   public static final int X_SIZE = 700;
   public static final int Y_SIZE = 700;
   
-  public static Piece[][] board = new Piece[8][8];
-  public static Player[] players = new Player[2];
+  private static Piece[][] board = new Piece[8][8];
+  private static Player[] players = new Player[2];
   
   public static int turn = 0;
   
@@ -41,6 +41,14 @@ public class GameDriver extends StateBasedGame {
     this.addState(new Play());
     this.addState(new End());
     this.addState(new Setup());
+  }
+  
+  public static Piece[][] getBoard() {
+    return GameDriver.board;
+  }
+  
+  public static Player[] getPlayers() {
+    return GameDriver.players;
   }
   
   /** Move Function.

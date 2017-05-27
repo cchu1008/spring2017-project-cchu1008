@@ -24,16 +24,16 @@ public class Knight extends Piece{
 			if(i == 0)
 				continue;
 			p = new Position(this.getLocation().getX() + i, this.getLocation().getY() + 2);
-			if(onBoard(p) && (GameDriver.isEmpty(p) || GameDriver.board[p.getX()][p.getY()].isWhite() != this.isWhite()))
+			if(onBoard(p) && (GameDriver.isEmpty(p) || GameDriver.getBoard()[p.getX()][p.getY()].isWhite() != this.isWhite()))
 				moves.add(p);
 			p = new Position(this.getLocation().getX() + i, this.getLocation().getY() - 2);
-			if(onBoard(p) && (GameDriver.isEmpty(p) || GameDriver.board[p.getX()][p.getY()].isWhite() != this.isWhite()))
+			if(onBoard(p) && (GameDriver.isEmpty(p) || GameDriver.getBoard()[p.getX()][p.getY()].isWhite() != this.isWhite()))
 				moves.add(p);
 			p = new Position(this.getLocation().getX() + 2, this.getLocation().getY() + i);
-			if(onBoard(p) && (GameDriver.isEmpty(p) || GameDriver.board[p.getX()][p.getY()].isWhite() != this.isWhite()))
+			if(onBoard(p) && (GameDriver.isEmpty(p) || GameDriver.getBoard()[p.getX()][p.getY()].isWhite() != this.isWhite()))
 				moves.add(p);
 			p = new Position(this.getLocation().getX() - 2, this.getLocation().getY() + i);
-			if(onBoard(p) && (GameDriver.isEmpty(p) || GameDriver.board[p.getX()][p.getY()].isWhite() != this.isWhite()))
+			if(onBoard(p) && (GameDriver.isEmpty(p) || GameDriver.getBoard()[p.getX()][p.getY()].isWhite() != this.isWhite()))
 				moves.add(p);
 		}
 		this.setValid(moves);

@@ -32,27 +32,27 @@ public class GameDriverTest {
   @Test
   public void testEmptySpace(){
     GameDriver.clearBoard();
-    GameDriver.board[0][3] = null;
+    GameDriver.getBoard()[0][3] = null;
     assertEquals(true, GameDriver.isEmpty(new Position(0, 3)));
   }
   
   @Test
   public void testPawnQueening(){
     GameDriver.clearBoard();
-    GameDriver.board[2][1] = new Pawn(new Position(2, 1), false, ImageType.BLACK_PAWN);
-    Pawn p = (Pawn)(GameDriver.board[2][1]);
+    GameDriver.getBoard()[2][1] = new Pawn(new Position(2, 1), false, ImageType.BLACK_PAWN);
+    Pawn p = (Pawn)(GameDriver.getBoard()[2][1]);
     
-    GameDriver.board[2][1] = null;
-    GameDriver.board[2][5] = p;
+    GameDriver.getBoard()[2][1] = null;
+    GameDriver.getBoard()[2][5] = p;
     
     p.move(new Position(2, 5));
-    GameDriver.pawnQueening((Pawn) GameDriver.board[2][5], new Position(2, 6));
+    GameDriver.pawnQueening((Pawn) GameDriver.getBoard()[2][5], new Position(2, 6));
 
-    assertEquals(Pawn.class, GameDriver.board[2][6].getClass());
+    assertEquals(Pawn.class, GameDriver.getBoard()[2][6].getClass());
     
     GameDriver.pawnQueening(p, new Position(2, 7));
     
-    assertEquals(Queen.class, GameDriver.board[2][7].getClass());
+    assertEquals(Queen.class, GameDriver.getBoard()[2][7].getClass());
   }
   
   @Test
@@ -95,18 +95,18 @@ public class GameDriverTest {
     
     for(int j = 0; j < 8; j++){
       for(int i = 0; i < 8; i++){
-        if(compare[i][j] != null && GameDriver.board[i][j] != null){
-          assertEquals(compare[i][j].getName(), GameDriver.board[i][j].getName());
-          assertEquals(compare[i][j].getLocation(), GameDriver.board[i][j].getLocation());
-          assertEquals(compare[i][j].isWhite(), GameDriver.board[i][j].isWhite());
+        if(compare[i][j] != null && GameDriver.getBoard()[i][j] != null){
+          assertEquals(compare[i][j].getName(), GameDriver.getBoard()[i][j].getName());
+          assertEquals(compare[i][j].getLocation(), GameDriver.getBoard()[i][j].getLocation());
+          assertEquals(compare[i][j].isWhite(), GameDriver.getBoard()[i][j].isWhite());
         }
         else {
-          assertTrue(compare[i][j] == null && GameDriver.board[i][j] == null);
+          assertTrue(compare[i][j] == null && GameDriver.getBoard()[i][j] == null);
         }
       }
     }
     
-    boolean reportNotEquals = compare[0][0].equals(GameDriver.board[5][1]);
+    boolean reportNotEquals = compare[0][0].equals(GameDriver.getBoard()[5][1]);
     assertFalse(reportNotEquals);
     
   }

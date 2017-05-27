@@ -20,7 +20,7 @@ public class RookTest {
   public void testValidEmptyBoard() {
     GameDriver.clearBoard();
     rook = new Rook(new Position(5, 5), false, ImageType.BLACK_ROOK);
-    GameDriver.board[5][5] = rook;
+    GameDriver.getBoard()[5][5] = rook;
     
     assertEquals(ImageType.BLACK_ROOK, rook.getImage());
     //Right, Up, Down, Left
@@ -51,9 +51,9 @@ public class RookTest {
   public void testValidBlocked(){
     GameDriver.clearBoard();
     Pawn blocked = new Pawn(new Position(0, 1), false, ImageType.BLACK_PAWN);
-    GameDriver.board[0][1] = blocked;
+    GameDriver.getBoard()[0][1] = blocked;
     rook = new Rook(new Position(0, 0), false, ImageType.BLACK_ROOK);
-    GameDriver.board[0][0] = rook;
+    GameDriver.getBoard()[0][0] = rook;
     
     moves.add(new Position(1, 0));
     moves.add(new Position(2, 0));
@@ -71,9 +71,9 @@ public class RookTest {
   public void testValidAttack(){
     GameDriver.clearBoard();
     Pawn blocked = new Pawn(new Position(0, 2), true, ImageType.WHITE_PAWN);
-    GameDriver.board[0][2] = blocked;
+    GameDriver.getBoard()[0][2] = blocked;
     rook = new Rook(new Position(0, 0), false, ImageType.BLACK_ROOK);
-    GameDriver.board[0][0] = rook;
+    GameDriver.getBoard()[0][0] = rook;
     
     moves.add(new Position(1, 0));
     moves.add(new Position(2, 0));

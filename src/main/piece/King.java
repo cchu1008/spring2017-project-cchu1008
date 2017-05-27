@@ -25,15 +25,15 @@ public class King extends Piece{
 		
 		for(int i = -1; i < 2; i++){
 			//bottom row
-			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1)) && (GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() + 1] == null || GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() + 1].isWhite() != this.isWhite())){
+			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1)) && (GameDriver.getBoard()[this.getLocation().getX() + i][this.getLocation().getY() + 1] == null || GameDriver.getBoard()[this.getLocation().getX() + i][this.getLocation().getY() + 1].isWhite() != this.isWhite())){
 				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() + 1));
 			}
 			//middle minus current
-			if(i != 0 && onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY())) && (GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY()] == null || GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY()].isWhite() != this.isWhite())){
+			if(i != 0 && onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY())) && (GameDriver.getBoard()[this.getLocation().getX() + i][this.getLocation().getY()] == null || GameDriver.getBoard()[this.getLocation().getX() + i][this.getLocation().getY()].isWhite() != this.isWhite())){
 				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY()));
 			}
 			//top row
-			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 1)) && (GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() - 1] == null || GameDriver.board[this.getLocation().getX() + i][this.getLocation().getY() - 1].isWhite() != this.isWhite())){
+			if(onBoard(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 1)) && (GameDriver.getBoard()[this.getLocation().getX() + i][this.getLocation().getY() - 1] == null || GameDriver.getBoard()[this.getLocation().getX() + i][this.getLocation().getY() - 1].isWhite() != this.isWhite())){
 				moves.add(new Position(this.getLocation().getX() + i, this.getLocation().getY() - 1));
 			}
 		}
