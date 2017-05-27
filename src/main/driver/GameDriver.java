@@ -33,7 +33,7 @@ public class GameDriver extends StateBasedGame {
   private static Piece[][] board = new Piece[8][8];
   private static Player[] players = new Player[2];
   
-  public static int turn = 0;
+  private static int turn = 0;
   
   /** GameDriver constructor.
    * 
@@ -53,6 +53,14 @@ public class GameDriver extends StateBasedGame {
   
   public static Player[] getPlayers() {
     return GameDriver.players;
+  }
+  
+  public static int getTurn() {
+    return GameDriver.turn;
+  }
+  
+  public static void setTurn(int i) {
+    GameDriver.turn = i;
   }
   
   /** Move Function.
@@ -96,10 +104,10 @@ public class GameDriver extends StateBasedGame {
   }
   
   public static void pawnQueening(Pawn p, Position end){
-    if(((Pawn)p).start.getY() == 1 && (end.getY() == 7)){
+    if(((Pawn)p).getStart().getY() == 1 && (end.getY() == 7)){
       board[end.getX()][end.getY()] = new Queen(end, false, ImageType.BLACK_QUEEN);
     }
-    else if(((Pawn)p).start.getY() == 6 && (end.getY() == 0)){
+    else if(((Pawn)p).getStart().getY() == 6 && (end.getY() == 0)){
       board[end.getX()][end.getY()] = new Queen(end, true, ImageType.WHITE_QUEEN);
     }
     else{

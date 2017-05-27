@@ -56,7 +56,7 @@ public class Tile extends MouseOverArea {
   public void mouseReleased(int button, int mx, int my) {
     if (isMouseOver()) {
       super.mouseReleased(button, mx, my);
-      players[GameDriver.turn].pickTile(new Position(this.row, this.col));
+      players[GameDriver.getTurn()].pickTile(new Position(this.row, this.col));
       Logger.getLogger("BoardLogger").log(Level.SEVERE, null, "Button clicked at (" + this.row + ", " + this.col + ")");
     }
   }

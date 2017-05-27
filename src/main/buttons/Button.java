@@ -6,16 +6,28 @@ import org.newdawn.slick.gui.ComponentListener;
 import org.newdawn.slick.gui.MouseOverArea;
 
 public class Button extends MouseOverArea {
-  public GameContainer cont;
-  public boolean on = true;
+  private boolean on = true;
+  private GameContainer container;
   
   public Button(GameContainer container, Image image, int x, int y, int width, int height, ComponentListener listener){
     super(container, image, x, y, width, height, listener);
-    this.cont = container;
+    this.container = container;
+  }
+  
+  public GameContainer getContainer(){
+    return this.container;
   }
   
   public void turnOn(){
     this.on = false;
+  }
+  
+  public boolean getOn(){
+    return this.on;
+  }
+  
+  public void setOn(boolean value){
+    this.on = value;
   }
   
   @Override

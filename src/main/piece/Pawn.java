@@ -8,7 +8,7 @@ import main.helper.Position;
 import java.util.ArrayList;
 
 public class Pawn extends Piece{
-	public Position start;
+	private Position start;
 	
 	public Pawn(Position p, boolean white, ImageType image){
 		super(p, white, image);
@@ -16,6 +16,11 @@ public class Pawn extends Piece{
 		this.setValid(validMoves());
 		this.setName(" Pawn ");
 	}
+	
+  public Position getStart(){
+    return this.start;
+  }
+  
 	
 	@Override
 	public List<Position> validMoves(){
@@ -58,4 +63,10 @@ public class Pawn extends Piece{
 		this.setValid(moves);
 		return moves;
 	}
+	
+	 @Override
+	  public boolean equals(Object obj){
+	    Pawn pawn = (Pawn)obj;
+	    return super.equals(obj) && this.start.equals(pawn.getStart());
+	  }
 }

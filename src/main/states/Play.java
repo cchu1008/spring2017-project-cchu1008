@@ -65,12 +65,12 @@ public class Play extends BasicGameState {
     
     turnColor = "White";
     
-    if(GameDriver.turn == 1){
+    if(GameDriver.getTurn() == 1){
       turnColor = "Black";
     }
     
     g.setColor(org.newdawn.slick.Color.white);
-    g.drawString("Turn: " + turnColor + " (" + GameDriver.getPlayers()[GameDriver.turn].getName() + ")" , GameDriver.X_SIZE * 0.35f, GameDriver.Y_SIZE * 0.05f);
+    g.drawString("Turn: " + turnColor + " (" + GameDriver.getPlayers()[GameDriver.getTurn()].getName() + ")" , GameDriver.X_SIZE * 0.35f, GameDriver.Y_SIZE * 0.05f);
     
     
     drawBoard(container, g);

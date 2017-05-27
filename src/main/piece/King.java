@@ -8,13 +8,17 @@ import main.helper.Position;
 import java.util.ArrayList;
 
 public class King extends Piece{
-	public Position start;
+	private Position start;
 	
 	public King(Position p, boolean white, ImageType image){
 		super(p, white, image);
 		this.start = p;
 		this.setValid(validMoves());
 		this.setName(" King ");
+	}
+	
+	public Position getStart(){
+	  return this.start;
 	}
 	
 	@Override
@@ -41,5 +45,11 @@ public class King extends Piece{
 		this.setValid(moves);
 		
 		return moves;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+	  King king = (King)obj;
+	  return super.equals(obj) && this.start.equals(king.getStart());
 	}
 }

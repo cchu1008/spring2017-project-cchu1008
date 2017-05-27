@@ -5,7 +5,7 @@ import main.helper.ImageType;
 import main.helper.Position;
 
 public class Rook extends Piece{
-	public Position start;
+	private Position start;
 	
 	public Rook(Position p, boolean white, ImageType image){
 		super(p, white, image);
@@ -14,10 +14,20 @@ public class Rook extends Piece{
 		this.setName(" Rook ");
 	}
 	
+	public Position getStart(){
+	  return this.start;
+	}
+	
 	@Override
 	public List<Position> validMoves(){
 		List<Position> moves = super.getRookMoves();
 		this.setValid(moves);
 		return moves;
 	}
+	
+	 @Override
+	  public boolean equals(Object obj){
+	    Rook rook = (Rook)obj;
+	    return super.equals(obj) && this.start.equals(rook.getStart());
+	  }
 }
