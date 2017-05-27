@@ -4,7 +4,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.gui.TextField;
@@ -34,6 +33,8 @@ public class Setup extends BasicGameState {
   
   public void reset(){
     this.next.turnOn();
+    Setup.nameOne.setText("Player 1");
+    Setup.nameTwo.setText("Player 2");
   }
 
   @Override
@@ -49,6 +50,8 @@ public class Setup extends BasicGameState {
     Setup.nameTwo = new TextField(container, 
         new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true), 
         GameDriver.X_SIZE / 4, GameDriver.Y_SIZE / 2, 300, 30);
+    
+    this.reset();
   
   }
 
@@ -60,31 +63,12 @@ public class Setup extends BasicGameState {
 
   @Override
   public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
-    Input input = container.getInput();
-    if (input.isKeyDown(Input.KEY_UP)) {
-      //Code here?
-    }
+    //Not sure what to update
   }
 
   @Override
   public int getID() {
     return Setup.ID;
-  }
-  
-  @Override
-  public void keyReleased(int key, char c) {
-    if (key == Input.KEY_RIGHT || key == Input.KEY_2) {
-      game.getState(Play.ID);
-      game.enterState(Play.ID);
-    }
-    if (key == Input.KEY_LEFT || key == Input.KEY_0) {
-      game.getState(Menu.ID);
-      game.enterState(Menu.ID);
-    }
-    if (key == Input.KEY_3) {
-      game.getState(End.ID);
-      game.enterState(End.ID);
-    }
   }
   
   public void chooseRender(GameContainer container, Graphics g, boolean computer) throws SlickException {

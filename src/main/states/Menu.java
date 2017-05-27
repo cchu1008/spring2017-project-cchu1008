@@ -4,7 +4,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -76,16 +75,6 @@ public class Menu extends BasicGameState {
   public int getID() {
     return Menu.ID;
   }
-  
-  @Override
-  /** keyReleased function.
-   *  
-   */
-  public void keyReleased(int key, char c) {
-    if (key == Input.KEY_RIGHT) {
-      game.getState(Setup.ID);
-      game.enterState(Setup.ID);
-    }
-  }
+
 
 }

@@ -45,6 +45,17 @@ public class GameDriver extends StateBasedGame {
     this.addState(new Play());
     this.addState(new End());
     this.addState(new Setup());
+    GameDriver.turn = 0;
+  }
+  
+  public void reset(GameContainer container){
+    Logger resetLogger = Logger.getLogger("ResetLogger");
+    GameDriver.clearBoard();
+    try {
+      this.init(container);
+    } catch (SlickException e) {
+      resetLogger.log(Level.SEVERE, "Could not restart", "");
+    }
   }
   
   public static Piece[][] getBoard() {

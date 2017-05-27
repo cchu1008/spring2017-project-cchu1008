@@ -6,7 +6,6 @@ import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.BasicGameState;
@@ -14,6 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import main.buttons.Button;
 import main.buttons.ExitListener;
+import main.buttons.RestartNextStateListener;
 import main.driver.GameDriver;
 import main.driver.Player;
 
@@ -22,7 +22,6 @@ public class End extends BasicGameState {
   
   public static final int ID = 3;
   
-  private GameDriver game;
   private Player winner;
   private Button exit;
   private Button playAgain;
@@ -39,10 +38,11 @@ public class End extends BasicGameState {
 
   @Override
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
-    this.game = (GameDriver)game;
     this.winner = GameDriver.getPlayers()[GameDriver.getTurn()];
     this.exit = new Button(container, new Image("exit.png"), (int)(GameDriver.X_SIZE * 0.5), (int)(GameDriver.Y_SIZE * 0.7), 200, 52, new ExitListener(container));
     this.exit.setDownImage(new Image("exitSel.png"));
+    this.playAgain = new Button(container, new Image("playAgain.png"), (int)(GameDriver.X_SIZE * 0.2), (int)(GameDriver.Y_SIZE * 0.7), 200, 106, new RestartNextStateListener(Menu.ID, game));
+    this.playAgain.setDownImage(new Image("playAgainSel.png"));
     f = new TrueTypeFont(new java.awt.Font("Serif", 0, 40), false);
   }
 
@@ -54,6 +54,7 @@ public class End extends BasicGameState {
     g.drawString("The winner is: " + this.winner.getName(), 
         GameDriver.X_SIZE * 0.2f, GameDriver.Y_SIZE / 4f);
     exit.render(container, g);
+    playAgain.render(container, g);
 
   }
 
@@ -66,25 +67,6 @@ public class End extends BasicGameState {
   @Override
   public int getID() {
     return End.ID;
-  }
-  
-  @Override
-  /** keyReleased function.
-   * 
-   */
-  public void keyReleased(int key, char c) {
-    if (key == Input.KEY_LEFT || key == Input.KEY_2) {
-      game.getState(Play.ID);
-      game.enterState(Play.ID);
-    }
-    if (key == Input.KEY_0) {
-      game.getState(Menu.ID);
-      game.enterState(Menu.ID);
-    }
-    if (key == Input.KEY_1) {
-      game.getState(Setup.ID);
-      game.enterState(Setup.ID);
-    }
   }
 
 }

@@ -21,7 +21,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -32,7 +31,6 @@ public class Play extends BasicGameState {
   public static final int ID = 2;
   private static final HashMap<ImageType, Image> images = new HashMap<>();
 
-  private GameDriver game;
   private Player[] players = new Player[2];
   
   private Tile[][] tiles = new Tile[8][8];
@@ -46,7 +44,6 @@ public class Play extends BasicGameState {
   @Override
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     
-    this.game = (GameDriver)game;
     this.players = GameDriver.getPlayers();
     this.validMoves = new ArrayList<Position>();
     
@@ -86,25 +83,6 @@ public class Play extends BasicGameState {
   @Override
   public int getID() {
     return Play.ID;
-  }
-  
-  @Override
-  /** keyReleased function.
-   * 
-   */
-  public void keyReleased(int key, char c) {
-    if (key == Input.KEY_RIGHT || key == Input.KEY_3) {
-      this.game.getState(End.ID);
-      this.game.enterState(End.ID);
-    }
-    if (key == Input.KEY_LEFT || key == Input.KEY_1) {
-      this.game.getState(Setup.ID);
-      this.game.enterState(Setup.ID);
-    }
-    if (key == Input.KEY_0) {
-      this.game.getState(Menu.ID);
-      this.game.enterState(Menu.ID);
-    }
   }
   
   public void initImages(){
