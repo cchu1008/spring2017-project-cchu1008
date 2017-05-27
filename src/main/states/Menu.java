@@ -18,7 +18,7 @@ import main.driver.GameDriver;
 public class Menu extends BasicGameState {
   
   public static final int ID = 0;
-  public static boolean type = true;
+  private static boolean type = true;
   
   private GameDriver game;
   private Button chooseComputer;
@@ -33,6 +33,14 @@ public class Menu extends BasicGameState {
   public void reset(){
     this.chooseComputer.turnOn();
     this.chooseHuman.turnOn();
+  }
+  
+  public static boolean getType(){
+    return Menu.type;
+  }
+  
+  public static void setType(boolean b){
+    Menu.type = b;
   }
 
   @Override

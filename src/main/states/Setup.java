@@ -55,7 +55,7 @@ public class Setup extends BasicGameState {
   @Override
   public void render(GameContainer container, StateBasedGame game, 
       Graphics g) throws SlickException {
-    chooseRender(container, g, Menu.type);
+    chooseRender(container, g, Menu.getType());
   }
 
   @Override

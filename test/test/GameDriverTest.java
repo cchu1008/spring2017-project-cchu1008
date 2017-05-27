@@ -21,7 +21,7 @@ public class GameDriverTest {
 
   @Test
   public void testAdvanceTurn(){    
-    Menu.type = false;
+    Menu.setType(false);
     GameDriver.setTurn(0);
     
     GameDriver.advanceTurn();

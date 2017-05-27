@@ -14,7 +14,7 @@ public class ComputerNextStateListener extends NextStateButtonListener {
   @Override
   public void componentActivated(AbstractComponent source) {
     super.componentActivated(source);
-    Menu.type = true;
+    Menu.setType(true);
   }
 
 }

@@ -95,8 +95,8 @@ public class GameDriver extends StateBasedGame {
   public static void advanceTurn(){
     Logger moveDebug = Logger.getLogger("MoveDebug");
     turn = 1 - turn;
-    moveDebug.log(Level.INFO, "CPU Game: " + Menu.type + "Turn: " + turn, "");
-    if(Menu.type && turn == 1){
+    moveDebug.log(Level.INFO, "CPU Game: " + Menu.getType() + "Turn: " + turn, "");
+    if(Menu.getType() && turn == 1){
       GameDriver.players[1].movePiece();
     }
     updateValid();
