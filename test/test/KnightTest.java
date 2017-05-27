@@ -84,5 +84,20 @@ public class KnightTest {
     
     assertEquals(moves, (ArrayList<Position>)(knight.getValid()));
   }
+  
+  @Test
+  public void testValidOffBoard(){
+    GameDriver.clearBoard();
+    knight = new Knight(new Position(2, 0), false, ImageType.BLACK_KNIGHT);
+    
+    moves.add(new Position(1, 2));
+    moves.add(new Position(3, 2));
+    
+    moves.add(new Position(4, 1));
+    moves.add(new Position(0, 1));
+    
+    assertEquals(moves, (ArrayList<Position>)(knight.getValid()));
+    
+  }
 
 }
