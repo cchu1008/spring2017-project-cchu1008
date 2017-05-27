@@ -17,7 +17,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public abstract class Player {
   private String name;
   private boolean white;
-  public GameDriver game;
+  private GameDriver game;
   private Position begin = new Position(-1, -1);
   private Position end = new Position(-1, -1);
   private Piece piece;
@@ -47,6 +47,10 @@ public abstract class Player {
   
   public void setName(String name) {
     this.name = name;
+  }
+  
+  public GameDriver getGame(){
+    return this.game;
   }
   
   public boolean isWhite() {

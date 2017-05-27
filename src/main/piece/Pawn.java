@@ -20,8 +20,7 @@ public class Pawn extends Piece{
   public Position getStart(){
     return this.start;
   }
-  
-	
+
 	@Override
 	public List<Position> validMoves(){
 		List<Position> moves = new ArrayList<>();
@@ -66,7 +65,13 @@ public class Pawn extends Piece{
 	
 	 @Override
 	  public boolean equals(Object obj){
-	    Pawn pawn = (Pawn)obj;
-	    return super.equals(obj) && this.start.equals(pawn.getStart());
+     if(obj == null)
+       return false;
+     
+     if(this.getClass() != obj.getClass())
+       return false;
+     
+     Pawn p = (Pawn)obj;
+     return this.getName() == p.getName() && this.isWhite() == p.isWhite() && this.getLocation() == p.getLocation()&& this.start.equals(p.getStart());
 	  }
 }

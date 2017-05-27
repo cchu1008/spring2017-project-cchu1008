@@ -27,7 +27,13 @@ public class Rook extends Piece{
 	
 	 @Override
 	  public boolean equals(Object obj){
-	    Rook rook = (Rook)obj;
-	    return super.equals(obj) && this.start.equals(rook.getStart());
+	   if(obj == null)
+	      return false;
+	    
+	    if(this.getClass() != obj.getClass())
+	      return false;
+	    
+	    Rook p = (Rook)obj;
+	    return this.getName() == p.getName() && this.isWhite() == p.isWhite() && this.getLocation() == p.getLocation()&& this.start.equals(p.getStart());
 	  }
 }

@@ -49,7 +49,14 @@ public class King extends Piece{
 	
 	@Override
 	public boolean equals(Object obj){
-	  King king = (King)obj;
-	  return super.equals(obj) && this.start.equals(king.getStart());
+    if(obj == null)
+      return false;
+    
+    if(this.getClass() != obj.getClass())
+      return false;
+    
+    King p = (King)obj;
+    return this.getName() == p.getName() && this.isWhite() == p.isWhite() && this.getLocation() == p.getLocation()&& this.start.equals(p.getStart());
+
 	}
 }
