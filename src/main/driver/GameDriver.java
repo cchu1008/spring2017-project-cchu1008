@@ -41,10 +41,6 @@ public class GameDriver extends StateBasedGame {
    */
   public GameDriver(String name) {
     super(name);
-    //this.addState(new Menu());
-    //this.addState(new Play());
-    //this.addState(new End());
-    //this.addState(new Setup());
     GameDriver.setTurn(0);
   }
   
@@ -212,8 +208,6 @@ public class GameDriver extends StateBasedGame {
     this.addState(new Play());
     this.addState(new End());
     this.addState(new Setup());
-    //this.getState(MENU).init(container, this);
-    //this.enterState(MENU);
   }
   
   public void createState(GameContainer container, int id){
