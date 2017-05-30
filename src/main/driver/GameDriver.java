@@ -41,10 +41,10 @@ public class GameDriver extends StateBasedGame {
    */
   public GameDriver(String name) {
     super(name);
-    this.addState(new Menu());
-    this.addState(new Play());
-    this.addState(new End());
-    this.addState(new Setup());
+    //this.addState(new Menu());
+    //this.addState(new Play());
+    //this.addState(new End());
+    //this.addState(new Setup());
     GameDriver.setTurn(0);
   }
   
@@ -108,6 +108,8 @@ public class GameDriver extends StateBasedGame {
     turn = 1 - turn;
     moveDebug.log(Level.INFO, "CPU Game: " + Menu.getType() + "Turn: " + turn, "");
     if(Menu.getType() && turn == 1){
+      updateValid();
+      printBoard();
       GameDriver.players[1].movePiece();
     }
     updateValid();
@@ -197,6 +199,7 @@ public class GameDriver extends StateBasedGame {
       AppGameContainer container = new AppGameContainer(new GameDriver(GAME));
       container.setDisplayMode(X_SIZE, Y_SIZE, false);
       container.setTargetFrameRate(FPS);
+      container.setShowFPS(true);
       container.start();
     } catch (SlickException ex) {
       Logger.getLogger("ContainerLogger").log(Level.SEVERE, null, ex);
@@ -205,8 +208,12 @@ public class GameDriver extends StateBasedGame {
 
   @Override
   public void initStatesList(GameContainer container) throws SlickException {
-    this.getState(MENU).init(container, this);
-    this.enterState(MENU);
+    this.addState(new Menu());
+    this.addState(new Play());
+    this.addState(new End());
+    this.addState(new Setup());
+    //this.getState(MENU).init(container, this);
+    //this.enterState(MENU);
   }
   
   public void createState(GameContainer container, int id){

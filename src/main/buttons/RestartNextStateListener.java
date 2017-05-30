@@ -1,5 +1,6 @@
 package main.buttons;
 
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -15,8 +16,14 @@ public class RestartNextStateListener extends NextStateButtonListener {
   public void componentActivated(AbstractComponent source) {
     ((GameDriver)this.getGame()).createState(((Button)source).getContainer(), this.getId());
     super.componentActivated(source);
-    ((GameDriver) this.getGame()).reset(((Button)source).getContainer());
-    GameDriver.setTurn(0);
+    try {
+      GameDriver.clearBoard();
+      ((GameDriver) this.getGame()).init(((Button)source).getContainer());
+      GameDriver.setTurn(0);
+    } catch (SlickException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
 }

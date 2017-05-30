@@ -18,7 +18,7 @@ public class PlayNextStateListener extends NextStateButtonListener {
   @Override
   public void componentActivated(AbstractComponent source) {
     ((GameDriver)this.getGame()).createState(((Button)source).getContainer(), Play.ID);
-    super.componentActivated(source);
+    this.getGame().enterState(this.getId());
     if(Menu.getType()){
       Setup.makeHumanVCompPlayers(this.getGame(), ((Button)source).getContainer());
     }

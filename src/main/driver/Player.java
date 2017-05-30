@@ -73,7 +73,8 @@ public abstract class Player {
       this.begin.setPos(p);
       this.piece = GameDriver.getBoard()[p.getX()][p.getY()];
       boardLogger.log(Level.SEVERE, null, normal);
-    } else if (!this.begin.equals(new Position(-1, -1)) && this.end.equals(new Position(-1, -1))) {
+    }
+    else if (!this.begin.equals(new Position(-1, -1)) && this.end.equals(new Position(-1, -1))) {
       if (this.piece.isValid(p)) {
         this.end.setPos(p);
         try {
@@ -83,12 +84,14 @@ public abstract class Player {
         }
         boardLogger.log(Level.SEVERE, null, normal);
         resetPosition();
-      } else {
+      }
+      else {
         boardLogger.log(Level.SEVERE, null, invalid);
         resetPosition();
       }
 
-    } else {
+    }
+    else {
       boardLogger.log(Level.SEVERE, null, invalid);
       resetPosition();
     }

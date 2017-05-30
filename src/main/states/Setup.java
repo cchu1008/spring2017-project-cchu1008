@@ -12,6 +12,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import main.buttons.Button;
 import main.buttons.PlayNextStateListener;
+import main.buttons.TextFieldListener;
 import main.driver.ComputerPlayer;
 import main.driver.GameDriver;
 import main.driver.HumanPlayer;
@@ -26,15 +27,23 @@ public class Setup extends BasicGameState {
   private static TextField nameOne;
   private static TextField nameTwo;
   private Button next;
+  private final TrueTypeFont FONT = new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true);
   
   public Setup(){
-    //Don't know what to put here
+    //Nothing here?
   }
   
-  public void reset(){
+  public void reset(GameContainer container, StateBasedGame game){
     this.next.turnOn();
-    Setup.nameOne.setText("Player 1");
-    Setup.nameTwo.setText("Player 2");
+    Setup.setNameOne(new TextField(container, 
+        FONT, GameDriver.X_SIZE / 4, GameDriver.Y_SIZE / 3, 300, 30, new TextFieldListener(0, Play.ID, game, container)));
+    Setup.setNameTwo(new TextField(container, 
+        FONT, GameDriver.X_SIZE / 4, GameDriver.Y_SIZE / 2, 300, 30, new TextFieldListener(1, Play.ID, game, container)));
+    
+    Setup.getNameOne().setAcceptingInput(true);
+    Setup.getNameTwo().setAcceptingInput(true);
+    
+    Setup.getNameOne().setFocus(true);
   }
 
   @Override
@@ -42,16 +51,17 @@ public class Setup extends BasicGameState {
     this.game = (GameDriver)game;
     this.next = new Button(container, new Image("nextButton.png"), (int)(GameDriver.X_SIZE * 0.8), (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new PlayNextStateListener(Play.ID, this.game));
     next.setDownImage(new Image("nextButtonSel.png"));
-    GameDriver.setPlayers((Player)new HumanPlayer("Player One", true, game, container), (Player)new HumanPlayer("Player Two", false, game, container));
     
-    Setup.nameOne = new TextField(container, 
-        new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true), 
-        GameDriver.X_SIZE / 4, GameDriver.Y_SIZE / 3, 300, 30);
-    Setup.nameTwo = new TextField(container, 
-        new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true), 
-        GameDriver.X_SIZE / 4, GameDriver.Y_SIZE / 2, 300, 30);
+    GameDriver.setPlayers((Player)new HumanPlayer("", true, game, container), (Player)new HumanPlayer("", false, game, container));
     
-    this.reset();
+    Setup.setNameOne(new TextField(container, 
+        FONT, GameDriver.X_SIZE / 4, GameDriver.Y_SIZE / 3, 300, 30, new TextFieldListener(0, Play.ID, game, container)));
+    Setup.setNameTwo(new TextField(container, 
+        FONT, GameDriver.X_SIZE / 4, GameDriver.Y_SIZE / 2, 300, 30, new TextFieldListener(1, Play.ID, game, container)));
+    
+    Setup.getNameOne().setFocus(true);
+    
+    //this.reset(container);
   
   }
 
@@ -63,7 +73,7 @@ public class Setup extends BasicGameState {
 
   @Override
   public void update(GameContainer container, StateBasedGame game, int arg2) throws SlickException {
-    //Not sure what to update
+    //FONT.loadGlyphs();
   }
 
   @Override
@@ -84,13 +94,13 @@ public class Setup extends BasicGameState {
     g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8f);
     g.setColor(Color.white);
     g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6f);
-    g.drawString("Numbers 0-3 will switch between states.", 
+    g.drawString("Player One: " + GameDriver.getPlayers()[0].getName() + "   Player Two: " + GameDriver.getPlayers()[1].getName(), 
         GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4f);
     
     g.drawString("Player One: ", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 3f);
     g.drawString("Player Two: CPU", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 2f);
     
-    Setup.nameOne.render(container, g);
+    Setup.getNameOne().render(container, g);
     this.next.render(container, g);
   }
   
@@ -99,25 +109,47 @@ public class Setup extends BasicGameState {
     g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8f);
     g.setColor(Color.white);
     g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6f);
-    g.drawString("Numbers 0-3 will switch between states.", 
+    g.drawString("Player One: " + GameDriver.getPlayers()[0].getName() + "   Player Two: " + GameDriver.getPlayers()[1].getName(), 
         GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4f);
     
     g.drawString("Player One: ", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 3f);
     g.drawString("Player Two: ", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 2f);
     
-    Setup.nameOne.render(container, g);
-    Setup.nameTwo.render(container, g);
+    Setup.getNameOne().render(container, g);
+    Setup.getNameTwo().render(container, g);
     this.next.render(container, g);
   }
   
   public static void makeHumanVCompPlayers(StateBasedGame game, GameContainer container){
-    GameDriver.getPlayers()[0].setName(Setup.nameOne.getText());
+    if(GameDriver.getPlayers()[0].getName().equals("")){
+      GameDriver.getPlayers()[0].setName(Setup.getNameOne().getText());
+    }
     GameDriver.getPlayers()[1] = new ComputerPlayer(game, container);
   }
   
   public static void makeHumanVHumanPlayers(StateBasedGame game){
-    GameDriver.getPlayers()[0].setName(Setup.nameOne.getText());
-    GameDriver.getPlayers()[1].setName(Setup.nameTwo.getText());
+    if(GameDriver.getPlayers()[0].getName().equals("")){
+      GameDriver.getPlayers()[0].setName(Setup.getNameOne().getText());
+    }
+    if(GameDriver.getPlayers()[1].getName().equals("")){
+      GameDriver.getPlayers()[1].setName(Setup.getNameTwo().getText());
+    }
+  }
+
+  public static TextField getNameOne() {
+    return nameOne;
+  }
+
+  public static void setNameOne(TextField nameOne) {
+    Setup.nameOne = nameOne;
+  }
+
+  public static TextField getNameTwo() {
+    return nameTwo;
+  }
+
+  public static void setNameTwo(TextField nameTwo) {
+    Setup.nameTwo = nameTwo;
   }
 
 }
