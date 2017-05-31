@@ -1,5 +1,8 @@
 package main.buttons;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.AbstractComponent;
 import org.newdawn.slick.state.StateBasedGame;
@@ -14,6 +17,7 @@ public class RestartNextStateListener extends NextStateButtonListener {
   
   @Override
   public void componentActivated(AbstractComponent source) {
+    Logger restartLogger = Logger.getLogger("RestartLogger");
     ((GameDriver)this.getGame()).createState(((Button)source).getContainer(), this.getId());
     super.componentActivated(source);
     try {
@@ -21,8 +25,7 @@ public class RestartNextStateListener extends NextStateButtonListener {
       ((GameDriver) this.getGame()).init(((Button)source).getContainer());
       GameDriver.setTurn(0);
     } catch (SlickException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      restartLogger.log(Level.SEVERE, "Unable to restart game", "");
     }
   }
 
