@@ -45,10 +45,10 @@ public class Menu extends BasicGameState {
   @Override
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     this.game = (GameDriver)game;
-    chooseComputer = new Button(container, new Image("hVCChoiceButtonSel.png"), (int)(GameDriver.X_SIZE * 0.22), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new ComputerNextStateListener(Setup.ID, this.game));
-    chooseHuman = new Button(container, new Image("hVHChoiceButtonSel.png"), (int)(GameDriver.X_SIZE * 0.52), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new HumanNextStateListener(Setup.ID, this.game));
-    chooseComputer.setDownImage(new Image("hVCChoiceButton.png"));
-    chooseHuman.setDownImage(new Image("hvHChoiceButton.png"));
+    chooseComputer = new Button(container, new Image("res/hVCChoiceButtonSel.png"), (int)(GameDriver.X_SIZE * 0.22), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new ComputerNextStateListener(Setup.ID, this.game));
+    chooseHuman = new Button(container, new Image("res/hVHChoiceButtonSel.png"), (int)(GameDriver.X_SIZE * 0.52), (int)(GameDriver.Y_SIZE * 0.4), 200, 109, new HumanNextStateListener(Setup.ID, this.game));
+    chooseComputer.setDownImage(new Image("res/hVCChoiceButton.png"));
+    chooseHuman.setDownImage(new Image("res/hvHChoiceButton.png"));
     chess = new Image("chess.png");
   }
 
