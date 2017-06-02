@@ -1,11 +1,19 @@
 ## Final Software Architecture
 
-Class/Component Diagram here
+##### Model-View-Controller Architecture
+
+![alt text](images/ClassDiagram.png)
+
+##### Abstract Classes
+
+![alt text](images/PiecesUML.png)
 
 ## Design Patterns
 
-* List of Design Patters
+* List of Design Patterns
     * Benefits of patterns
+* Strategy
+    * Allows for one concrete object to have the option of many different functionalities
 
 ## Highlights
 
