@@ -18,7 +18,10 @@
     * Subscribers can use the updated information to perform their own functionalities
 * State
     * Allows for different game states
-    * States cycle when triggered (by mouse clicks, key presses, and events [winning the game])
+    * States cycle when triggered
+        * By mouse clicks
+        * By key presses
+        * By events [winning the game]
 
 ## Highlights
 
