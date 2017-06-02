@@ -12,3 +12,8 @@ Modes include Human vs CPU and Human vs Human.
 * Pawns are automatically queened when they reach the other side of the board.
 * Tiles light up when moused over.
 * Valid tiles (moves) light up when a piece is moused over.
+
+#### How to Run:
+1. Download chess.zip
+2. Extract chess.zip
+3. Double-click chess_[date].jar
