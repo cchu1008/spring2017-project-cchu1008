@@ -2,11 +2,11 @@
 
 ##### Model-View-Controller Architecture
 
-![alt text](images/ClassDiagram.png)
+![MVC Class Diagram](images/ClassDiagram.png)
 
 ##### Abstract Classes
 
-![alt text](images/PiecesUML.png)
+![Pieces UML Diagram](images/PiecesUML.png)
 
 ## Design Patterns
 
