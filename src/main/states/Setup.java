@@ -28,6 +28,7 @@ public class Setup extends BasicGameState {
   private static TextField nameTwo;
   private Button next;
   private final TrueTypeFont FONT = new TrueTypeFont(new java.awt.Font("Verdana", 0, 16), true);
+  private Image chess;
   
   public Setup(){
     //Nothing here?
@@ -51,6 +52,7 @@ public class Setup extends BasicGameState {
     this.game = (GameDriver)game;
     this.next = new Button(container, new Image("nextButton.png"), (int)(GameDriver.X_SIZE * 0.8), (int)(GameDriver.Y_SIZE * 0.7), 92, 50, new PlayNextStateListener(Play.ID, this.game));
     next.setDownImage(new Image("nextButtonSel.png"));
+    chess = new Image("chess.png");
     
     GameDriver.setPlayers((Player)new HumanPlayer("", true, game, container), (Player)new HumanPlayer("", false, game, container));
     
@@ -68,6 +70,8 @@ public class Setup extends BasicGameState {
   @Override
   public void render(GameContainer container, StateBasedGame game, 
       Graphics g) throws SlickException {
+    g.setColor(Color.white);
+    chess.draw(GameDriver.X_SIZE * 0.22f, GameDriver.Y_SIZE / 10f);
     chooseRender(container, g, Menu.getType());
   }
 
@@ -90,12 +94,7 @@ public class Setup extends BasicGameState {
   }
   
   public void humanVComp(GameContainer container, Graphics g){
-    g.setColor(Color.red);
-    g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8f);
     g.setColor(Color.white);
-    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6f);
-    g.drawString("Player One: " + GameDriver.getPlayers()[0].getName() + "   Player Two: " + GameDriver.getPlayers()[1].getName(), 
-        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4f);
     
     g.drawString("Player One: ", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 3f);
     g.drawString("Player Two: CPU", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 2f);
@@ -105,12 +104,7 @@ public class Setup extends BasicGameState {
   }
   
   public void humanVHuman(GameContainer container, Graphics g){
-    g.setColor(Color.red);
-    g.drawString("This is the Setup State", GameDriver.X_SIZE * 0.360f, GameDriver.Y_SIZE / 8f);
     g.setColor(Color.white);
-    g.drawString("State Based Game Test", GameDriver.X_SIZE * 0.365f, GameDriver.Y_SIZE / 6f);
-    g.drawString("Player One: " + GameDriver.getPlayers()[0].getName() + "   Player Two: " + GameDriver.getPlayers()[1].getName(), 
-        GameDriver.X_SIZE * 0.255f, GameDriver.Y_SIZE / 4f);
     
     g.drawString("Player One: ", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 3f);
     g.drawString("Player Two: ", GameDriver.X_SIZE / 10f, GameDriver.Y_SIZE / 2f);

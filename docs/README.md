@@ -27,9 +27,11 @@
 
 My favorite implementation was in showing the valid moves for each piece when the piece was moused over.
 
-![Valid Moves]()
+In the picture below, the mouse is hovering over the white Queen in (6, A) and highlighting all of its possible moves.
 
-The timing was tricky because if you handle the function primarily in the render function of the Play state, the highlighted squares will flicker. The tiles themselves had to work together with the GameDriver and Play state to create the illusion of being 'moused over' when they were a part of the validMoves array.
+![Valid Moves](images/validMovesPic.JPG)
+
+The timing was tricky because if you handle the tile highlighting primarily in the render function of the Play state, the highlighted squares will flicker. The tiles themselves had to work together with the GameDriver and Play state to create the illusion of being 'moused over' when they were a part of the validMoves array.
 
 ## What I Learned
 

@@ -67,7 +67,16 @@ public class Play extends BasicGameState {
     }
     
     g.setColor(org.newdawn.slick.Color.white);
-    g.drawString("Turn: " + turnColor + " (" + GameDriver.getPlayers()[GameDriver.getTurn()].getName() + ")" , GameDriver.X_SIZE * 0.35f, GameDriver.Y_SIZE * 0.05f);
+    g.drawString("Turn: " + turnColor + " (" + GameDriver.getPlayers()[GameDriver.getTurn()].getName() + ")" , GameDriver.X_SIZE * 0.35f, GameDriver.Y_SIZE * 0.03f);
+    
+    for(int i = 0; i < 8; i++){
+      g.drawString("" + (i + 1), GameDriver.X_SIZE * (0.14f + (0.102f * i)), GameDriver.Y_SIZE * 0.073f);
+    }
+    
+    String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H"};
+    for(int i = 0; i < 8; i++){
+      g.drawString(letters[i], GameDriver.X_SIZE * 0.04f, GameDriver.Y_SIZE * (0.155f + (0.104f * i)));
+    }
     
     
     drawBoard(container, g);
