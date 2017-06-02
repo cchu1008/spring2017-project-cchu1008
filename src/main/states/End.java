@@ -26,6 +26,7 @@ public class End extends BasicGameState {
   private Button exit;
   private Button playAgain;
   private Font f;
+  private Image win;
   
   public End(){
     //Don't know what to put here
@@ -39,11 +40,12 @@ public class End extends BasicGameState {
   @Override
   public void init(GameContainer container, StateBasedGame game) throws SlickException {
     this.winner = GameDriver.getPlayers()[GameDriver.getTurn()];
-    this.exit = new Button(container, new Image("exit.png"), (int)(GameDriver.X_SIZE * 0.5), (int)(GameDriver.Y_SIZE * 0.7), 200, 52, new ExitListener(container));
+    this.exit = new Button(container, new Image("exit.png"), (int)(GameDriver.X_SIZE * 0.5), (int)(GameDriver.Y_SIZE * 0.73), 200, 52, new ExitListener(container));
     this.exit.setDownImage(new Image("exitSel.png"));
     this.playAgain = new Button(container, new Image("playAgain.png"), (int)(GameDriver.X_SIZE * 0.2), (int)(GameDriver.Y_SIZE * 0.7), 200, 106, new RestartNextStateListener(Menu.ID, game));
     this.playAgain.setDownImage(new Image("playAgainSel.png"));
     f = new TrueTypeFont(new java.awt.Font("Serif", 0, 40), false);
+    this.win = new Image("win.png");
   }
 
   @Override
@@ -51,8 +53,9 @@ public class End extends BasicGameState {
       Graphics g) throws SlickException {
     g.setFont(this.f);
     g.setColor(Color.white);
-    g.drawString("The winner is: " + this.winner.getName(), 
-        GameDriver.X_SIZE * 0.2f, GameDriver.Y_SIZE / 4f);
+    win.draw(GameDriver.X_SIZE * 0.075f, GameDriver.Y_SIZE * 0.05f);
+    g.drawString("Winner: " + this.winner.getName(), 
+        GameDriver.X_SIZE * 0.3f, GameDriver.Y_SIZE * 0.4f);
     exit.render(container, g);
     playAgain.render(container, g);
 
