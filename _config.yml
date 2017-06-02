@@ -1,4 +1,4 @@
 theme: jekyll-theme-cayman
 title: "Chess: An Interactive Experience"
 description: Created by Courtney Chu
-page.content: /docs/README.md
+content: /docs/README.md
