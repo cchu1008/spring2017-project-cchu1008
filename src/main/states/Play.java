@@ -49,7 +49,7 @@ public class Play extends BasicGameState {
     
     this.initImages();
     
-    generateTiles(container, (GameDriver)game);
+    generateTiles(container);
 
     generateWhite();
     generateBlack();
@@ -92,6 +92,10 @@ public class Play extends BasicGameState {
   @Override
   public int getID() {
     return Play.ID;
+  }
+  
+  public static HashMap<ImageType, Image> getImages(){
+    return Play.images;
   }
   
   public void initImages(){
@@ -157,6 +161,26 @@ public class Play extends BasicGameState {
     } catch (SlickException e) {
       imageLogger.log(Level.SEVERE, "Bad Image", "");
     }
+    try {
+      Play.images.put(ImageType.DARK_TILE, new Image("darkTile.jpg"));
+    } catch (SlickException e) {
+      imageLogger.log(Level.SEVERE, "Bad Image", "");
+    }
+    try {
+      Play.images.put(ImageType.DARK_TILE_HIGHLIGHTED, new Image("darkTileHighLighted.jpg"));
+    } catch (SlickException e) {
+      imageLogger.log(Level.SEVERE, "Bad Image", "");
+    }
+    try {
+      Play.images.put(ImageType.LIGHT_TILE, new Image("lightTile.jpg"));
+    } catch (SlickException e) {
+      imageLogger.log(Level.SEVERE, "Bad Image", "");
+    }
+    try {
+      Play.images.put(ImageType.LIGHT_TILE_HIGHLIGHTED, new Image("lightTileHighLighted.jpg"));
+    } catch (SlickException e) {
+      imageLogger.log(Level.SEVERE, "Bad Image", "");
+    }
     
   }
   
@@ -215,28 +239,21 @@ public class Play extends BasicGameState {
    * @param container : container
    * @throws SlickException : SlickException
    */
-  public void generateTiles(GameContainer container, GameDriver game) throws SlickException {
+  public void generateTiles(GameContainer container) throws SlickException {
     for (int j = 0; j < 8; j += 2) {
       for (int i = 0; i < 8; i += 2) {
         this.tiles[i][j] = new Tile(i, j, players, container, 
-            new Image("darkTile.jpg"), 
-            new Position(65 + (143 * (i / 2)), 90 + (143 * (j / 2))), new Position(72, 72), game, this);
-        this.tiles[i][j].setMouseOverImage(new Image("darkTileHighlighted.jpg"));
+            ImageType.DARK_TILE, ImageType.DARK_TILE_HIGHLIGHTED,
+            new Position(65 + (143 * (i / 2)), 90 + (143 * (j / 2))), new Position(72, 72), this);
         this.tiles[i + 1][j] = new Tile(i + 1, j, players, container, 
-            new Image("lightTile.jpg"), 
-            new Position(137 + (143 * (i / 2)), 90 + (143 * (j / 2))), new Position(72, 72), game, this);
-        this.tiles[i + 1][j].setMouseOverImage(
-            new Image("lightTileHighlighted.jpg"));
+            ImageType.LIGHT_TILE, ImageType.LIGHT_TILE_HIGHLIGHTED,
+            new Position(137 + (143 * (i / 2)), 90 + (143 * (j / 2))), new Position(72, 72), this);
         this.tiles[i][j + 1] = new Tile(i, j + 1, players, container, 
-            new Image("lightTile.jpg"), 
-            new Position(65 + (143 * (i / 2)), 162 + (143 * (j / 2))), new Position(72, 72), game, this);
-        this.tiles[i][j + 1].setMouseOverImage(
-            new Image("lightTileHighlighted.jpg"));
+            ImageType.LIGHT_TILE, ImageType.LIGHT_TILE_HIGHLIGHTED,
+            new Position(65 + (143 * (i / 2)), 162 + (143 * (j / 2))), new Position(72, 72), this);
         this.tiles[i + 1][j + 1] = new Tile(i + 1, j + 1, players, container, 
-            new Image("darkTile.jpg"), 
-            new Position(137 + (143 * (i / 2)), 162 + (143 * (j / 2))), new Position(72, 72), game, this);
-        this.tiles[i + 1][j + 1].setMouseOverImage(
-            new Image("darkTileHighlighted.jpg"));
+            ImageType.DARK_TILE, ImageType.DARK_TILE_HIGHLIGHTED,
+            new Position(137 + (143 * (i / 2)), 162 + (143 * (j / 2))), new Position(72, 72), this);
       }
     }
   }

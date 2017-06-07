@@ -142,7 +142,7 @@ public class GameDriver extends StateBasedGame {
     }
   }
   
-  public void lightUpValid(GameState play, Position pos){
+  public static void lightUpValid(GameState play, Position pos){
     if(!GameDriver.isEmpty(pos)){
       ArrayList<Position> valid = (ArrayList<Position>)board[pos.getX()][pos.getY()].getValid();
       valid.add(0, pos);

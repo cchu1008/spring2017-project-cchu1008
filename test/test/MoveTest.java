@@ -32,6 +32,10 @@ public class MoveTest {
     Move newMove = new Move(new Position(0, 1), new Position(0, 3));
     
     assertTrue(move.equals(newMove));
+    
+    newMove = new Move(new Position(3, 4), new Position(3, 5));
+    
+    assertFalse(move.equals(newMove));
   }
 
 }

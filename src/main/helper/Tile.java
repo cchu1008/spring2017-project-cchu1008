@@ -10,13 +10,13 @@ import org.newdawn.slick.state.GameState;
 
 import main.driver.GameDriver;
 import main.driver.Player;
+import main.states.Play;
 
 
 public class Tile extends MouseOverArea {
   private int row;
   private int col;
   private Player[] players;
-  private GameDriver game;
   private GameState play;
   private Image overImage;
   private Image normalImage;
@@ -34,14 +34,14 @@ public class Tile extends MouseOverArea {
    * @param height : height
    */
   public Tile(int row, int col, Player[] p, GameContainer container, 
-      Image image, Position pos, Position widthHeight, GameDriver game, GameState play) {
-    super(container, image, pos.getX(), pos.getY(), widthHeight.getX(), widthHeight.getY());
+      ImageType image, ImageType mousedImage, Position pos, Position widthHeight, GameState play) {
+    super(container, Play.getImages().get(image) , pos.getX(), pos.getY(), widthHeight.getX(), widthHeight.getY());
     this.row = row;
     this.col = col;
     this.players = p;
-    this.game = game;
     this.play = play;
-    this.normalImage = image;
+    this.normalImage = Play.getImages().get(image);
+    this.setMouseOverImage(Play.getImages().get(mousedImage));
   }
   
   public void mousedOver(){
@@ -69,7 +69,7 @@ public class Tile extends MouseOverArea {
   
   public void check(){
     if(isMouseOver()){
-      this.game.lightUpValid(this.play, new Position(this.row, this.col));
+      GameDriver.lightUpValid(this.play, new Position(this.row, this.col));
     }
   }
   

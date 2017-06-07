@@ -49,7 +49,7 @@ public class GameDriverTest {
   }
   
   @Test
-  public void testPawnQueening(){
+  public void testPawnQueeningBlack(){
     GameDriver.clearBoard();
     GameDriver.getBoard()[2][1] = new Pawn(new Position(2, 1), false, ImageType.BLACK_PAWN);
     Pawn p = (Pawn)(GameDriver.getBoard()[2][1]);
@@ -65,6 +65,57 @@ public class GameDriverTest {
     GameDriver.pawnQueening(p, new Position(2, 7));
     
     assertEquals(Queen.class, GameDriver.getBoard()[2][7].getClass());
+    
+    GameDriver.clearBoard();
+    GameDriver.getBoard()[2][2] = new Pawn(new Position(2, 2), false, ImageType.BLACK_PAWN);
+    p = (Pawn)(GameDriver.getBoard()[2][2]);
+    
+    GameDriver.getBoard()[2][2] = null;
+    GameDriver.getBoard()[2][5] = p;
+    
+    p.move(new Position(2, 5));
+    GameDriver.pawnQueening((Pawn) GameDriver.getBoard()[2][5], new Position(2, 6));
+
+    assertEquals(Pawn.class, GameDriver.getBoard()[2][6].getClass());
+    
+    GameDriver.pawnQueening(p, new Position(2, 7));
+    
+    assertEquals(Pawn.class, GameDriver.getBoard()[2][7].getClass());
+  }
+  
+  @Test
+  public void testPawnQueeningWhite(){
+    GameDriver.clearBoard();
+    GameDriver.getBoard()[2][6] = new Pawn(new Position(2, 6), true, ImageType.WHITE_PAWN);
+    Pawn p = (Pawn)(GameDriver.getBoard()[2][6]);
+    
+    GameDriver.getBoard()[2][6] = null;
+    GameDriver.getBoard()[2][2] = p;
+    
+    p.move(new Position(2, 2));
+    GameDriver.pawnQueening((Pawn) GameDriver.getBoard()[2][2], new Position(2, 1));
+
+    assertEquals(Pawn.class, GameDriver.getBoard()[2][1].getClass());
+    
+    GameDriver.pawnQueening(p, new Position(2, 0));
+    
+    assertEquals(Queen.class, GameDriver.getBoard()[2][0].getClass());
+    
+    GameDriver.clearBoard();
+    GameDriver.getBoard()[2][5] = new Pawn(new Position(2, 5), false, ImageType.WHITE_PAWN);
+    p = (Pawn)(GameDriver.getBoard()[2][5]);
+    
+    GameDriver.getBoard()[2][5] = null;
+    GameDriver.getBoard()[2][2] = p;
+    
+    p.move(new Position(2, 2));
+    GameDriver.pawnQueening((Pawn) GameDriver.getBoard()[2][2], new Position(2, 1));
+
+    assertEquals(Pawn.class, GameDriver.getBoard()[2][1].getClass());
+    
+    GameDriver.pawnQueening(p, new Position(2, 0));
+    
+    assertEquals(Pawn.class, GameDriver.getBoard()[2][0].getClass());
   }
   
   @Test
@@ -122,5 +173,6 @@ public class GameDriverTest {
     assertFalse(reportNotEquals);
     
   }
+
 
 }
