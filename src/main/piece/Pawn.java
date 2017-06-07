@@ -72,7 +72,7 @@ public class Pawn extends Piece{
       return false;
      
     Pawn p = (Pawn)obj;
-    return this.getName() == p.getName() && this.hashCode() == p.hashCode();
+    return this.getName().equals(p.getName()) && this.hashCode() == p.hashCode();
   }
 	 
    @Override

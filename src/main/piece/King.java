@@ -56,7 +56,7 @@ public class King extends Piece{
       return false;
     
     King p = (King)obj;
-    return this.hashCode() == p.hashCode() && this.getName() == p.getName() && this.getLocation() == p.getLocation()&& this.start.equals(p.getStart());
+    return this.hashCode() == p.hashCode() && this.getName().equals(p.getName());
 
 	}
 	

@@ -34,7 +34,7 @@ public class Rook extends Piece{
 	      return false;
 	    
 	    Rook p = (Rook)obj;
-	    return this.hashCode() == p.hashCode() && this.getName() == p.getName();
+	    return this.hashCode() == p.hashCode() && this.getName().equals(p.getName());
 	  }
 	 
 	  @Override

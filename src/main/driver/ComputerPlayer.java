@@ -2,6 +2,7 @@ package main.driver;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,9 +20,10 @@ public class ComputerPlayer extends Player {
   public void movePiece(){
     ArrayList<Move> availableMoves = (ArrayList<Move>)ComputerPlayer.getAvailableMoves(this.isWhite());
     Move picked = null;
+    Random r = new Random();
     
     if(!availableMoves.isEmpty()){
-      picked = availableMoves.get((int) (Math.random()* availableMoves.size()));
+      picked = availableMoves.get(r.nextInt() * availableMoves.size());
       Logger moveLogger = Logger.getLogger("MoveLogger");
       
       this.pickTile(picked.getStart());
