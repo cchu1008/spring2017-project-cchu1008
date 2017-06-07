@@ -78,7 +78,7 @@ public class GameDriver extends StateBasedGame {
    * @param container : container
    * @throws SlickException : Throws slick exception
    */
-  public static void move(Position start, Position end, StateBasedGame game, GameContainer container) throws SlickException {
+  public static void move(Position start, Position end, StateBasedGame game, GameContainer container) {
     Piece p = board[start.getX()][start.getY()];
     board[start.getX()][start.getY()] = null;
     p.move(end);

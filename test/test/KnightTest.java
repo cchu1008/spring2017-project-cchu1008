@@ -99,5 +99,21 @@ public class KnightTest {
     assertEquals(moves, (ArrayList<Position>)(knight.getValid()));
     
   }
+  
+  @Test
+  public void testEquals(){
+    GameDriver.clearBoard();
+    knight = new Knight(new Position(2, 0), false, ImageType.BLACK_KNIGHT);
+    
+    assertFalse(knight.equals(null));
+    
+    Pawn p = new Pawn(new Position(0, 1), false, ImageType.BLACK_KNIGHT);
+    
+    assertFalse(knight.equals(p));
+    
+    Knight newKnight = new Knight(new Position(5, 0), false, ImageType.BLACK_KNIGHT);
+    
+    assertFalse(knight.equals(newKnight));
+  }
 
 }

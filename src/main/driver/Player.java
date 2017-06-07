@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 
@@ -77,11 +76,7 @@ public abstract class Player {
     else if (!this.begin.equals(new Position(-1, -1)) && this.end.equals(new Position(-1, -1))) {
       if (this.piece.isValid(p)) {
         this.end.setPos(p);
-        try {
-          GameDriver.move(this.begin, this.end, this.game, this.container);
-        } catch (SlickException ex) {
-          Logger.getLogger("GameMoveLogger").log(Level.SEVERE, null, ex);
-        }
+        GameDriver.move(this.begin, this.end, this.game, this.container);
         boardLogger.log(Level.SEVERE, null, normal);
         resetPosition();
       }

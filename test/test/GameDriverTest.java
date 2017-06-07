@@ -18,6 +18,18 @@ import main.states.Menu;
 import main.states.Play;
 
 public class GameDriverTest {
+  
+  @Test
+  public void testGameDriver(){
+    GameDriver game = new GameDriver("Chess");
+    
+    assertEquals("Chess", game.getTitle());
+    
+    GameDriver.setPlayers(null, null);
+    
+    assertEquals(null, GameDriver.getPlayers()[0]);
+    assertEquals(null, GameDriver.getPlayers()[1]);
+  }
 
   @Test
   public void testAdvanceTurn(){    
