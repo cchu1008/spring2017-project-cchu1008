@@ -36,6 +36,8 @@ public class KingTest {
     moves.add(new Position(4, 2));
     
     assertEquals(moves, (ArrayList<Position>)(king.getValid()));
+    
+    assertEquals(new Position(3, 3), king.getStart());
 
   }
   
@@ -81,6 +83,22 @@ public class KingTest {
     moves.add(new Position(4, 2));
     
     assertEquals(moves, (ArrayList<Position>)(king.getValid()));
+  }
+  
+  @Test
+  public void testEquals(){
+    GameDriver.clearBoard();
+    king = new King(new Position(3, 3), false, ImageType.BLACK_KING);
+    
+    assertFalse(king.equals(null));
+    
+    Pawn p = new Pawn(new Position(0, 1), false, ImageType.BLACK_PAWN);
+    
+    assertFalse(king.equals(p));
+    
+    King k = new King(new Position(3, 4), true, ImageType.WHITE_KING);
+    
+    assertFalse(king.equals(k));
   }
 
 }

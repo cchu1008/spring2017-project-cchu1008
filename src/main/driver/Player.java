@@ -1,11 +1,8 @@
 package main.driver;
 
-import main.helper.Move;
 import main.helper.Position;
 import main.piece.Piece;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -103,47 +100,6 @@ public abstract class Player {
   public void resetPosition() {
     this.begin = new Position(-1, -1);
     this.end = new Position(-1, -1);
-  }
-  
-  public void movePiece(){
-    ArrayList<Move> availableMoves = (ArrayList<Move>)getAvailableMoves();
-    Move picked = null;
-    
-    if(!availableMoves.isEmpty()){
-      picked = availableMoves.get((int) (Math.random()* availableMoves.size()));
-      Logger moveLogger = Logger.getLogger("MoveLogger");
-      
-      this.pickTile(picked.getStart());
-      moveLogger.log(Level.INFO, "Start: " + picked.getStart().toString(), "");
-      
-      this.pickTile(picked.getEnd());
-      moveLogger.log(Level.INFO, "End: " + picked.getEnd().toString(), "");
-    }
-    
-  }
-  
-  public List<Move> getAvailableMoves(){
-    ArrayList<Move> availableMoves = new ArrayList<>();
-    
-    for(int j = 0; j < 8; j++){
-      for(int i = 0; i < 8; i++){
-        addMoves(availableMoves, i, j);
-      }
-    }
-    return availableMoves;
-  }
-  
-  public void addMoves(ArrayList<Move> availableMoves, int i, int j){
-    ArrayList<Position> chosen = null;
-    
-    if(GameDriver.getBoard()[i][j] != null && GameDriver.getBoard()[i][j].isWhite() == this.isWhite()){
-      chosen = (ArrayList<Position>) GameDriver.getBoard()[i][j].getValid();
-      for(int k = 0; k < chosen.size(); k++){
-        if(!GameDriver.getBoard()[i][j].getLocation().equals(chosen.get(k))){
-          availableMoves.add(new Move(GameDriver.getBoard()[i][j].getLocation(), chosen.get(k)));
-        }
-      }
-    }
   }
   
 }

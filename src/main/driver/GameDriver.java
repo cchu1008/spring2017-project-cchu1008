@@ -106,7 +106,8 @@ public class GameDriver extends StateBasedGame {
     if(Menu.getType() && turn == 1){
       updateValid();
       printBoard();
-      GameDriver.players[1].movePiece();
+      ComputerPlayer p = (ComputerPlayer)GameDriver.players[1];
+      p.movePiece();
     }
     updateValid();
     printBoard();
