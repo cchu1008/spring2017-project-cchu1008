@@ -168,7 +168,7 @@ public abstract class Piece {
 	    return false;
 	  
 	  Piece p = (Piece)obj;
-	  return this.name == p.getName() && this.white == p.isWhite() && this.location == p.getLocation();
+	  return this.hashCode() == p.hashCode() && this.name == p.getName();
 	}
 	
 	@Override

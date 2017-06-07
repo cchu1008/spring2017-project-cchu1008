@@ -107,6 +107,10 @@ public class RookTest {
     assertFalse(rook.equals(r));
     
     assertTrue(rook.getStart().equals(new Position(0, 0)));
+    
+    r = new Rook(new Position(0, 0), false, ImageType.BLACK_ROOK);
+    
+    assertTrue(rook.equals(r));
   }
 
 }

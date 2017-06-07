@@ -9,6 +9,7 @@ import org.junit.Test;
 import main.driver.GameDriver;
 import main.helper.ImageType;
 import main.helper.Position;
+import main.piece.Knight;
 import main.piece.Pawn;
 
 public class PawnTest {
@@ -149,6 +150,14 @@ public class PawnTest {
     Pawn sameColor = new Pawn(new Position(2, 0), false, ImageType.BLACK_PAWN);
     
     assertFalse(sameColor.equals(p));
+    
+    Knight k = new Knight(new Position(1, 2), false, ImageType.BLACK_KNIGHT);
+    
+    assertFalse(p.equals(k));
+    
+    otherPawn = new Pawn(new Position(1, 1), false, ImageType.BLACK_PAWN);
+    
+    assertTrue(p.equals(otherPawn));
   }
 
 }
