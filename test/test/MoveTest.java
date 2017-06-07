@@ -20,5 +20,18 @@ public class MoveTest {
   public void testGetEnd(){
     assertEquals(new Position(0, 3), this.move.getEnd());
   }
+  
+  @Test
+  public void testEquals(){
+    assertFalse(move.equals(null));
+    
+    Position p = new Position(0, 0);
+    
+    assertFalse(move.equals(p));
+    
+    Move newMove = new Move(new Position(0, 1), new Position(0, 3));
+    
+    assertTrue(move.equals(newMove));
+  }
 
 }

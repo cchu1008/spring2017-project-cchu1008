@@ -144,6 +144,8 @@ public class PawnTest {
     
     assertFalse(otherPawn.equals(p));
     
+    assertFalse(otherPawn.equals(null));
+    
     Pawn sameColor = new Pawn(new Position(2, 0), false, ImageType.BLACK_PAWN);
     
     assertFalse(sameColor.equals(p));

@@ -63,17 +63,17 @@ public class Pawn extends Piece{
 		return moves;
 	}
 	
-	 @Override
-	  public boolean equals(Object obj){
-     if(obj == null)
-       return false;
+  @Override
+  public boolean equals(Object obj){
+    if(obj == null)
+      return false;
      
-     if(this.getClass() != obj.getClass())
-       return false;
+    if(this.getClass() != obj.getClass())
+      return false;
      
-     Pawn p = (Pawn)obj;
-     return this.getName() == p.getName() && this.isWhite() == p.isWhite() && this.getLocation() == p.getLocation()&& this.start.equals(p.getStart());
-	  }
+    Pawn p = (Pawn)obj;
+    return this.getName() == p.getName() && this.hashCode() == p.hashCode();
+  }
 	 
    @Override
    public int hashCode(){

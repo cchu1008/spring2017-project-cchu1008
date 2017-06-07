@@ -91,5 +91,22 @@ public class RookTest {
     assertTrue(rook.isValid(new Position(3, 0)));
     assertFalse(rook.isValid(new Position(4, 4)));
   }
+  
+  @Test
+  public void testEquals(){
+    rook = new Rook(new Position(0, 0), false, ImageType.BLACK_ROOK);
+    
+    assertFalse(rook.equals(null));
+    
+    Pawn p = new Pawn(new Position(0, 1), false, ImageType.BLACK_PAWN);
+    
+    assertFalse(rook.equals(p));
+    
+    Rook r = new Rook(new Position(0, 7), true, ImageType.WHITE_ROOK);
+    
+    assertFalse(rook.equals(r));
+    
+    assertTrue(rook.getStart().equals(new Position(0, 0)));
+  }
 
 }
