@@ -23,7 +23,7 @@ public class ComputerPlayer extends Player {
     Random r = new Random();
     
     if(!availableMoves.isEmpty()){
-      picked = availableMoves.get(r.nextInt() * availableMoves.size());
+      picked = availableMoves.get(r.nextInt(availableMoves.size()));
       Logger moveLogger = Logger.getLogger("MoveLogger");
       
       this.pickTile(picked.getStart());
