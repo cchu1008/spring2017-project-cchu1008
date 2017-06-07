@@ -37,4 +37,3 @@ The timing was tricky because if you handle the tile highlighting primarily in t
 
 I learned a lot about the different design patterns you can use to make a program. My eyes were opened to Enumerators, which I used to link my pieces to their images, and to the State Pattern which can be used with any automated system (including finite state machines).
 
-Screenshots of project stages
