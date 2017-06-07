@@ -162,22 +162,22 @@ public class Play extends BasicGameState {
       imageLogger.log(Level.SEVERE, "Bad Image", "");
     }
     try {
-      Play.images.put(ImageType.DARK_TILE, new Image("darkTile.jpg"));
+      Play.images.put(ImageType.DARK_TILE, new Image("res/darkTile.jpg"));
     } catch (SlickException e) {
       imageLogger.log(Level.SEVERE, "Bad Image", "");
     }
     try {
-      Play.images.put(ImageType.DARK_TILE_HIGHLIGHTED, new Image("darkTileHighLighted.jpg"));
+      Play.images.put(ImageType.DARK_TILE_HIGHLIGHTED, new Image("res/darkTileHighLighted.jpg"));
     } catch (SlickException e) {
       imageLogger.log(Level.SEVERE, "Bad Image", "");
     }
     try {
-      Play.images.put(ImageType.LIGHT_TILE, new Image("lightTile.jpg"));
+      Play.images.put(ImageType.LIGHT_TILE, new Image("res/lightTile.jpg"));
     } catch (SlickException e) {
       imageLogger.log(Level.SEVERE, "Bad Image", "");
     }
     try {
-      Play.images.put(ImageType.LIGHT_TILE_HIGHLIGHTED, new Image("lightTileHighLighted.jpg"));
+      Play.images.put(ImageType.LIGHT_TILE_HIGHLIGHTED, new Image("res/lightTileHighLighted.jpg"));
     } catch (SlickException e) {
       imageLogger.log(Level.SEVERE, "Bad Image", "");
     }
