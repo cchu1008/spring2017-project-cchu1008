@@ -23,11 +23,13 @@ public class ComputerPlayer extends Player {
     Move picked = ComputerPlayer.getBestMove(availableMoves);
     Logger moveLogger = Logger.getLogger("MoveLogger");
     
-    this.pickTile(picked.getStart());
-    moveLogger.log(Level.INFO, "Start: " + picked.getStart().toString(), "");
-    
-    this.pickTile(picked.getEnd());
-    moveLogger.log(Level.INFO, "End: " + picked.getEnd().toString(), "");
+    if(picked != null){
+      this.pickTile(picked.getStart());
+      moveLogger.log(Level.INFO, "Start: " + picked.getStart().toString(), "");
+      
+      this.pickTile(picked.getEnd());
+      moveLogger.log(Level.INFO, "End: " + picked.getEnd().toString(), "");
+    }
     
   }
   
@@ -57,9 +59,13 @@ public class ComputerPlayer extends Player {
   
   public static Move getBestMove(List<Move> availableMoves){
     Random r = new Random();
-    Move picked = availableMoves.get(r.nextInt(availableMoves.size()));
+    Move picked = null;
     Piece[][] currentBoard = GameDriver.getBoard();
     Piece[][] possibleBoard = currentBoard;
+    
+    if(!availableMoves.isEmpty()){
+      picked = availableMoves.get(r.nextInt(availableMoves.size()));
+    }
 /*  Random r = new Random();
     
     if(!availableMoves.isEmpty()){
