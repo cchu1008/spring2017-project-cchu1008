@@ -12,11 +12,20 @@ public abstract class Piece {
 	private boolean white;
 	private ImageType myImage;
 	private String name;
+	private int strength;
 	
 	public Piece(Position p, boolean white, ImageType image){
 		this.location = p;
 		this.white = white;
 		this.myImage = image;
+	}
+	
+	public int getStrength(){
+	  return this.strength;
+	}
+	
+	public void setStrength(int strength){
+	  this.strength = strength;
 	}
 	
 	public void move(Position p){

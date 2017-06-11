@@ -15,6 +15,12 @@ public class Pawn extends Piece{
 		this.start = p;
 		this.setValid(validMoves());
 		this.setName(" Pawn ");
+    if(white){
+      this.setStrength(10);
+    }
+    else{
+      this.setStrength(-10);
+    }
 	}
 	
   public Position getStart(){

@@ -12,6 +12,12 @@ public class Rook extends Piece{
 		this.start = p;
 		this.setValid(validMoves());
 		this.setName(" Rook ");
+    if(white){
+      this.setStrength(50);
+    }
+    else{
+      this.setStrength(-50);
+    }
 	}
 	
 	public Position getStart(){

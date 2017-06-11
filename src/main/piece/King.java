@@ -15,6 +15,12 @@ public class King extends Piece{
 		this.start = p;
 		this.setValid(validMoves());
 		this.setName(" King ");
+		if(white){
+		  this.setStrength(900);
+		}
+		else{
+		  this.setStrength(-900);
+		}
 	}
 	
 	public Position getStart(){

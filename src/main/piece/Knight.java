@@ -13,6 +13,12 @@ public class Knight extends Piece{
 		super(p, white, image);
 		this.setValid(validMoves());
 		this.setName("Knight");
+    if(white){
+      this.setStrength(30);
+    }
+    else{
+      this.setStrength(-30);
+    }
 	}
 	
 	@Override

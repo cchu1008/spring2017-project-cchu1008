@@ -10,6 +10,12 @@ public class Queen extends Piece{
 		super(p, white, image);
 		this.setValid(validMoves());
 		this.setName(" Queen");
+    if(white){
+      this.setStrength(90);
+    }
+    else{
+      this.setStrength(-90);
+    }
 	}
 	
 	@Override
