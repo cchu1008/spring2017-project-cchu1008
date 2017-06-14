@@ -19,7 +19,7 @@ public class ComputerPlayer extends Player {
   }
   
   public void movePiece(){
-    ArrayList<Move> availableMoves = (ArrayList<Move>)ComputerPlayer.getAvailableMoves(this.isWhite());
+    ArrayList<Move> availableMoves = (ArrayList<Move>)ComputerPlayer.getAvailableMoves(this.isWhite(), GameDriver.getBoard());
     Move picked = ComputerPlayer.getBestMove(availableMoves);
     Logger moveLogger = Logger.getLogger("MoveLogger");
     
@@ -33,25 +33,25 @@ public class ComputerPlayer extends Player {
     
   }
   
-  public static List<Move> getAvailableMoves(boolean isWhite) {
+  public static List<Move> getAvailableMoves(boolean isWhite, Piece[][] board) {
     ArrayList<Move> availableMoves = new ArrayList<>();
     
     for(int j = 0; j < 8; j++){
       for(int i = 0; i < 8; i++){
-        ComputerPlayer.addMoves(availableMoves, i, j, isWhite);
+        ComputerPlayer.addMoves(availableMoves, i, j, isWhite, board);
       }
     }
     return availableMoves;
   }
   
-  public static void addMoves(List<Move> availableMoves, int i, int j, boolean isWhite){
+  public static void addMoves(List<Move> availableMoves, int i, int j, boolean isWhite, Piece[][] board){
     ArrayList<Position> chosen = null;
     
-    if(GameDriver.getBoard()[i][j] != null && GameDriver.getBoard()[i][j].isWhite() == isWhite){
-      chosen = (ArrayList<Position>) GameDriver.getBoard()[i][j].getValid();
+    if(board[i][j] != null && board[i][j].isWhite() == isWhite){
+      chosen = (ArrayList<Position>) board[i][j].getValid();
       for(int k = 0; k < chosen.size(); k++){
-        if(!GameDriver.getBoard()[i][j].getLocation().equals(chosen.get(k))){
-          availableMoves.add(new Move(GameDriver.getBoard()[i][j].getLocation(), chosen.get(k)));
+        if(!board[i][j].getLocation().equals(chosen.get(k))){
+          availableMoves.add(new Move(board[i][j].getLocation(), chosen.get(k)));
         }
       }
     }
@@ -61,17 +61,29 @@ public class ComputerPlayer extends Player {
     Random r = new Random();
     Move picked = null;
     Piece[][] currentBoard = GameDriver.getBoard();
-    Piece[][] possibleBoard = currentBoard;
     
     if(!availableMoves.isEmpty()){
       picked = availableMoves.get(r.nextInt(availableMoves.size()));
     }
-/*  Random r = new Random();
+    
+    picked = ComputerPlayer.chooseMiniMax(availableMoves, 3, currentBoard, false);
+    
+    return picked;
+  }
+  
+  public static Move chooseRandom(List<Move> availableMoves){
+    Random r = new Random();
     
     if(!availableMoves.isEmpty()){
-      picked = availableMoves.get(r.nextInt(availableMoves.size()));
-    }*/
+      return availableMoves.get(r.nextInt(availableMoves.size()));
+    }
     
+    else
+      return null;
+  }
+  
+  public static Move chooseCapture(Piece[][] currentBoard, Piece[][] possibleBoard, List<Move> availableMoves){
+    Move picked = ComputerPlayer.chooseRandom(availableMoves);
     int currentBoardStrength = ComputerPlayer.boardStrength(currentBoard);
     int possibleBoardStrength = currentBoardStrength;
     int bestStrength = currentBoardStrength;
@@ -87,6 +99,58 @@ public class ComputerPlayer extends Player {
     }
     
     return picked;
+  }
+  
+  public static Move chooseMiniMax(List<Move> availableMoves, int depth, Piece[][] board, boolean white){
+    
+    int bestMoveValue = 9999;
+    int index = 0;
+    int[] values = new int[availableMoves.size()];
+    Piece[][] possibleBoard = null;
+    
+    for(int i = 0; i < availableMoves.size(); i++){
+      possibleBoard = ComputerPlayer.getPossibleBoard(board, availableMoves.get(i));
+      values[i] = ComputerPlayer.miniMax(depth, possibleBoard, white);
+    }
+    
+    for(int i = 0; i < availableMoves.size(); i++){
+      if(bestMoveValue > values[i]){
+        index = i;
+        bestMoveValue = values[i];
+      }
+    }
+    
+    return availableMoves.get(index);
+  }
+  
+  public static int miniMax(int depth, Piece[][] board, boolean white){
+    if(depth == 0){
+      return ComputerPlayer.boardStrength(board);
+    }
+    ArrayList<Move> availableMoves = (ArrayList<Move>)ComputerPlayer.getAvailableMoves(white, board);
+    int bestMove = 0;
+    if(white){
+      bestMove = -9999;
+      for(int i = 0; i < availableMoves.size(); i++){
+        Piece[][] possibleBoard = ComputerPlayer.getPossibleBoard(board, availableMoves.get(i));
+        if(bestMove <= ComputerPlayer.boardStrength(possibleBoard)){
+          bestMove = Math.max(bestMove, miniMax(depth - 1, possibleBoard, !white));
+        }
+      }
+      return bestMove;
+    }
+    else{
+      bestMove = 9999;
+      for(int i = 0; i < availableMoves.size(); i++){
+        Piece[][] possibleBoard = ComputerPlayer.getPossibleBoard(board, availableMoves.get(i));
+        if(bestMove >= ComputerPlayer.boardStrength(possibleBoard)){
+          bestMove = Math.min(bestMove,  miniMax(depth - 1, possibleBoard, !white));
+        }
+      }
+      return bestMove;
+    }
+    
+    
   }
   
   public static Piece[][] getPossibleBoard(Piece[][] currentBoard, Move move){

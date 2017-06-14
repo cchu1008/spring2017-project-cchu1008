@@ -22,14 +22,14 @@ public class ComputerPlayerTest {
     
     ArrayList<Move> validMoves = new ArrayList<>();
     
-    ComputerPlayer.addMoves(availableMoves, 0, 0, true);
+    ComputerPlayer.addMoves(availableMoves, 0, 0, true, GameDriver.getBoard());
     
     assertTrue(availableMoves.isEmpty());
     
     Pawn p = new Pawn(new Position(0, 1), false, ImageType.BLACK_PAWN);
     GameDriver.getBoard()[0][1] = p;
     
-    ComputerPlayer.addMoves(availableMoves, 0, 1, false);
+    ComputerPlayer.addMoves(availableMoves, 0, 1, false, GameDriver.getBoard());
     
     validMoves.add(new Move(new Position(0, 1), new Position(0, 3)));
     validMoves.add(new Move(new Position(0, 1), new Position(0, 2)));
@@ -45,7 +45,7 @@ public class ComputerPlayerTest {
 
     ArrayList<Move> validMoves = new ArrayList<>();
     
-    ArrayList<Move> availableMoves = (ArrayList<Move>)ComputerPlayer.getAvailableMoves(false);
+    ArrayList<Move> availableMoves = (ArrayList<Move>)ComputerPlayer.getAvailableMoves(false, GameDriver.getBoard());
     
     validMoves.add(new Move(new Position(0, 1), new Position(0, 3)));
     validMoves.add(new Move(new Position(0, 1), new Position(0, 2)));
